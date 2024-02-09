@@ -10,36 +10,45 @@
       null,
       209652396,
       null,
-      -27.4,
-      1.8842487335205078,
-      1,
-      1707501124.7178893,
-      1707501126.6028342,
-      {}
+      Infinity,
+      0.0,
+      2,
+      1707505638.9547305,
+      1707505638.9563134,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalo/.pyenv/versions/3.10.0/lib/python3.10/site-packages/gym/envs/box2d/bipedal_walker.py\", line 14, in <module>\n    import Box2D\nModuleNotFoundError: No module named 'Box2D'\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/home/gonzalo/.pyenv/versions/3.10.0/lib/python3.10/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalo/.pyenv/versions/3.10.0/lib/python3.10/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalo/Documentos/BayesPPO-SMAC3/lunarlander_multifidelity.py\", line 68, in train\n    env = gym.make('LunarLander-v2')\n  File \"/home/gonzalo/.pyenv/versions/3.10.0/lib/python3.10/site-packages/gym/envs/registration.py\", line 581, in make\n    env_creator = load(spec_.entry_point)\n  File \"/home/gonzalo/.pyenv/versions/3.10.0/lib/python3.10/site-packages/gym/envs/registration.py\", line 61, in load\n    mod = importlib.import_module(mod_name)\n  File \"/home/gonzalo/.pyenv/versions/3.10.0/lib/python3.10/importlib/__init__.py\", line 126, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n  File \"<frozen importlib._bootstrap>\", line 1050, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1027, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 992, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1050, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1027, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1006, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 688, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 883, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed\n  File \"/home/gonzalo/.pyenv/versions/3.10.0/lib/python3.10/site-packages/gym/envs/box2d/__init__.py\", line 1, in <module>\n    from gym.envs.box2d.bipedal_walker import BipedalWalker, BipedalWalkerHardcore\n  File \"/home/gonzalo/.pyenv/versions/3.10.0/lib/python3.10/site-packages/gym/envs/box2d/bipedal_walker.py\", line 24, in <module>\n    raise DependencyNotInstalled(\"box2D is not installed, run `pip install gym[box2d]`\")\ngym.error.DependencyNotInstalled: box2D is not installed, run `pip install gym[box2d]`\n",
+        "error": "DependencyNotInstalled('box2D is not installed, run `pip install gym[box2d]`')"
+      }
     ],
     [
       2,
       null,
       209652396,
       null,
-      -28.4,
-      6.12412166595459,
-      1,
-      1707501126.7643275,
-      1707501132.8890421,
-      {}
+      Infinity,
+      0.0,
+      2,
+      1707505639.0676425,
+      1707505639.069538,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalo/.pyenv/versions/3.10.0/lib/python3.10/site-packages/gym/envs/box2d/bipedal_walker.py\", line 14, in <module>\n    import Box2D\nModuleNotFoundError: No module named 'Box2D'\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/home/gonzalo/.pyenv/versions/3.10.0/lib/python3.10/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalo/.pyenv/versions/3.10.0/lib/python3.10/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalo/Documentos/BayesPPO-SMAC3/lunarlander_multifidelity.py\", line 68, in train\n    env = gym.make('LunarLander-v2')\n  File \"/home/gonzalo/.pyenv/versions/3.10.0/lib/python3.10/site-packages/gym/envs/registration.py\", line 581, in make\n    env_creator = load(spec_.entry_point)\n  File \"/home/gonzalo/.pyenv/versions/3.10.0/lib/python3.10/site-packages/gym/envs/registration.py\", line 61, in load\n    mod = importlib.import_module(mod_name)\n  File \"/home/gonzalo/.pyenv/versions/3.10.0/lib/python3.10/importlib/__init__.py\", line 126, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n  File \"<frozen importlib._bootstrap>\", line 1050, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1027, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 992, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1050, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1027, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1006, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 688, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 883, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed\n  File \"/home/gonzalo/.pyenv/versions/3.10.0/lib/python3.10/site-packages/gym/envs/box2d/__init__.py\", line 1, in <module>\n    from gym.envs.box2d.bipedal_walker import BipedalWalker, BipedalWalkerHardcore\n  File \"/home/gonzalo/.pyenv/versions/3.10.0/lib/python3.10/site-packages/gym/envs/box2d/bipedal_walker.py\", line 24, in <module>\n    raise DependencyNotInstalled(\"box2D is not installed, run `pip install gym[box2d]`\")\ngym.error.DependencyNotInstalled: box2D is not installed, run `pip install gym[box2d]`\n",
+        "error": "DependencyNotInstalled('box2D is not installed, run `pip install gym[box2d]`')"
+      }
     ],
     [
       3,
       null,
       209652396,
       null,
-      -139.6,
-      7.586798429489136,
-      1,
-      1707501132.8916185,
-      1707501140.478975,
-      {}
+      Infinity,
+      0.0,
+      2,
+      1707505639.0724556,
+      1707505639.074015,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalo/.pyenv/versions/3.10.0/lib/python3.10/site-packages/gym/envs/box2d/bipedal_walker.py\", line 14, in <module>\n    import Box2D\nModuleNotFoundError: No module named 'Box2D'\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/home/gonzalo/.pyenv/versions/3.10.0/lib/python3.10/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalo/.pyenv/versions/3.10.0/lib/python3.10/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalo/Documentos/BayesPPO-SMAC3/lunarlander_multifidelity.py\", line 68, in train\n    env = gym.make('LunarLander-v2')\n  File \"/home/gonzalo/.pyenv/versions/3.10.0/lib/python3.10/site-packages/gym/envs/registration.py\", line 581, in make\n    env_creator = load(spec_.entry_point)\n  File \"/home/gonzalo/.pyenv/versions/3.10.0/lib/python3.10/site-packages/gym/envs/registration.py\", line 61, in load\n    mod = importlib.import_module(mod_name)\n  File \"/home/gonzalo/.pyenv/versions/3.10.0/lib/python3.10/importlib/__init__.py\", line 126, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n  File \"<frozen importlib._bootstrap>\", line 1050, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1027, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 992, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed\n  File \"<frozen importlib._bootstrap>\", line 1050, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1027, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1006, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 688, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 883, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 241, in _call_with_frames_removed\n  File \"/home/gonzalo/.pyenv/versions/3.10.0/lib/python3.10/site-packages/gym/envs/box2d/__init__.py\", line 1, in <module>\n    from gym.envs.box2d.bipedal_walker import BipedalWalker, BipedalWalkerHardcore\n  File \"/home/gonzalo/.pyenv/versions/3.10.0/lib/python3.10/site-packages/gym/envs/box2d/bipedal_walker.py\", line 24, in <module>\n    raise DependencyNotInstalled(\"box2D is not installed, run `pip install gym[box2d]`\")\ngym.error.DependencyNotInstalled: box2D is not installed, run `pip install gym[box2d]`\n",
+        "error": "DependencyNotInstalled('box2D is not installed, run `pip install gym[box2d]`')"
+      }
     ]
   ],
   "configs": {

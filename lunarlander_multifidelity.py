@@ -1,4 +1,4 @@
-import gymnasium
+import gym
 from matplotlib import pyplot as plt
 import numpy as np
 from stable_baselines3 import PPO
@@ -15,7 +15,7 @@ import logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
-    filename='cartpole_optimization.log',
+    filename='lunarlander_optimization.log',
     filemode='w'
 )
 
@@ -23,7 +23,7 @@ logging.basicConfig(
 logger = logging.getLogger()
 
 # Crear un manejador de archivo
-file_handler = logging.FileHandler('cartpole_optimization.log')
+file_handler = logging.FileHandler('lunarlander_optimization.log')
 file_handler.setLevel(logging.INFO)
 
 # Crear un formatter y establecerlo para el manejador de archivo
@@ -33,7 +33,7 @@ file_handler.setFormatter(formatter)
 # Añadir el manejador de archivo al logger
 logger.addHandler(file_handler)
 
-class CartpoleFunction:
+class LunarLanderFunction:
     @property
     def configspace(self) -> ConfigurationSpace:
         '''
@@ -65,7 +65,7 @@ class CartpoleFunction:
         '''
         Train the PPO agent with the given hyperparameters and return the average reward.
         '''
-        env = gymnasium.make('CartPole-v1')
+        env = gym.make('LunarLander-v2')
 
         # Configurar los parámetros del algoritmo PPO
         ppo_params = {
@@ -91,7 +91,7 @@ class CartpoleFunction:
         agent.learn(total_timesteps=int(config['max_timesteps']))
 
         # Evaluar el agente
-        mean_reward = np.mean([CartpoleFunction.evaluate_agent(agent, env) for _ in range(5)])
+        mean_reward = np.mean([LunarLanderFunction.evaluate_agent(agent, env) for _ in range(5)])
 
         # Cerrar el entorno
         env.close()
@@ -103,7 +103,7 @@ if __name__ == "__main__":
     def optimize_with_logging(smac):
         # Redirigir sys.stdout temporalmente a un archivo
         original_stdout = sys.stdout
-        log_file = open('cartpole_optimization.log', 'a')  # Abrir en modo append (añadir a un archivo existente)
+        log_file = open('lunarlander_optimization.log', 'a')  # Abrir en modo append (añadir a un archivo existente)
         sys.stdout = log_file
 
         # Ejecutar la función optimize() con las salidas redirigidas al archivo de registro
@@ -118,7 +118,7 @@ if __name__ == "__main__":
     def log_results(logger, incumbent_config, incumbent_cost):
         # Redirigir sys.stdout temporalmente a un archivo
         original_stdout = sys.stdout
-        log_file = open('cartpole_optimization.log', 'a')  # Abrir en modo append (añadir a un archivo existente)
+        log_file = open('lunarlander_optimization.log', 'a')  # Abrir en modo append (añadir a un archivo existente)
         sys.stdout = log_file
 
         # Imprimir los resultados en la consola y también en el archivo de registro
@@ -131,7 +131,7 @@ if __name__ == "__main__":
         sys.stdout = original_stdout
         log_file.close()  # Cerrar el archivo
 
-    model = CartpoleFunction()
+    model = LunarLanderFunction()
 
     scenario = Scenario(model.configspace, deterministic=True, n_trials=3)
 
