@@ -1,0 +1,67 @@
+{
+  "stats": {
+    "submitted": 3,
+    "finished": 3,
+    "running": 0
+  },
+  "data": [
+    [
+      1,
+      null,
+      209652396,
+      null,
+      -27.4,
+      1.8842487335205078,
+      1,
+      1707501124.7178893,
+      1707501126.6028342,
+      {}
+    ],
+    [
+      2,
+      null,
+      209652396,
+      null,
+      -28.4,
+      6.12412166595459,
+      1,
+      1707501126.7643275,
+      1707501132.8890421,
+      {}
+    ],
+    [
+      3,
+      null,
+      209652396,
+      null,
+      -139.6,
+      7.586798429489136,
+      1,
+      1707501132.8916185,
+      1707501140.478975,
+      {}
+    ]
+  ],
+  "configs": {
+    "1": {
+      "discount_factor": 0.9264209735859186,
+      "learning_rate": 0.0007272673426083851,
+      "max_timesteps": 1967.5709353759885
+    },
+    "2": {
+      "discount_factor": 0.9882855270774259,
+      "learning_rate": 1.8255254802399002e-05,
+      "max_timesteps": 8024.762586578099
+    },
+    "3": {
+      "discount_factor": 0.9708037472708695,
+      "learning_rate": 0.00014135935551752297,
+      "max_timesteps": 8493.578609931443
+    }
+  },
+  "config_origins": {
+    "1": "Initial Design: Sobol",
+    "2": "Acquisition Function Maximizer: Random Search (sorted)",
+    "3": "Acquisition Function Maximizer: Random Search (sorted)"
+  }
+}

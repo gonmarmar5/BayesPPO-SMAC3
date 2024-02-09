@@ -1,0 +1,139 @@
+{
+  "stats": {
+    "submitted": 7,
+    "finished": 6,
+    "running": 1
+  },
+  "data": [
+    [
+      1,
+      null,
+      209652396,
+      null,
+      -38.4,
+      1.6610448360443115,
+      1,
+      1707481628.182002,
+      1707481629.843837,
+      {}
+    ],
+    [
+      2,
+      null,
+      209652396,
+      null,
+      -65.6,
+      5.5035810470581055,
+      1,
+      1707481629.8460104,
+      1707481635.3503485,
+      {}
+    ],
+    [
+      3,
+      null,
+      209652396,
+      null,
+      -34.6,
+      5.164313316345215,
+      1,
+      1707481635.4492838,
+      1707481640.6140935,
+      {}
+    ],
+    [
+      4,
+      null,
+      209652396,
+      null,
+      -129.0,
+      6.221596956253052,
+      1,
+      1707481640.6177413,
+      1707481646.84,
+      {}
+    ],
+    [
+      5,
+      null,
+      209652396,
+      null,
+      -332.0,
+      5.226686716079712,
+      1,
+      1707481646.8421671,
+      1707481652.069368,
+      {}
+    ],
+    [
+      6,
+      null,
+      209652396,
+      null,
+      -237.2,
+      5.223034143447876,
+      1,
+      1707481652.0726883,
+      1707481657.2962236,
+      {}
+    ],
+    [
+      7,
+      null,
+      209652396,
+      null,
+      2147483647.0,
+      0.0,
+      0,
+      0.0,
+      0.0,
+      {}
+    ]
+  ],
+  "configs": {
+    "1": {
+      "discount_factor": 0.9264209735859186,
+      "learning_rate": 0.0007272673426083851,
+      "max_timesteps": 1967.5709353759885
+    },
+    "2": {
+      "discount_factor": 0.9527376512261108,
+      "learning_rate": 8.296742877724457e-05,
+      "max_timesteps": 8007.461714558303
+    },
+    "3": {
+      "discount_factor": 0.9882855270774259,
+      "learning_rate": 1.8255254802399002e-05,
+      "max_timesteps": 8024.762586578099
+    },
+    "4": {
+      "discount_factor": 0.9708037472708695,
+      "learning_rate": 0.00014135935551752297,
+      "max_timesteps": 8493.578609931443
+    },
+    "5": {
+      "discount_factor": 0.9639435171935989,
+      "learning_rate": 0.0059812219011525555,
+      "max_timesteps": 8192.427077950513
+    },
+    "6": {
+      "discount_factor": 0.9596735742310928,
+      "learning_rate": 0.0023723300729921923,
+      "max_timesteps": 8003.4107585486545
+    },
+    "7": {
+      "discount_factor": 0.9539434351166928,
+      "learning_rate": 0.0003860866271460546,
+      "max_timesteps": 8830.109334221372
+    }
+  },
+  "config_origins": {
+    "1": "Initial Design: Sobol",
+    "2": "Initial Design: Sobol",
+    "3": "Acquisition Function Maximizer: Random Search (sorted)",
+    "4": "Acquisition Function Maximizer: Random Search (sorted)",
+    "5": "Acquisition Function Maximizer: Random Search (sorted)",
+    "6": "Acquisition Function Maximizer: Random Search (sorted)",
+    "7": "Acquisition Function Maximizer: Random Search (sorted)"
+  }
+}
