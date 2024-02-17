@@ -1,4 +1,4 @@
-import gym
+import gymnasium
 from matplotlib import pyplot as plt
 import numpy as np
 from stable_baselines3 import PPO
@@ -7,31 +7,7 @@ from ConfigSpace import Configuration, ConfigurationSpace
 from ConfigSpace import UniformFloatHyperparameter
 from smac.scenario import Scenario
 from smac import HyperparameterOptimizationFacade as HPOFacade
-
-import sys
-import logging
-
-# Configurar el logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    filename='lunarlander_optimization.log',
-    filemode='w'
-)
-
-# Crear un custom logger
-logger = logging.getLogger()
-
-# Crear un manejador de archivo
-file_handler = logging.FileHandler('lunarlander_optimization.log')
-file_handler.setLevel(logging.INFO)
-
-# Crear un formatter y establecerlo para el manejador de archivo
-formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-file_handler.setFormatter(formatter)
-
-# Añadir el manejador de archivo al logger
-logger.addHandler(file_handler)
+from logger import Logger 
 
 class LunarLanderFunction:
     @property
@@ -42,8 +18,8 @@ class LunarLanderFunction:
         cs = ConfigurationSpace(seed=0)
         learning_rate = UniformFloatHyperparameter("learning_rate", lower=1e-5, upper=1e-2, default_value=1e-3, log=True)
         discount_factor = UniformFloatHyperparameter("discount_factor", lower=0.9, upper=0.999, default_value=0.99)
-        max_timesteps = UniformFloatHyperparameter("max_timesteps", lower=1000, upper=10000, default_value=5000)
-        cs.add_hyperparameters([learning_rate, discount_factor, max_timesteps])
+        gae_lambda = UniformFloatHyperparameter("gae_lambda", lower=0.8, upper=0.999, default_value=0.95)  
+        cs.add_hyperparameters([learning_rate, discount_factor, gae_lambda])
 
         return cs
     
@@ -65,7 +41,7 @@ class LunarLanderFunction:
         '''
         Train the PPO agent with the given hyperparameters and return the average reward.
         '''
-        env = gym.make('LunarLander-v2')
+        env = gymnasium.make('LunarLander-v2')
 
         # Configurar los parámetros del algoritmo PPO
         ppo_params = {
@@ -76,7 +52,7 @@ class LunarLanderFunction:
             'n_steps': 2048,
             'batch_size': 64,
             'n_epochs': 10,
-            'gae_lambda': 0.95,
+            'gae_lambda': config['gae_lambda'],
             'clip_range': 0.2,
             'ent_coef': 0.0,
             'vf_coef': 0.5,
@@ -88,7 +64,7 @@ class LunarLanderFunction:
         agent = PPO(**ppo_params)
 
         # Entrenar el agente
-        agent.learn(total_timesteps=int(config['max_timesteps']))
+        agent.learn(total_timesteps=13000)  # Pendiente de revisión este valor
 
         # Evaluar el agente
         mean_reward = np.mean([LunarLanderFunction.evaluate_agent(agent, env) for _ in range(5)])
@@ -100,37 +76,8 @@ class LunarLanderFunction:
 
 if __name__ == "__main__":
 
-    def optimize_with_logging(smac):
-        # Redirigir sys.stdout temporalmente a un archivo
-        original_stdout = sys.stdout
-        log_file = open('lunarlander_optimization.log', 'a')  # Abrir en modo append (añadir a un archivo existente)
-        sys.stdout = log_file
-
-        # Ejecutar la función optimize() con las salidas redirigidas al archivo de registro
-        incumbent = smac.optimize()
-
-        # Restaurar sys.stdout a su comportamiento original
-        sys.stdout = original_stdout
-        log_file.close()  # Cerrar el archivo
-
-        return incumbent
-
-    def log_results(logger, incumbent_config, incumbent_cost):
-        # Redirigir sys.stdout temporalmente a un archivo
-        original_stdout = sys.stdout
-        log_file = open('lunarlander_optimization.log', 'a')  # Abrir en modo append (añadir a un archivo existente)
-        sys.stdout = log_file
-
-        # Imprimir los resultados en la consola y también en el archivo de registro
-        print(f"Incumbent configuration: {incumbent_config}")
-        print(f"Incumbent cost: {incumbent_cost}")
-        logger.info(f"Incumbent configuration: {incumbent_config}")
-        logger.info(f"Incumbent cost: {incumbent_cost}")
-
-        # Restaurar sys.stdout a su comportamiento original
-        sys.stdout = original_stdout
-        log_file.close()  # Cerrar el archivo
-
+    logger = Logger('lunarlander_optimizer.log')
+    
     model = LunarLanderFunction()
 
     scenario = Scenario(model.configspace, deterministic=True, n_trials=1)
@@ -139,14 +86,10 @@ if __name__ == "__main__":
     smac = HPOFacade(scenario=scenario, target_function=model.train, overwrite=True)
 
     # Ejecutar la optimización pasando la función objetivo directamente
-    incumbent = optimize_with_logging(smac)
+    incumbent = logger.log_optimization(smac)
 
-    #plot_learning_rate_variation(smac)
-    
     # Retrieve the incumbent configuration
     incumbent_config = dict(incumbent)
     
-    # Let's calculate the cost of the incumbent
-    incumbent_cost = smac.validate(incumbent)
-
-    log_results(logger, incumbent_config, incumbent_cost)
+    # Let's calculate the cost of the incumbent and save it in the log file
+    logger.log_results(smac, incumbent, incumbent_config)
