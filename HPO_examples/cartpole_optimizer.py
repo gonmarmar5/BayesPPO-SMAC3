@@ -7,31 +7,7 @@ from ConfigSpace import Configuration, ConfigurationSpace
 from ConfigSpace import UniformFloatHyperparameter
 from smac.scenario import Scenario
 from smac import HyperparameterOptimizationFacade as HPOFacade
-
-import sys
-import logging
-
-# Configurar el logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    filename='cartpole_optimization.log',
-    filemode='w'
-)
-
-# Crear un custom logger
-logger = logging.getLogger()
-
-# Crear un manejador de archivo
-file_handler = logging.FileHandler('cartpole_optimization.log')
-file_handler.setLevel(logging.INFO)
-
-# Crear un formatter y establecerlo para el manejador de archivo
-formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-file_handler.setFormatter(formatter)
-
-# Añadir el manejador de archivo al logger
-logger.addHandler(file_handler)
+from logger import Logger 
 
 class CartpoleFunction:
     @property
@@ -100,37 +76,8 @@ class CartpoleFunction:
 
 if __name__ == "__main__":
 
-    def optimize_with_logging(smac):
-        # Redirigir sys.stdout temporalmente a un archivo
-        original_stdout = sys.stdout
-        log_file = open('cartpole_optimization.log', 'a')  # Abrir en modo append (añadir a un archivo existente)
-        sys.stdout = log_file
-
-        # Ejecutar la función optimize() con las salidas redirigidas al archivo de registro
-        incumbent = smac.optimize()
-
-        # Restaurar sys.stdout a su comportamiento original
-        sys.stdout = original_stdout
-        log_file.close()  # Cerrar el archivo
-
-        return incumbent
-
-    def log_results(logger, incumbent_config, incumbent_cost):
-        # Redirigir sys.stdout temporalmente a un archivo
-        original_stdout = sys.stdout
-        log_file = open('cartpole_optimization.log', 'a')  # Abrir en modo append (añadir a un archivo existente)
-        sys.stdout = log_file
-
-        # Imprimir los resultados en la consola y también en el archivo de registro
-        print(f"Incumbent configuration: {incumbent_config}")
-        print(f"Incumbent cost: {incumbent_cost}")
-        logger.info(f"Incumbent configuration: {incumbent_config}")
-        logger.info(f"Incumbent cost: {incumbent_cost}")
-
-        # Restaurar sys.stdout a su comportamiento original
-        sys.stdout = original_stdout
-        log_file.close()  # Cerrar el archivo
-
+    logger = Logger('cartpole_optimizer.log')
+    
     model = CartpoleFunction()
 
     scenario = Scenario(model.configspace, deterministic=True, n_trials=1)
@@ -139,12 +86,10 @@ if __name__ == "__main__":
     smac = HPOFacade(scenario=scenario, target_function=model.train, overwrite=True)
 
     # Ejecutar la optimización pasando la función objetivo directamente
-    incumbent = optimize_with_logging(smac)
-    
+    incumbent = logger.log_optimization(smac)
+
     # Retrieve the incumbent configuration
     incumbent_config = dict(incumbent)
     
-    # Let's calculate the cost of the incumbent
-    incumbent_cost = smac.validate(incumbent)
-
-    log_results(logger, incumbent_config, incumbent_cost)
+    # Let's calculate the cost of the incumbent and save it in the log file
+    logger.log_results(smac, incumbent, incumbent_config)

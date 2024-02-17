@@ -1,22 +1,32 @@
 import logging
 import sys
 
+class Logger:
+    def __init__(self, log_file):
 
-class CartpoleLogger:
-    def __init__(self, log_file='cartpole_optimization.log'):
+        self.log_file = log_file
+
+        # Configure logging
+        logging.basicConfig(
+            level=logging.INFO,
+            format='%(asctime)s - %(levelname)s - %(message)s',
+            filename=log_file,
+            filemode='w'
+        )
+
+        # Create a custom logger
         self.logger = logging.getLogger()
-        self.logger.setLevel(logging.INFO)
-        
-        # Crear un manejador de archivo
-        self.file_handler = logging.FileHandler(log_file)
-        self.file_handler.setLevel(logging.INFO)
-        
-        # Crear un formatter y establecerlo para el manejador de archivo
+
+        # Create a file handler
+        file_handler = logging.FileHandler(log_file)
+        file_handler.setLevel(logging.INFO)
+
+        # Create a formatter and set it for the file handler
         formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-        self.file_handler.setFormatter(formatter)
-        
-        # Añadir el manejador de archivo al logger
-        self.logger.addHandler(self.file_handler)
+        file_handler.setFormatter(formatter)
+
+        # Add the file handler to the logger
+        self.logger.addHandler(file_handler)
         
     def redirect_stdout_to_log_file(self, log_file):
         self.original_stdout = sys.stdout
@@ -29,7 +39,7 @@ class CartpoleLogger:
         
     def log_optimization(self, smac):
         # Redirigir sys.stdout temporalmente a un archivo
-        self.redirect_stdout_to_log_file('cartpole_optimization.log')
+        self.redirect_stdout_to_log_file(self.log_file)
         
         # Ejecutar la función optimize() con las salidas redirigidas al archivo de registro
         incumbent = smac.optimize()
@@ -39,15 +49,17 @@ class CartpoleLogger:
         
         return incumbent
     
-    def log_results(self, logger, incumbent_config, incumbent_cost):
+    def log_results(self, smac, incumbent, incumbent_config):
         # Redirigir sys.stdout temporalmente a un archivo
-        self.redirect_stdout_to_log_file('cartpole_optimization.log')
+        self.redirect_stdout_to_log_file(self.log_file.name)
 
-        # Imprimir los resultados en la consola y también en el archivo de registro
-        print(f"Incumbent configuration: {incumbent_config}")
-        print(f"Incumbent cost: {incumbent_cost}")
-        logger.info(f"Incumbent configuration: {incumbent_config}")
-        logger.info(f"Incumbent cost: {incumbent_cost}")
+        print("############# Validation")
+        # Calcular el costo del incumbent y registrar la salida en el log
+        incumbent_cost = smac.validate(incumbent)
+
+        # Log the results using the logger instance
+        self.logger.info(f"Incumbent configuration: {incumbent_config}")
+        self.logger.info(f"Incumbent cost: {incumbent_cost}")
 
         # Restaurar sys.stdout a su comportamiento original
         self.restore_stdout()

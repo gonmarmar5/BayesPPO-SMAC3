@@ -133,7 +133,7 @@ if __name__ == "__main__":
 
     model = LunarLanderFunction()
 
-    scenario = Scenario(model.configspace, deterministic=True, n_trials=3)
+    scenario = Scenario(model.configspace, deterministic=True, n_trials=1)
 
     # Crear la instancia HPOFacade
     smac = HPOFacade(scenario=scenario, target_function=model.train, overwrite=True)
