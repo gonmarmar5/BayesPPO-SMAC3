@@ -42,8 +42,8 @@ class CartpoleFunction:
         cs = ConfigurationSpace(seed=0)
         learning_rate = UniformFloatHyperparameter("learning_rate", lower=1e-5, upper=1e-2, default_value=1e-3, log=True)
         discount_factor = UniformFloatHyperparameter("discount_factor", lower=0.9, upper=0.999, default_value=0.99)
-        max_timesteps = UniformFloatHyperparameter("max_timesteps", lower=1000, upper=10000, default_value=5000)
-        cs.add_hyperparameters([learning_rate, discount_factor, max_timesteps])
+        gae_lambda = UniformFloatHyperparameter("gae_lambda", lower=0.8, upper=0.999, default_value=0.95)  
+        cs.add_hyperparameters([learning_rate, discount_factor, gae_lambda])
 
         return cs
     
@@ -76,7 +76,7 @@ class CartpoleFunction:
             'n_steps': 2048,
             'batch_size': 64,
             'n_epochs': 10,
-            'gae_lambda': 0.95,
+            'gae_lambda': config['gae_lambda'],
             'clip_range': 0.2,
             'ent_coef': 0.0,
             'vf_coef': 0.5,
@@ -88,7 +88,7 @@ class CartpoleFunction:
         agent = PPO(**ppo_params)
 
         # Entrenar el agente
-        agent.learn(total_timesteps=int(config['max_timesteps']))
+        agent.learn(total_timesteps=13000)  # Pendiente de revisión este valor
 
         # Evaluar el agente
         mean_reward = np.mean([CartpoleFunction.evaluate_agent(agent, env) for _ in range(5)])
@@ -133,15 +133,13 @@ if __name__ == "__main__":
 
     model = CartpoleFunction()
 
-    scenario = Scenario(model.configspace, deterministic=True, n_trials=3)
+    scenario = Scenario(model.configspace, deterministic=True, n_trials=1)
 
     # Crear la instancia HPOFacade
     smac = HPOFacade(scenario=scenario, target_function=model.train, overwrite=True)
 
     # Ejecutar la optimización pasando la función objetivo directamente
     incumbent = optimize_with_logging(smac)
-
-    #plot_learning_rate_variation(smac)
     
     # Retrieve the incumbent configuration
     incumbent_config = dict(incumbent)
