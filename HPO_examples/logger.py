@@ -1,3 +1,4 @@
+import datetime
 import logging
 import sys
 
@@ -67,10 +68,17 @@ class Logger:
 
         # Redirigir sys.stdout temporalmente a un archivo
         self.redirect_stdout_to_log_file(self.log_file)
-        
+
+        start_training_time = datetime.datetime.now()
+        print("Start training time: " + start_training_time.strftime("%Y-%m-%d %H:%M:%S"))
         # Ejecutar la función optimize() con las salidas redirigidas al archivo de registro
         incumbent = smac.optimize()
 
+        
+        end_training_time = datetime.datetime.now()
+        training_duration = end_training_time - start_training_time 
+        print("End training time: " + end_training_time.strftime("%Y-%m-%d %H:%M:%S"))
+        print("Training time: " + str(training_duration))
         # Restaurar sys.stdout a su comportamiento original
         self.restore_stdout()
         
@@ -86,7 +94,7 @@ class Logger:
             incumbent: The best configuration found during optimization.
             incumbent_config: The configuration parameters of the incumbent solution.
         """
-        
+
         # Redirigir sys.stdout temporalmente a un archivo
         self.redirect_stdout_to_log_file(self.log_file.name)
 

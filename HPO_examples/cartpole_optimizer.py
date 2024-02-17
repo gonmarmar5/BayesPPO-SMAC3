@@ -107,7 +107,7 @@ class CartpoleFunction:
         # Crear el agente PPO
         agent = PPO(**ppo_params)
 
-        total_timesteps = 55000  
+        total_timesteps = 150000  
         batch_size = 2048
         num_updates = total_timesteps // batch_size
 

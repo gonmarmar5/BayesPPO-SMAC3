@@ -1,0 +1,136 @@
+{
+    "name": "6ba2e969c8a24e061083b5885224d5c8",
+    "deterministic": true,
+    "objectives": "cost",
+    "crash_cost": Infinity,
+    "termination_cost_threshold": Infinity,
+    "walltime_limit": Infinity,
+    "cputime_limit": Infinity,
+    "trial_walltime_limit": null,
+    "trial_memory_limit": null,
+    "n_trials": 1,
+    "use_default_config": false,
+    "instances": null,
+    "instance_features": null,
+    "min_budget": null,
+    "max_budget": null,
+    "seed": 0,
+    "n_workers": 1,
+    "_meta": {
+        "facade": {
+            "name": "HyperparameterOptimizationFacade"
+        },
+        "runner": {
+            "name": "TargetFunctionRunner",
+            "code": "b't\\x00\\xa0\\x01d\\x01\\xa1\\x01}\\x03d\\x02|\\x03|\\x01d\\x03\\x19\\x00|\\x01d\\x04\\x19\\x00d\\x05d\\x06d\\x07|\\x01d\\x08\\x19\\x00d\\td\\nd\\x0bd\\x0bd\\x0cd\\r\\x9c\\r}\\x04t\\x02f\\x00|\\x04\\x8e\\x01}\\x05d\\x0e}\\x06d\\x05}\\x07|\\x06|\\x07\\x1a\\x00}\\x08i\\x00}\\tt\\x03d\\x0c|\\x08d\\x0c\\x17\\x00\\x83\\x02D\\x00]\\x8e}\\n|\\x05j\\x04|\\x07d\\x0f\\x8d\\x01\\x01\\x00d\\x10}\\x0bt\\x03d\\x11\\x83\\x01D\\x00]F}\\x0ct\\x05\\xa0\\x06|\\x05|\\x03\\xa1\\x02}\\rt\\x07|\\x0cd\\x0c\\x17\\x00\\x83\\x01}\\x0e|\\x0e|\\tk\\x06r\\xb2|\\t|\\x0e\\x19\\x00\\xa0\\x08|\\r\\xa1\\x01\\x01\\x00n\\n|\\rg\\x01|\\t|\\x0e<\\x00|\\x0b|\\r7\\x00}\\x0bq~|\\x0bd\\x11\\x1b\\x00}\\x0fd\\x12|\\tk\\x06r\\xe6|\\td\\x12\\x19\\x00\\xa0\\x08|\\x0f\\xa1\\x01\\x01\\x00qb|\\x0fg\\x01|\\td\\x12<\\x00qb|\\x03\\xa0\\t\\xa1\\x00\\x01\\x00t\\x05\\xa0\\n|\\t\\xa1\\x01\\x01\\x00t\\x0b\\xa0\\x0c|\\td\\x12\\x19\\x00\\xa1\\x01\\x0b\\x00S\\x00'"
+        },
+        "model": {
+            "name": "RandomForest",
+            "types": [
+                0,
+                0,
+                0
+            ],
+            "bounds": [
+                [
+                    0,
+                    1.0
+                ],
+                [
+                    0,
+                    1.0
+                ],
+                [
+                    0,
+                    1.0
+                ]
+            ],
+            "pca_components": 7,
+            "n_trees": 10,
+            "n_points_per_tree": -1,
+            "ratio_features": 1.0,
+            "min_samples_split": 2,
+            "min_samples_leaf": 1,
+            "max_depth": 1048576,
+            "eps_purity": 1e-08,
+            "max_nodes": 1048576,
+            "bootstrapping": true
+        },
+        "acquisition_maximizer": {
+            "name": "LocalAndSortedRandomSearch",
+            "acquisition_function": {
+                "name": "EI",
+                "xi": 0.0,
+                "log": true
+            },
+            "challengers": 10000,
+            "seed": 0,
+            "random_search": {
+                "name": "RandomSearch",
+                "acquisition_function": {
+                    "name": "EI",
+                    "xi": 0.0,
+                    "log": true
+                },
+                "challengers": 5000,
+                "seed": 0
+            },
+            "local_search": {
+                "name": "LocalSearch",
+                "acquisition_function": {
+                    "name": "EI",
+                    "xi": 0.0,
+                    "log": true
+                },
+                "challengers": 5000,
+                "seed": 0,
+                "max_steps": null,
+                "n_steps_plateau_walk": 10,
+                "vectorization_min_obtain": 2,
+                "vectorization_max_obtain": 64
+            }
+        },
+        "acquisition_function": {
+            "name": "EI",
+            "xi": 0.0,
+            "log": true
+        },
+        "intensifier": {
+            "name": "Intensifier",
+            "max_incumbents": 10,
+            "seed": 0
+        },
+        "initial_design": {
+            "name": "SobolInitialDesign",
+            "n_configs": 1,
+            "n_configs_per_hyperparameter": 10,
+            "additional_configs": [],
+            "seed": 0
+        },
+        "random_design": {
+            "name": "ProbabilityRandomDesign",
+            "seed": 0,
+            "probability": 0.2
+        },
+        "runhistory_encoder": {
+            "name": "RunHistoryLogScaledEncoder",
+            "considered_states": [
+                1,
+                2,
+                4
+            ],
+            "lower_budget_states": [],
+            "scale_percentage": 5,
+            "seed": 0
+        },
+        "multi_objective_algorithm": null,
+        "config_selector": {
+            "name": "ConfigSelector",
+            "retrain_after": 8,
+            "retries": 16,
+            "min_trials": 1
+        },
+        "version": "2.0.2"
+    },
+    "output_directory": "smac3_output/6ba2e969c8a24e061083b5885224d5c8/0"
+}
