@@ -9,6 +9,8 @@ from smac.scenario import Scenario
 from smac import HyperparameterOptimizationFacade as HPOFacade
 from logger import Logger 
 
+# Optimizacion bayesiana tradicional
+
 class LunarLanderFunction:
     @property
     def configspace(self) -> ConfigurationSpace:
@@ -76,7 +78,7 @@ class LunarLanderFunction:
 
 if __name__ == "__main__":
 
-    logger = Logger('lunarlander_optimizer.log')
+    logger = Logger('logs/lunarlander_optimizer.log')
     
     model = LunarLanderFunction()
 

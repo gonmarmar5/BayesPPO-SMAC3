@@ -1,0 +1,73 @@
+Using cpu device
+Wrapping the env with a `Monitor` wrapper
+Wrapping the env in a DummyVecEnv.
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 21.8     |
+|    ep_rew_mean     | 21.8     |
+| time/              |          |
+|    fps             | 3584     |
+|    iterations      | 1        |
+|    time_elapsed    | 0        |
+|    total_timesteps | 2048     |
+---------------------------------
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 24.5     |
+|    ep_rew_mean     | 24.5     |
+| time/              |          |
+|    fps             | 3585     |
+|    iterations      | 1        |
+|    time_elapsed    | 0        |
+|    total_timesteps | 2048     |
+---------------------------------
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 27.3     |
+|    ep_rew_mean     | 27.3     |
+| time/              |          |
+|    fps             | 3548     |
+|    iterations      | 1        |
+|    time_elapsed    | 0        |
+|    total_timesteps | 2048     |
+---------------------------------
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 27.9     |
+|    ep_rew_mean     | 27.9     |
+| time/              |          |
+|    fps             | 3568     |
+|    iterations      | 1        |
+|    time_elapsed    | 0        |
+|    total_timesteps | 2048     |
+---------------------------------
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 31.1     |
+|    ep_rew_mean     | 31.1     |
+| time/              |          |
+|    fps             | 3577     |
+|    iterations      | 1        |
+|    time_elapsed    | 0        |
+|    total_timesteps | 2048     |
+---------------------------------
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 43.4     |
+|    ep_rew_mean     | 43.4     |
+| time/              |          |
+|    fps             | 3562     |
+|    iterations      | 1        |
+|    time_elapsed    | 0        |
+|    total_timesteps | 2048     |
+---------------------------------
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 37.2     |
+|    ep_rew_mean     | 37.2     |
+| time/              |          |
+|    fps             | 3475     |
+|    iterations      | 1        |
+|    time_elapsed    | 0        |
+|    total_timesteps | 2048     |
+---------------------------------

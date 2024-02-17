@@ -19,6 +19,7 @@ class CartpoleFunction:
         learning_rate = UniformFloatHyperparameter("learning_rate", lower=1e-5, upper=1e-2, default_value=1e-3, log=True)
         discount_factor = UniformFloatHyperparameter("discount_factor", lower=0.9, upper=0.999, default_value=0.99)
         gae_lambda = UniformFloatHyperparameter("gae_lambda", lower=0.8, upper=0.999, default_value=0.95)  
+        
         cs.add_hyperparameters([learning_rate, discount_factor, gae_lambda])
 
         return cs
@@ -63,20 +64,37 @@ class CartpoleFunction:
         # Crear el agente PPO
         agent = PPO(**ppo_params)
 
-        # Entrenar el agente
-        agent.learn(total_timesteps=13000)  # Pendiente de revisión este valor
+        total_timesteps = 15000  
 
-        # Evaluar el agente
+        rewards = []  # Track rewards over training
+
+        # Entrenar el agente
+        for update in range(1, total_timesteps // 2048 + 1):  
+            agent.learn(total_timesteps=2048)  # Train in batches of 2048
+
+            # Evaluate after each update 
+            mean_reward = np.mean([CartpoleFunction.evaluate_agent(agent, env) for _ in range(5)])
+            rewards.append(mean_reward)
+
+        # Evaluar el agente (after training is complete)
         mean_reward = np.mean([CartpoleFunction.evaluate_agent(agent, env) for _ in range(5)])
 
-        # Cerrar el entorno
+        # Close the environment
         env.close()
+
+        # Plot training progress
+        plt.plot(rewards)
+        plt.xlabel('Training Updates')
+        plt.ylabel('Average Reward')
+        plt.title('PPO Training Progress')
+        plt.show()
+
 
         return -mean_reward  # SMAC busca minimizar
 
 if __name__ == "__main__":
 
-    logger = Logger('cartpole_optimizer.log')
+    logger = Logger('logs/cartpole_optimizer.log')
     
     model = CartpoleFunction()
 
