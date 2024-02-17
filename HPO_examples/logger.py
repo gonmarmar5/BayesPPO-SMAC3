@@ -3,6 +3,12 @@ import sys
 
 class Logger:
     def __init__(self, log_file):
+        """
+        Initializes the Logger class, configures logging format, and creates a custom logger.
+
+        Args:
+            log_file (str): The filename for storing log messages.
+        """
 
         self.log_file = log_file
 
@@ -29,15 +35,36 @@ class Logger:
         self.logger.addHandler(file_handler)
         
     def redirect_stdout_to_log_file(self, log_file):
+        """ 
+        Temporarily redirects standard output (sys.stdout) to the specified log file.
+
+        Args:
+            log_file: (str) The filename where standard output will be written.
+        """
+
         self.original_stdout = sys.stdout
         self.log_file = open(log_file, 'a')
         sys.stdout = self.log_file
         
     def restore_stdout(self):
+        """ 
+        Restores standard output (sys.stdout) to its original state. 
+        """
+
         sys.stdout = self.original_stdout
         self.log_file.close()
         
     def log_optimization(self, smac):
+        """
+        Wraps the SMAC optimization process, capturing its standard output in the log file. 
+
+        Args:
+            smac: An instance of the SMAC optimizer.
+
+        Returns:
+            incumbent: The best configuration found during the optimization process.
+        """
+
         # Redirigir sys.stdout temporalmente a un archivo
         self.redirect_stdout_to_log_file(self.log_file)
         
@@ -50,6 +77,16 @@ class Logger:
         return incumbent
     
     def log_results(self, smac, incumbent, incumbent_config):
+        """
+        Calculates the validation cost of the best configuration (incumbent) found by SMAC 
+        and logs the results to the specified log file.
+
+        Args:
+            smac: An instance of the SMAC optimizer.
+            incumbent: The best configuration found during optimization.
+            incumbent_config: The configuration parameters of the incumbent solution.
+        """
+        
         # Redirigir sys.stdout temporalmente a un archivo
         self.redirect_stdout_to_log_file(self.log_file.name)
 

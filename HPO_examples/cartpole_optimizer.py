@@ -12,9 +12,15 @@ from logger import Logger
 class CartpoleFunction:
     @property
     def configspace(self) -> ConfigurationSpace:
-        '''
-        Configure the hyperparameters for the PPO agent.
-        '''
+        """
+        Defines the hyperparameter search space for optimizing a PPO agent on the CartPole environment. 
+        This includes learning rate, discount factor, and GAE lambda.
+
+        Returns:
+            ConfigurationSpace: A SMAC ConfigurationSpace object representing the valid ranges and types
+                                of hyperparameters. 
+        """
+
         cs = ConfigurationSpace(seed=0)
         learning_rate = UniformFloatHyperparameter("learning_rate", lower=1e-5, upper=1e-2, default_value=1e-3, log=True)
         discount_factor = UniformFloatHyperparameter("discount_factor", lower=0.9, upper=0.999, default_value=0.99)
@@ -25,9 +31,17 @@ class CartpoleFunction:
         return cs
     
     def evaluate_agent(agent, env):
-        '''
-        Evaluate the agent in the given environment and return the total reward.
-        '''
+        """
+        Evaluates the performance of an agent within the CartPole environment over a single episode.
+
+        Args:
+            agent: The trained agent to be evaluated.
+            env: The CartPole environment instance.
+
+        Returns:
+            total_reward (float): The cumulative reward obtained by the agent during the episode.
+        """
+
         obs, info = env.reset() # observation is the state of the environment
         terminated = False
         total_reward = 0
@@ -37,11 +51,40 @@ class CartpoleFunction:
             total_reward += reward
 
         return total_reward
+    
+    def plot_rewards(rewards):
+        """
+        Generates a plot visualizing the evolution of rewards for multiple agents, along with their mean.
+
+        Args:
+            rewards (dict): A dictionary containing reward histories. Keys represent agent identifiers  and the 'mean_reward' key holds the average across agents.
+        """ 
+        # Plot individual rewards for each agent
+        for agent_key, agent_rewards in rewards.items():
+            if agent_key != 'mean_reward':  # Exclude the mean_reward key from plotting individual rewards
+                plt.plot(agent_rewards, label=f'Agent {agent_key}', alpha=0.5)  # Use alpha to make individual lines lighter
+
+        # Plot mean rewards
+        mean_rewards = rewards['mean_reward']
+        plt.plot(mean_rewards, label='Mean Reward', linewidth=2, color='black')  # Make the line wider and black
+
+        plt.xlabel('Training Updates')
+        plt.ylabel('Individual Reward')
+        plt.title('PPO Individual Rewards Progress')
+        plt.legend()
+        plt.show()
 
     def train(self, config: Configuration, seed: int = 0) -> float:
-        '''
-        Train the PPO agent with the given hyperparameters and return the average reward.
-        '''
+        """
+        Trains a Proximal Policy Optimization (PPO) agent in the CartPole environment, tracks performance, and calculates a metric for SMAC's optimization.
+
+        Args:
+            config (Configuration): A configuration object containing hyperparameters for PPO.
+            seed (int): Random seed for reproducibility (default: 0).
+
+        Returns:
+            float: The negative average reward achieved over the training process. This is used by SMAC to minimize (i.e., find lower values for better performance).
+        """
         env = gymnasium.make('CartPole-v1')
 
         # Configurar los parámetros del algoritmo PPO
@@ -64,33 +107,42 @@ class CartpoleFunction:
         # Crear el agente PPO
         agent = PPO(**ppo_params)
 
-        total_timesteps = 15000  
+        total_timesteps = 55000  
+        batch_size = 2048
+        num_updates = total_timesteps // batch_size
 
-        rewards = []  # Track rewards over training
-
+        rewards = {}  # Track rewards over training
+        
         # Entrenar el agente
-        for update in range(1, total_timesteps // 2048 + 1):  
-            agent.learn(total_timesteps=2048)  # Train in batches of 2048
+        for update in range(1, num_updates + 1):  
+            agent.learn(total_timesteps = batch_size)
 
-            # Evaluate after each update 
-            mean_reward = np.mean([CartpoleFunction.evaluate_agent(agent, env) for _ in range(5)])
-            rewards.append(mean_reward)
+            # Evaluar después de cada actualización 
+            total_reward = 0
+            for num_agent in range(5):
+                individual_reward = CartpoleFunction.evaluate_agent(agent, env)
+                agent_key = str(num_agent + 1)
+                if agent_key in rewards:
+                    rewards[agent_key].append(individual_reward)
+                else:
+                    rewards[agent_key] = [individual_reward]
+                total_reward += individual_reward
+            mean_reward = total_reward / 5
+            # Agregar la recompensa promedio al diccionario de recompensas
+            if 'mean_reward' in rewards:
+                rewards['mean_reward'].append(mean_reward)
+            else:
+                rewards['mean_reward'] = [mean_reward]
 
-        # Evaluar el agente (after training is complete)
-        mean_reward = np.mean([CartpoleFunction.evaluate_agent(agent, env) for _ in range(5)])
+        # Final evaluation no longer needed since the average reward is calculated and tracked during training
+        # mean_reward = np.mean([CartpoleFunction.evaluate_agent(agent, env) for _ in range(5)])
 
         # Close the environment
         env.close()
 
-        # Plot training progress
-        plt.plot(rewards)
-        plt.xlabel('Training Updates')
-        plt.ylabel('Average Reward')
-        plt.title('PPO Training Progress')
-        plt.show()
+        CartpoleFunction.plot_rewards(rewards)        
 
-
-        return -mean_reward  # SMAC busca minimizar
+        return -np.mean(rewards['mean_reward']) # Calculate negative mean for SMAC's minimization
 
 if __name__ == "__main__":
 
