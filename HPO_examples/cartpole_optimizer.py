@@ -1,3 +1,4 @@
+import datetime
 import gymnasium
 from matplotlib import pyplot as plt
 import numpy as np
@@ -54,11 +55,14 @@ class CartpoleFunction:
     
     def plot_rewards(rewards):
         """
-        Generates a plot visualizing the evolution of rewards for multiple agents, along with their mean.
+        Generates a plot visualizing the evolution of rewards for multiple agents, 
+        along with their mean, and saves the plot to the specified file.
 
         Args:
-            rewards (dict): A dictionary containing reward histories. Keys represent agent identifiers  and the 'mean_reward' key holds the average across agents.
-        """ 
+            rewards (dict): A dictionary containing reward histories. Keys represent agent identifiers 
+                            and the 'mean_reward' key holds the average across agents.
+            filename (str): The name of the file to save the plot to (default: 'rewards_plot.png').
+        """
         # Plot individual rewards for each agent
         for agent_key, agent_rewards in rewards.items():
             if agent_key != 'mean_reward':  # Exclude the mean_reward key from plotting individual rewards
@@ -72,6 +76,9 @@ class CartpoleFunction:
         plt.ylabel('Individual Reward')
         plt.title('PPO Individual Rewards Progress')
         plt.legend()
+
+        filename = "plots/" + datetime.datetime.now().strftime("%m-%d %H:%M:%S") + "_cartpole_rewards.png"
+        plt.savefig(filename)
         plt.show()
 
     def train(self, config: Configuration, seed: int = 0) -> float:
@@ -107,7 +114,7 @@ class CartpoleFunction:
         # Crear el agente PPO
         agent = PPO(**ppo_params)
 
-        total_timesteps = 150000  
+        total_timesteps = 150000 
         batch_size = 2048
         num_updates = total_timesteps // batch_size
 
