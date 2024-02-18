@@ -94,7 +94,6 @@ class CartpoleFunction:
         """
         env = gymnasium.make('CartPole-v1')
 
-        # Configurar los parámetros del algoritmo PPO
         ppo_params = {
             'policy': 'MlpPolicy', # indicates that the policy will be represented by a feedforward neural network
             'env': env,
@@ -111,7 +110,6 @@ class CartpoleFunction:
             'verbose': 1
         }
 
-        # Crear el agente PPO
         agent = PPO(**ppo_params)
 
         total_timesteps = 150000 
@@ -120,11 +118,10 @@ class CartpoleFunction:
 
         rewards = {}  # Track rewards over training
         
-        # Entrenar el agente
+        # Agent training
         for update in range(1, num_updates + 1):  
             agent.learn(total_timesteps = batch_size)
 
-            # Evaluar después de cada actualización 
             total_reward = 0
             for num_agent in range(5):
                 individual_reward = CartpoleFunction.evaluate_agent(agent, env)
@@ -135,7 +132,7 @@ class CartpoleFunction:
                     rewards[agent_key] = [individual_reward]
                 total_reward += individual_reward
             mean_reward = total_reward / 5
-            # Agregar la recompensa promedio al diccionario de recompensas
+           
             if 'mean_reward' in rewards:
                 rewards['mean_reward'].append(mean_reward)
             else:
@@ -144,7 +141,6 @@ class CartpoleFunction:
         # Final evaluation no longer needed since the average reward is calculated and tracked during training
         # mean_reward = np.mean([CartpoleFunction.evaluate_agent(agent, env) for _ in range(5)])
 
-        # Close the environment
         env.close()
 
         CartpoleFunction.plot_rewards(rewards)        
@@ -158,16 +154,14 @@ if __name__ == "__main__":
     
     model = CartpoleFunction()
 
-    scenario = Scenario(model.configspace, deterministic=True, n_trials=1)
+    # n_trials determines the maximum number of different hyperparameter configurations SMAC will evaluate during its search for the optimal setup.
+    scenario = Scenario(model.configspace, deterministic=True, n_trials=1) 
 
-    # Crear la instancia HPOFacade
     smac = HPOFacade(scenario=scenario, target_function=model.train, overwrite=True)
 
-    # Ejecutar la optimización pasando la función objetivo directamente
     incumbent = logger.log_optimization(smac)
 
-    # Retrieve the incumbent configuration
     incumbent_config = dict(incumbent)
     
-    # Let's calculate the cost of the incumbent and save it in the log file
+    # Calculate the cost of the incumbent and save it in the log file
     logger.log_results(smac, incumbent, incumbent_config)

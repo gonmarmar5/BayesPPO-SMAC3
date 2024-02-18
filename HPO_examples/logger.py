@@ -66,20 +66,20 @@ class Logger:
             incumbent: The best configuration found during the optimization process.
         """
 
-        # Redirigir sys.stdout temporalmente a un archivo
+        # Temporarily redirect sys.stdout to a file
         self.redirect_stdout_to_log_file(self.log_file)
 
         start_training_time = datetime.datetime.now()
         print("Start training time: " + start_training_time.strftime("%Y-%m-%d %H:%M:%S"))
-        # Ejecutar la función optimize() con las salidas redirigidas al archivo de registro
+       
         incumbent = smac.optimize()
 
-        
         end_training_time = datetime.datetime.now()
         training_duration = end_training_time - start_training_time 
         print("End training time: " + end_training_time.strftime("%Y-%m-%d %H:%M:%S"))
         print("Training time: " + str(training_duration))
-        # Restaurar sys.stdout a su comportamiento original
+        
+        # Restore sys.stdout to its original behavior
         self.restore_stdout()
         
         return incumbent
@@ -95,16 +95,15 @@ class Logger:
             incumbent_config: The configuration parameters of the incumbent solution.
         """
 
-        # Redirigir sys.stdout temporalmente a un archivo
+        # Temporarily redirect sys.stdout to a file
         self.redirect_stdout_to_log_file(self.log_file.name)
 
+        # Calculate the incumbent's cost and record the output in the log.
         print("############# Validation")
-        # Calcular el costo del incumbent y registrar la salida en el log
         incumbent_cost = smac.validate(incumbent)
 
-        # Log the results using the logger instance
         self.logger.info(f"Incumbent configuration: {incumbent_config}")
         self.logger.info(f"Incumbent cost: {incumbent_cost}")
 
-        # Restaurar sys.stdout a su comportamiento original
+        # Restore sys.stdout to its original behavior
         self.restore_stdout()
