@@ -153,7 +153,8 @@ class CartpoleFunction:
 
 if __name__ == "__main__":
 
-    logger = Logger('logs/cartpole_optimizer.log')
+    filename = "logs/" + datetime.datetime.now().strftime("%m-%d %H:%M:%S") + "_cartpole_optimizer.log"
+    logger = Logger(filename)
     
     model = CartpoleFunction()
 
