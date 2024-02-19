@@ -99,7 +99,7 @@ class CartpoleFunction:
             'env': env,
             'learning_rate': config['learning_rate'],
             'gamma': config['discount_factor'],
-            'n_steps': 2048,
+            'n_steps': 1024,
             'batch_size': 64,
             'n_epochs': 10,
             'gae_lambda': config['gae_lambda'],
@@ -112,8 +112,8 @@ class CartpoleFunction:
 
         agent = PPO(**ppo_params)
 
-        total_timesteps = 150000 
-        batch_size = 2048
+        total_timesteps = 50000 
+        batch_size = 1024
         num_updates = total_timesteps // batch_size
 
         rewards = {}  # Track rewards over training
@@ -155,7 +155,8 @@ if __name__ == "__main__":
     model = CartpoleFunction()
 
     # n_trials determines the maximum number of different hyperparameter configurations SMAC will evaluate during its search for the optimal setup.
-    scenario = Scenario(model.configspace, deterministic=True, n_trials=1) 
+    # If deterministic is set to true, only one seed is passed to the target function. Otherwise, multiple seeds are passed to ensure generalization.
+    scenario = Scenario(model.configspace, deterministic=False, n_trials=3) 
 
     smac = HPOFacade(scenario=scenario, target_function=model.train, overwrite=True)
 

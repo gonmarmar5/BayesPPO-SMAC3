@@ -5,16 +5,17 @@ import numpy as np
 from stable_baselines3 import PPO
 
 from ConfigSpace import Configuration, ConfigurationSpace
-from ConfigSpace import UniformFloatHyperparameter
+from ConfigSpace import UniformFloatHyperparameter, Integer
+from smac.intensifier.hyperband import Hyperband
 from smac.scenario import Scenario
-from smac import HyperparameterOptimizationFacade as HPOFacade
+from smac import MultiFidelityFacade as MFFacade
 from logger import Logger 
 
-class LunarLanderFunction:
+class CartpoleFunction:
     @property
     def configspace(self) -> ConfigurationSpace:
         """
-        Defines the hyperparameter search space for optimizing a PPO agent on the LunarLander environment. 
+        Defines the hyperparameter search space for optimizing a PPO agent on the CartPole environment. 
         This includes learning rate, discount factor, and GAE lambda.
 
         Returns:
@@ -29,15 +30,18 @@ class LunarLanderFunction:
         
         cs.add_hyperparameters([learning_rate, discount_factor, gae_lambda])
 
+        fidelity = Integer('fidelity', (1,3), default=3)  # 1: Low, 2: Medium, 3: High
+        cs.add_hyperparameter(fidelity)
+
         return cs
     
     def evaluate_agent(agent, env):
         """
-        Evaluates the performance of an agent within the LunarLander environment over a single episode.
+        Evaluates the performance of an agent within the CartPole environment over a single episode.
 
         Args:
             agent: The trained agent to be evaluated.
-            env: The LunarLander environment instance.
+            env: The CartPole environment instance.
 
         Returns:
             total_reward (float): The cumulative reward obtained by the agent during the episode.
@@ -77,29 +81,32 @@ class LunarLanderFunction:
         plt.title('PPO Individual Rewards Progress')
         plt.legend()
 
-        filename = "plots/" + datetime.datetime.now().strftime("%m-%d %H:%M:%S") + "_lunarlander_rewards.png"
+        filename = "plots/" + datetime.datetime.now().strftime("%m-%d %H:%M:%S") + "_cartpole_rewards.png"
         plt.savefig(filename)
         plt.show()
 
-    def train(self, config: Configuration, seed: int = 0) -> float:
+    def train(self, config: Configuration, seed: int = 0, budget: int = 500, instance=None) -> float:
         """
-        Trains a Proximal Policy Optimization (PPO) agent in the LunarLander environment, tracks performance, and calculates a metric for SMAC's optimization.
+        Trains a Proximal Policy Optimization (PPO) agent in the CartPole environment, tracks performance, and calculates a metric for BO optimization.
 
         Args:
-            config (Configuration): A configuration object containing hyperparameters for PPO.
+            config (Configuration): A configuration object representing hyperparameters for PPO.
             seed (int): Random seed for reproducibility (default: 0).
+            budget (int): The maximum number of steps allowed in an episode, controlling the fidelity level (default: 500).
 
         Returns:
-            float: The negative average reward achieved over the training process. This is used by SMAC to minimize (i.e., find lower values for better performance).
+            float: The negative mean average reward achieved over the training process. 
+                    This is used by BO to prioritize configurations that achieve  higher rewards (lower negative values).
         """
-        env = gymnasium.make('LunarLander-v2')
+        
+        env = gymnasium.make('CartPole-v1')
 
         ppo_params = {
-            'policy': 'MlpPolicy', # indicates that the policy will be represented by a feedforward neural network
+            'policy': 'MlpPolicy', 
             'env': env,
             'learning_rate': config['learning_rate'],
             'gamma': config['discount_factor'],
-            'n_steps': 2048,
+            'n_steps': 1024,
             'batch_size': 64,
             'n_epochs': 10,
             'gae_lambda': config['gae_lambda'],
@@ -112,19 +119,26 @@ class LunarLanderFunction:
 
         agent = PPO(**ppo_params)
 
-        total_timesteps = 100000 
-        batch_size = 2048
+        total_timesteps = 50000 
+        batch_size = 1024
         num_updates = total_timesteps // batch_size
 
-        rewards = {}  # Track rewards over training
-        
-        # Agent training
+        rewards = {}  
+
+        # Determine max steps based on fidelity budget
+        max_episode_steps = 500  # Default for high fidelity
+        if budget == 1:
+            max_episode_steps = 100
+        elif budget == 2:
+            max_episode_steps = 250
+
+        # Agent training Loop
         for update in range(1, num_updates + 1):  
             agent.learn(total_timesteps = batch_size)
 
             total_reward = 0
             for num_agent in range(5):
-                individual_reward = LunarLanderFunction.evaluate_agent(agent, env)
+                individual_reward = CartpoleFunction.evaluate_agent(agent, env)
                 agent_key = str(num_agent + 1)
                 if agent_key in rewards:
                     rewards[agent_key].append(individual_reward)
@@ -132,33 +146,49 @@ class LunarLanderFunction:
                     rewards[agent_key] = [individual_reward]
                 total_reward += individual_reward
             mean_reward = total_reward / 5
-           
+            
             if 'mean_reward' in rewards:
                 rewards['mean_reward'].append(mean_reward)
             else:
                 rewards['mean_reward'] = [mean_reward]
 
-        # Final evaluation no longer needed since the average reward is calculated and tracked during training
-        # mean_reward = np.mean([LunarLanderFunction.evaluate_agent(agent, env) for _ in range(5)])
+            # Early termination based on budget (fidelity)
+            for name, info in env.info.items():
+                if 'terminated' in name or 'truncated' in name or 'time_limit_reached' in name and info[name]:
+                    if info[name] or  info['steps'] >= max_episode_steps:
+                        break 
 
         env.close()
+        CartpoleFunction.plot_rewards(rewards)        
 
-        LunarLanderFunction.plot_rewards(rewards)        
-
-        return -np.mean(rewards['mean_reward']) # Calculate negative mean for SMAC's minimization
+        return -np.mean(rewards['mean_reward']) # Optimize for minimizing (max reward as BO will focus on lower losses)
 
 if __name__ == "__main__":
 
-    filename = "logs/" + datetime.datetime.now().strftime("%m-%d %H:%M:%S") + "_lunarlander_optimizer.log"
+    filename = "logs/" + datetime.datetime.now().strftime("%m-%d %H:%M:%S") + "_cartpole_optimizer.log"
     logger = Logger(filename)
     
-    model = LunarLanderFunction()
+    model = CartpoleFunction()
 
-    # n_trials determines the maximum number of different hyperparameter configurations SMAC will evaluate during its search for the optimal setup.
-    scenario = Scenario(model.configspace, deterministic=True, n_trials=2) 
+    min_budget = 100 
+    max_budget = 500  
+    n_workers = 8  # Use available cores
 
-    smac = HPOFacade(scenario=scenario, target_function=model.train, overwrite=True)
+    scenario = Scenario(
+        model.configspace,
+        min_budget=min_budget,
+        max_budget=max_budget,
+        n_workers=n_workers
+    )
 
+    intensifier = Hyperband(scenario, incumbent_selection="highest_budget")
+
+    smac = MFFacade(
+            scenario=scenario,
+            target_function=model.train,
+            intensifier=intensifier,
+            overwrite=True
+        )
     incumbent = logger.log_optimization(smac)
 
     incumbent_config = dict(incumbent)

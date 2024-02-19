@@ -1,6 +1,6 @@
 {
-    "name": "6ba2e969c8a24e061083b5885224d5c8",
-    "deterministic": true,
+    "name": "346d1a20d43dcbe242506931df3fa9b1",
+    "deterministic": false,
     "objectives": "cost",
     "crash_cost": Infinity,
     "termination_cost_threshold": Infinity,
@@ -8,7 +8,7 @@
     "cputime_limit": Infinity,
     "trial_walltime_limit": null,
     "trial_memory_limit": null,
-    "n_trials": 1,
+    "n_trials": 3,
     "use_default_config": false,
     "instances": null,
     "instance_features": null,
@@ -132,5 +132,5 @@
         },
         "version": "2.0.2"
     },
-    "output_directory": "smac3_output/6ba2e969c8a24e061083b5885224d5c8/0"
+    "output_directory": "smac3_output/346d1a20d43dcbe242506931df3fa9b1/0"
 }
