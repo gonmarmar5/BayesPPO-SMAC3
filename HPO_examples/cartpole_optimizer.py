@@ -1,4 +1,5 @@
 import datetime
+import random
 import gymnasium
 from matplotlib import pyplot as plt
 import numpy as np
@@ -81,7 +82,7 @@ class CartpoleFunction:
         plt.savefig(filename)
         plt.show()
 
-    def train(self, config: Configuration, seed: int = 0) -> float:
+    def train(self, config: Configuration, seed: int = None) -> float:
         """
         Trains a Proximal Policy Optimization (PPO) agent in the CartPole environment, tracks performance, and calculates a metric for SMAC's optimization.
 
@@ -92,7 +93,15 @@ class CartpoleFunction:
         Returns:
             float: The negative average reward achieved over the training process. This is used by SMAC to minimize (i.e., find lower values for better performance).
         """
+
+        print("Original seed", seed)
+        if seed is not None: 
+            seed = random.randint(0, 2**32 - 1)
+        np.random.seed(seed)  # For NumPy
+            
         env = gymnasium.make('CartPole-v1')
+        
+        print(f"Training with config: {config}, seed: {seed}")
 
         ppo_params = {
             'policy': 'MlpPolicy', # indicates that the policy will be represented by a feedforward neural network
@@ -112,10 +121,11 @@ class CartpoleFunction:
 
         agent = PPO(**ppo_params)
 
-        total_timesteps = 50000 
+        total_timesteps = 25000 
         batch_size = 1024
+        num_agents = 5
         num_updates = total_timesteps // batch_size
-
+        
         rewards = {}  # Track rewards over training
         
         # Agent training
@@ -123,23 +133,20 @@ class CartpoleFunction:
             agent.learn(total_timesteps = batch_size)
 
             total_reward = 0
-            for num_agent in range(5):
+            for agent_index in range(num_agents):
                 individual_reward = CartpoleFunction.evaluate_agent(agent, env)
-                agent_key = str(num_agent + 1)
+                agent_key = str(agent_index + 1)
                 if agent_key in rewards:
                     rewards[agent_key].append(individual_reward)
                 else:
                     rewards[agent_key] = [individual_reward]
                 total_reward += individual_reward
-            mean_reward = total_reward / 5
+            mean_reward = total_reward / num_agents
            
             if 'mean_reward' in rewards:
                 rewards['mean_reward'].append(mean_reward)
             else:
                 rewards['mean_reward'] = [mean_reward]
-
-        # Final evaluation no longer needed since the average reward is calculated and tracked during training
-        # mean_reward = np.mean([CartpoleFunction.evaluate_agent(agent, env) for _ in range(5)])
 
         env.close()
 
@@ -156,7 +163,7 @@ if __name__ == "__main__":
 
     # n_trials determines the maximum number of different hyperparameter configurations SMAC will evaluate during its search for the optimal setup.
     # If deterministic is set to true, only one seed is passed to the target function. Otherwise, multiple seeds are passed to ensure generalization.
-    scenario = Scenario(model.configspace, deterministic=False, n_trials=3) 
+    scenario = Scenario(model.configspace, deterministic=False, n_trials=2) 
 
     smac = HPOFacade(scenario=scenario, target_function=model.train, overwrite=True)
 

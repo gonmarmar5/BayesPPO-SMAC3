@@ -121,6 +121,7 @@ class CartpoleFunction:
 
         total_timesteps = 50000 
         batch_size = 1024
+        num_agents = 5
         num_updates = total_timesteps // batch_size
 
         rewards = {}  
@@ -137,15 +138,15 @@ class CartpoleFunction:
             agent.learn(total_timesteps = batch_size)
 
             total_reward = 0
-            for num_agent in range(5):
+            for agent_index in range(num_agents):
                 individual_reward = CartpoleFunction.evaluate_agent(agent, env)
-                agent_key = str(num_agent + 1)
+                agent_key = str(agent_index + 1)
                 if agent_key in rewards:
                     rewards[agent_key].append(individual_reward)
                 else:
                     rewards[agent_key] = [individual_reward]
                 total_reward += individual_reward
-            mean_reward = total_reward / 5
+            mean_reward = total_reward / num_agents
             
             if 'mean_reward' in rewards:
                 rewards['mean_reward'].append(mean_reward)
