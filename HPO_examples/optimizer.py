@@ -1,4 +1,5 @@
 import datetime
+import random
 import gymnasium
 from matplotlib import pyplot as plt
 import numpy as np
@@ -10,11 +11,14 @@ from smac.scenario import Scenario
 from smac import HyperparameterOptimizationFacade as HPOFacade
 from logger import Logger 
 
-class LunarLanderFunction:
+ENV = 'CartPole'
+#ENV = 'LunarLander'
+
+class GenericSolver:
     @property
     def configspace(self) -> ConfigurationSpace:
         """
-        Defines the hyperparameter search space for optimizing a PPO agent on the LunarLander environment. 
+        Defines the hyperparameter search space for optimizing a PPO agent on the specified environment. 
         This includes learning rate, discount factor, and GAE lambda.
 
         Returns:
@@ -33,11 +37,11 @@ class LunarLanderFunction:
     
     def evaluate_agent(agent, env):
         """
-        Evaluates the performance of an agent within the LunarLander environment over a single episode.
+        Evaluates the performance of an agent within the specified environment over a single episode.
 
         Args:
             agent: The trained agent to be evaluated.
-            env: The LunarLander environment instance.
+            env: The CartPole environment instance.
 
         Returns:
             total_reward (float): The cumulative reward obtained by the agent during the episode.
@@ -77,13 +81,13 @@ class LunarLanderFunction:
         plt.title('PPO Individual Rewards Progress')
         plt.legend()
 
-        filename = "plots/" + datetime.datetime.now().strftime("%m-%d %H:%M:%S") + "_lunarlander_rewards.png"
+        filename = "plots/" + datetime.datetime.now().strftime("%m-%d %H:%M:%S") + "_cartpole_rewards.png"
         plt.savefig(filename)
-        plt.show()
+        #plt.show()
 
-    def train(self, config: Configuration, seed: int = 0) -> float:
+    def train(self, config: Configuration, seed: int = None) -> float:
         """
-        Trains a Proximal Policy Optimization (PPO) agent in the LunarLander environment, tracks performance, and calculates a metric for SMAC's optimization.
+        Trains a Proximal Policy Optimization (PPO) agent in the specified environment, tracks performance, and calculates a metric for SMAC's optimization.
 
         Args:
             config (Configuration): A configuration object containing hyperparameters for PPO.
@@ -92,14 +96,19 @@ class LunarLanderFunction:
         Returns:
             float: The negative average reward achieved over the training process. This is used by SMAC to minimize (i.e., find lower values for better performance).
         """
-        env = gymnasium.make('LunarLander-v2')
+        if ENV == 'CartPole':
+            env = gymnasium.make('CartPole-v1')
+        else:
+            env = gymnasium.make('LunarLander-v2')
+        
+        print(f"Training with config: {config}, seed: {seed}")
 
         ppo_params = {
             'policy': 'MlpPolicy', # indicates that the policy will be represented by a feedforward neural network
             'env': env,
             'learning_rate': config['learning_rate'],
             'gamma': config['discount_factor'],
-            'n_steps': 2048,
+            'n_steps': 1024,
             'batch_size': 64,
             'n_epochs': 10,
             'gae_lambda': config['gae_lambda'],
@@ -112,10 +121,11 @@ class LunarLanderFunction:
 
         agent = PPO(**ppo_params)
 
-        total_timesteps = 100000 
-        batch_size = 2048
+        total_timesteps = 25000 
+        batch_size = 1024
+        num_agents = 5
         num_updates = total_timesteps // batch_size
-
+        
         rewards = {}  # Track rewards over training
         
         # Agent training
@@ -123,39 +133,40 @@ class LunarLanderFunction:
             agent.learn(total_timesteps = batch_size)
 
             total_reward = 0
-            for num_agent in range(5):
-                individual_reward = LunarLanderFunction.evaluate_agent(agent, env)
-                agent_key = str(num_agent + 1)
+            for agent_index in range(num_agents):
+                individual_reward = GenericSolver.evaluate_agent(agent, env)
+                agent_key = str(agent_index + 1)
                 if agent_key in rewards:
                     rewards[agent_key].append(individual_reward)
                 else:
                     rewards[agent_key] = [individual_reward]
                 total_reward += individual_reward
-            mean_reward = total_reward / 5
+            mean_reward = total_reward / num_agents
            
             if 'mean_reward' in rewards:
                 rewards['mean_reward'].append(mean_reward)
             else:
                 rewards['mean_reward'] = [mean_reward]
 
-        # Final evaluation no longer needed since the average reward is calculated and tracked during training
-        # mean_reward = np.mean([LunarLanderFunction.evaluate_agent(agent, env) for _ in range(5)])
-
         env.close()
 
-        LunarLanderFunction.plot_rewards(rewards)        
+        GenericSolver.plot_rewards(rewards)        
 
         return -np.mean(rewards['mean_reward']) # Calculate negative mean for SMAC's minimization
 
 if __name__ == "__main__":
+    if ENV == 'CartPole':
+        filename = "logs/" + datetime.datetime.now().strftime("%m-%d %H:%M:%S") + "_cartpole_optimizer.log"
+    else: 
+        filename = "logs/" + datetime.datetime.now().strftime("%m-%d %H:%M:%S") + "_lunarlander_optimizer.log"
 
-    filename = "logs/" + datetime.datetime.now().strftime("%m-%d %H:%M:%S") + "_lunarlander_optimizer.log"
     logger = Logger(filename)
     
-    model = LunarLanderFunction()
+    model = GenericSolver()
 
     # n_trials determines the maximum number of different hyperparameter configurations SMAC will evaluate during its search for the optimal setup.
-    scenario = Scenario(model.configspace, deterministic=True, n_trials=2) 
+    # If deterministic is set to true, only one seed is passed to the target function. Otherwise, multiple seeds are passed to ensure generalization.
+    scenario = Scenario(model.configspace, deterministic=True, seed=-1,  n_trials=3) 
 
     smac = HPOFacade(scenario=scenario, target_function=model.train, overwrite=True)
 
