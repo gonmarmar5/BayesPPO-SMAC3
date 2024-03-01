@@ -83,7 +83,7 @@ class GenericSolver:
 
         filename = "plots/" + datetime.datetime.now().strftime("%m-%d %H:%M:%S") + "_cartpole_rewards.png"
         plt.savefig(filename)
-        #plt.show()
+        plt.show()
 
     def train(self, config: Configuration, seed: int = None) -> float:
         """
@@ -121,7 +121,7 @@ class GenericSolver:
 
         agent = PPO(**ppo_params)
 
-        total_timesteps = 25000 
+        total_timesteps = 50000 
         batch_size = 1024
         num_agents = 5
         num_updates = total_timesteps // batch_size
