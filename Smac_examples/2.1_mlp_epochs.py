@@ -88,7 +88,6 @@ class MLP:
         lr = config.get("learning_rate", "constant")
         lr_init = config.get("learning_rate_init", 0.001)
         batch_size = config.get("batch_size", 200)
-
         with warnings.catch_warnings():
             warnings.filterwarnings("ignore")
 

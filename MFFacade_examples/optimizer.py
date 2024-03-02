@@ -41,7 +41,7 @@ class GenericSolver:
 
         Args:
             agent: The trained agent to be evaluated.
-            env: The CartPole environment instance.
+            env: The specified environment instance.
 
         Returns:
             total_reward (float): The cumulative reward obtained by the agent during the episode.
@@ -121,8 +121,8 @@ class GenericSolver:
 
         agent = PPO(**ppo_params)
         print("Budget -> ", budget)
-        
-        total_timesteps = 25000 
+
+        total_timesteps = int(budget)
         batch_size = 1024
         num_agents = 5
         num_updates = total_timesteps // batch_size
@@ -168,13 +168,15 @@ if __name__ == "__main__":
     # n_trials determines the maximum number of different hyperparameter configurations SMAC will evaluate during its search for the optimal setup.
     # If deterministic is set to true, only one seed is passed to the target function. Otherwise, multiple seeds are passed to ensure generalization.
     scenario = Scenario(model.configspace, 
-                        deterministic=True, seed=-1,  n_trials=10, 
+                        deterministic=True, seed=-1,  n_trials=3,
+                        walltime_limit=60, 
                         min_budget=10000,
-                        max_budget=20000)
+                        max_budget=20000,)
+                        #n_workers=8) #The number of workers to use for parallelization
 
     intensifier = MFFacade.get_intensifier(
         # Input that controls the proportion of configurations discarded in each round of Successive Halving.
-        eta = 20,
+        eta = 3,
         scenario=scenario,
         incumbent_selection="highest_budget",
     ) 
