@@ -122,7 +122,9 @@ class GenericSolver:
         agent = PPO(**ppo_params)
         print("Budget -> ", budget)
 
+        # This way we can try more configurations but then it collides: total_timesteps = int(budget / (max_budget - min_budget) * (20000 - 10000))
         total_timesteps = int(budget)
+        print("Total timesteps -> ", total_timesteps)
         batch_size = 1024
         num_agents = 5
         num_updates = total_timesteps // batch_size
@@ -165,14 +167,20 @@ if __name__ == "__main__":
     
     model = GenericSolver()
 
+    max_budget = 30000
+    min_budget = 10000
+
     # n_trials determines the maximum number of different hyperparameter configurations SMAC will evaluate during its search for the optimal setup.
     # If deterministic is set to true, only one seed is passed to the target function. Otherwise, multiple seeds are passed to ensure generalization.
     scenario = Scenario(model.configspace, 
-                        deterministic=True, seed=-1,  n_trials=3,
+                        deterministic=True, seed=-1,  n_trials=10,
                         walltime_limit=60, 
-                        min_budget=10000,
-                        max_budget=20000,)
+                        min_budget=min_budget,
+                        max_budget=max_budget,) # Establece el número de configuraciones iniciales deseado
                         #n_workers=8) #The number of workers to use for parallelization
+
+    # We want to run five random configurations before starting the optimization.
+    initial_design = MFFacade.get_initial_design(scenario, n_configs=5)
 
     intensifier = MFFacade.get_intensifier(
         # Input that controls the proportion of configurations discarded in each round of Successive Halving.
@@ -181,8 +189,9 @@ if __name__ == "__main__":
         incumbent_selection="highest_budget",
     ) 
 
-    smac = MFFacade(scenario=scenario, 
+    smac = MFFacade(scenario=scenario,
                     target_function=model.train, 
+                    initial_design=initial_design, 
                     intensifier=intensifier,
                     overwrite=True)
     
