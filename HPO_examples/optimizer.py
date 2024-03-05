@@ -121,7 +121,7 @@ class GenericSolver:
 
         agent = PPO(**ppo_params)
 
-        total_timesteps = 50000 
+        total_timesteps = 25000 
         batch_size = 1024
         num_agents = 5
         num_updates = total_timesteps // batch_size
