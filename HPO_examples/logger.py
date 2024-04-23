@@ -101,7 +101,6 @@ class Logger:
         # Calculate the incumbent's cost and record the output in the log.
         print("############# Validation")
         incumbent_cost = smac.validate(incumbent)
-
         self.logger.info(f"Incumbent configuration: {incumbent_config}")
         self.logger.info(f"Incumbent cost: {incumbent_cost}")
 

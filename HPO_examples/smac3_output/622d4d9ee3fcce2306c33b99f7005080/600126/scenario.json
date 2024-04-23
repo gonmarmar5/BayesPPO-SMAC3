@@ -1,5 +1,5 @@
 {
-    "name": "b136708303bd0a50b7658990805d4d64",
+    "name": "622d4d9ee3fcce2306c33b99f7005080",
     "deterministic": true,
     "objectives": "cost",
     "crash_cost": Infinity,
@@ -14,7 +14,7 @@
     "instance_features": null,
     "min_budget": null,
     "max_budget": null,
-    "seed": 948669,
+    "seed": 600126,
     "n_workers": 1,
     "_meta": {
         "facade": {
@@ -64,7 +64,7 @@
                 "log": true
             },
             "challengers": 10000,
-            "seed": 948669,
+            "seed": 600126,
             "random_search": {
                 "name": "RandomSearch",
                 "acquisition_function": {
@@ -73,7 +73,7 @@
                     "log": true
                 },
                 "challengers": 5000,
-                "seed": 948669
+                "seed": 600126
             },
             "local_search": {
                 "name": "LocalSearch",
@@ -83,7 +83,7 @@
                     "log": true
                 },
                 "challengers": 5000,
-                "seed": 948669,
+                "seed": 600126,
                 "max_steps": null,
                 "n_steps_plateau_walk": 10,
                 "vectorization_min_obtain": 2,
@@ -98,14 +98,14 @@
         "intensifier": {
             "name": "Intensifier",
             "max_incumbents": 10,
-            "seed": 948669
+            "seed": 600126
         },
         "initial_design": {
             "name": "SobolInitialDesign",
             "n_configs": 1,
             "n_configs_per_hyperparameter": 10,
             "additional_configs": [],
-            "seed": 948669
+            "seed": 600126
         },
         "random_design": {
             "name": "ProbabilityRandomDesign",
@@ -121,7 +121,7 @@
             ],
             "lower_budget_states": [],
             "scale_percentage": 5,
-            "seed": 948669
+            "seed": 600126
         },
         "multi_objective_algorithm": null,
         "config_selector": {
@@ -132,5 +132,5 @@
         },
         "version": "2.0.2"
     },
-    "output_directory": "smac3_output/b136708303bd0a50b7658990805d4d64/948669"
+    "output_directory": "smac3_output/622d4d9ee3fcce2306c33b99f7005080/600126"
 }
