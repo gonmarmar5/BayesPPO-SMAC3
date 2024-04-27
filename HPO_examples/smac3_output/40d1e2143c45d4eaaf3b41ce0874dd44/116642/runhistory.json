@@ -1,0 +1,49 @@
+{
+  "stats": {
+    "submitted": 2,
+    "finished": 2,
+    "running": 0
+  },
+  "data": [
+    [
+      1,
+      null,
+      1330782399,
+      null,
+      -146.22857142857143,
+      5.596349239349365,
+      1,
+      1714234444.3490083,
+      1714234449.9458628,
+      {}
+    ],
+    [
+      2,
+      null,
+      1330782399,
+      null,
+      -22.02857142857143,
+      4.189405918121338,
+      1,
+      1714234450.013847,
+      1714234454.2036045,
+      {}
+    ]
+  ],
+  "configs": {
+    "1": {
+      "discount_factor": 0.9048086559483781,
+      "gae_lambda": 0.8781159884603694,
+      "learning_rate": 0.0011746960123583277
+    },
+    "2": {
+      "discount_factor": 0.9887935411170643,
+      "gae_lambda": 0.9590499879760852,
+      "learning_rate": 1.6222207701342482e-05
+    }
+  },
+  "config_origins": {
+    "1": "Initial Design: Sobol",
+    "2": "Acquisition Function Maximizer: Random Search (sorted)"
+  }
+}

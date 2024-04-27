@@ -58,17 +58,16 @@ if __name__ == "__main__":
     original_stdout = sys.stdout
     sys.stdout = io.StringIO()
 
-    smac.optimize()
+    #smac.optimize()
     incumbent_dict = {}
     for incumbent in incumbents:
-        incumbent_cost = smac.validate(incumbent)
+        incumbent_cost = GenericSolver.evaluate(incumbent)
         incumbent_dict[incumbent] = incumbent_cost
     
     sys.stdout = original_stdout
 
     best_incumbent = max(incumbent_dict, key=incumbent_dict.get)
 
-    print(incumbent_dict)
-    print("Mejor incumbent: ", incumbent_dict[best_incumbent])
+    print("Mejor incumbent: ", best_incumbent, ". Reward obtenido: ", incumbent_dict[best_incumbent])
         
         

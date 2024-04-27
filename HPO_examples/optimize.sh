@@ -13,4 +13,4 @@ sleep 15
 kill $optimization_pid
 
 # Llamar al script de selección y ejecución con la mejor configuración
-python3 select_and_run.py
+python3 select_best_incumbent.py

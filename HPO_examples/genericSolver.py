@@ -1,6 +1,8 @@
 import datetime
 import gymnasium
 from matplotlib import pyplot as plt
+import matplotlib   
+matplotlib.use('Agg')  # Set the backend to a non-interactive one
 import numpy as np
 from stable_baselines3 import PPO
 
@@ -63,6 +65,7 @@ class GenericSolver:
                             and the 'mean_reward' key holds the average across agents.
             filename (str): The name of the file to save the plot to (default: 'rewards_plot.png').
         """
+        plt.clf()  # Clear the current figure
         # Plot individual rewards for each agent
         for agent_key, agent_rewards in rewards.items():
             if agent_key != 'mean_reward':  # Exclude the mean_reward key from plotting individual rewards
@@ -82,6 +85,75 @@ class GenericSolver:
         #plt.show()
 
     def train(self, config: Configuration, seed: int = None) -> float:
+        """
+        Trains a Proximal Policy Optimization (PPO) agent in the specified environment, tracks performance, and calculates a metric for SMAC's optimization.
+
+        Args:
+            config (Configuration): A configuration object containing hyperparameters for PPO.
+            seed (int): Random seed for reproducibility (default: 0).
+
+        Returns:
+            float: The negative average reward achieved over the training process. This is used by SMAC to minimize (i.e., find lower values for better performance).
+        """
+        if ENV == 'CartPole':
+            env = gymnasium.make('CartPole-v1')
+        else:
+            env = gymnasium.make('LunarLander-v2')
+        
+        print(f"Training with config: {config}, seed: {seed}")
+
+        ppo_params = {
+            'policy': 'MlpPolicy', # indicates that the policy will be represented by a feedforward neural network
+            'env': env,
+            'learning_rate': config['learning_rate'],
+            'gamma': config['discount_factor'],
+            'n_steps': 1024,
+            'batch_size': 64,
+            'n_epochs': 10,
+            'gae_lambda': config['gae_lambda'],
+            'clip_range': 0.2,
+            'ent_coef': 0.0,
+            'vf_coef': 0.5,
+            'max_grad_norm': 0.5,
+            'verbose': 1
+        }
+
+        agent = PPO(**ppo_params)
+
+        total_timesteps = 7500     # High timesteps collapse
+        batch_size = 1024
+        num_agents = 5
+        num_updates = total_timesteps // batch_size
+        
+        rewards = {}  # Track rewards over training
+        
+        # Agent training
+        for update in range(1, num_updates + 1):  
+            agent.learn(total_timesteps = batch_size)
+
+            total_reward = 0
+            for agent_index in range(num_agents):
+                individual_reward = GenericSolver.evaluate_agent(agent, env)
+                agent_key = str(agent_index + 1)
+                if agent_key in rewards:
+                    rewards[agent_key].append(individual_reward)
+                else:
+                    rewards[agent_key] = [individual_reward]
+                total_reward += individual_reward
+            mean_reward = total_reward / num_agents
+           
+            if 'mean_reward' in rewards:
+                rewards['mean_reward'].append(mean_reward)
+            else:
+                rewards['mean_reward'] = [mean_reward]
+
+        env.close()
+
+        GenericSolver.plot_rewards(rewards)        
+
+        return -np.mean(rewards['mean_reward']) # Calculate negative mean for SMAC's minimization
+    
+    def evaluate(config: Configuration, seed: int = None) -> float:
         """
         Trains a Proximal Policy Optimization (PPO) agent in the specified environment, tracks performance, and calculates a metric for SMAC's optimization.
 
