@@ -1,5 +1,5 @@
 {
-    "name": "bc28490e18bae461de929f8c25c4d2e9",
+    "name": "8203bd9dd1596a1f9c1b2a4232f01609",
     "deterministic": true,
     "objectives": "cost",
     "crash_cost": Infinity,
@@ -14,7 +14,7 @@
     "instance_features": null,
     "min_budget": 10000,
     "max_budget": 30000,
-    "seed": 311813,
+    "seed": 521178,
     "n_workers": 1,
     "_meta": {
         "facade": {
@@ -64,7 +64,7 @@
                 "log": true
             },
             "challengers": 10000,
-            "seed": 311813,
+            "seed": 521178,
             "random_search": {
                 "name": "RandomSearch",
                 "acquisition_function": {
@@ -73,7 +73,7 @@
                     "log": true
                 },
                 "challengers": 5000,
-                "seed": 311813
+                "seed": 521178
             },
             "local_search": {
                 "name": "LocalSearch",
@@ -83,7 +83,7 @@
                     "log": true
                 },
                 "challengers": 5000,
-                "seed": 311813,
+                "seed": 521178,
                 "max_steps": null,
                 "n_steps_plateau_walk": 10,
                 "vectorization_min_obtain": 2,
@@ -98,7 +98,7 @@
         "intensifier": {
             "name": "Hyperband",
             "max_incumbents": 10,
-            "seed": 311813,
+            "seed": 521178,
             "eta": 3,
             "instance_seed_order": "shuffle_once",
             "incumbent_selection": "highest_budget"
@@ -108,7 +108,7 @@
             "n_configs": 2,
             "n_configs_per_hyperparameter": 10,
             "additional_configs": [],
-            "seed": 311813
+            "seed": 521178
         },
         "random_design": {
             "name": "ProbabilityRandomDesign",
@@ -124,7 +124,7 @@
             ],
             "lower_budget_states": [],
             "scale_percentage": 5,
-            "seed": 311813
+            "seed": 521178
         },
         "multi_objective_algorithm": null,
         "config_selector": {
@@ -135,5 +135,5 @@
         },
         "version": "2.0.2"
     },
-    "output_directory": "smac3_output/bc28490e18bae461de929f8c25c4d2e9/311813"
+    "output_directory": "smac3_output/8203bd9dd1596a1f9c1b2a4232f01609/521178"
 }
