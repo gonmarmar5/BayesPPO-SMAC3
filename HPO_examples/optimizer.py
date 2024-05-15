@@ -13,10 +13,9 @@ ENV = 'CartPole'
 def optimize_and_log():
     
     if ENV == 'CartPole':
-        filename = "logs/training.log"
-        #filename = "logs/" + datetime.datetime.now().strftime("%m-%d %H:%M:%S") + "_cartpole_optimizer.log"
+        filename = "logs/cartpole_optimizer.log"
     else: 
-        filename = "logs/" + datetime.datetime.now().strftime("%m-%d %H:%M:%S") + "_lunarlander_optimizer.log"
+        filename = "logs/lunarlander_optimizer.log"
 
     logger = Logger(filename)
     

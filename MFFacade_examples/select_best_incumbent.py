@@ -53,17 +53,17 @@ if __name__ == "__main__":
     else:
         log_file = "./logs/lunarlander_optimizer.log"
 
+    print("Starting the evaluation of the best incumbent...")
     incumbents = extract_training_info(log_file)
-
-    original_stdout = sys.stdout
-    sys.stdout = io.StringIO()
-
+    #original_stdout = sys.stdout
+    #sys.stdout = io.StringIO()
     incumbent_dict = {}
     for incumbent in incumbents:
+        print("Evaluating incumbent: ", incumbent, "of " , len(incumbents))
         incumbent_cost = GenericSolver.evaluate(incumbent)
         incumbent_dict[incumbent] = incumbent_cost
     
-    sys.stdout = original_stdout
+    #sys.stdout = original_stdout
 
     best_incumbent = max(incumbent_dict, key=incumbent_dict.get)
 

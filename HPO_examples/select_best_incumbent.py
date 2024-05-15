@@ -53,6 +53,7 @@ if __name__ == "__main__":
     else:
         log_file = "./logs/lunarlander_optimizer.log"
 
+    print("Starting the evaluation of the best incumbent...")
     incumbents = extract_training_info(log_file)
 
     original_stdout = sys.stdout
