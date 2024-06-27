@@ -1,0 +1,34 @@
+{
+  "stats": {
+    "submitted": 1,
+    "finished": 1,
+    "running": 0
+  },
+  "data": [
+    [
+      1,
+      null,
+      2038555653,
+      15.0,
+      Infinity,
+      0.0,
+      2,
+      1719478970.470267,
+      1719478970.7815394,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 162, in train\n    GenericSolver.plot_rewards(rewards)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 80, in plot_rewards\n    mean_rewards = rewards['mean_reward']\nKeyError: 'mean_reward'\n",
+        "error": "KeyError('mean_reward')"
+      }
+    ]
+  ],
+  "configs": {
+    "1": {
+      "discount_factor": 0.9469891844453915,
+      "gae_lambda": 0.9232195562898288,
+      "learning_rate": 3.282580094726497e-05
+    }
+  },
+  "config_origins": {
+    "1": "Initial Design: Random"
+  }
+}

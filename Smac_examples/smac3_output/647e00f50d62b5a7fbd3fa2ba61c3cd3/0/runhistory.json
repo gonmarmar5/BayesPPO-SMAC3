@@ -1,0 +1,341 @@
+{
+  "stats": {
+    "submitted": 18,
+    "finished": 17,
+    "running": 1
+  },
+  "data": [
+    [
+      1,
+      null,
+      209652396,
+      8.333333333333332,
+      0.0567595171773444,
+      1.8607056140899658,
+      1,
+      1719484227.4197993,
+      1719484229.281123,
+      {}
+    ],
+    [
+      2,
+      null,
+      209652396,
+      8.333333333333332,
+      0.16304859176725484,
+      0.4155542850494385,
+      1,
+      1719484229.2831657,
+      1719484229.7000353,
+      {}
+    ],
+    [
+      3,
+      null,
+      209652396,
+      8.333333333333332,
+      0.04953729495512216,
+      0.6428236961364746,
+      1,
+      1719484229.7125993,
+      1719484230.3566954,
+      {}
+    ],
+    [
+      3,
+      null,
+      209652396,
+      25.0,
+      0.04062674094707519,
+      1.984787940979004,
+      1,
+      1719484230.359012,
+      1719484232.3450205,
+      {}
+    ],
+    [
+      4,
+      null,
+      209652396,
+      8.333333333333332,
+      0.8820055710306407,
+      1.8545689582824707,
+      1,
+      1719484232.5404158,
+      1719484234.395768,
+      {}
+    ],
+    [
+      5,
+      null,
+      209652396,
+      8.333333333333332,
+      0.7996610956360259,
+      0.33577656745910645,
+      1,
+      1719484234.398255,
+      1719484234.7354038,
+      {}
+    ],
+    [
+      6,
+      null,
+      209652396,
+      8.333333333333332,
+      0.09961157536366438,
+      0.3894052505493164,
+      1,
+      1719484234.7479858,
+      1719484235.138204,
+      {}
+    ],
+    [
+      6,
+      null,
+      209652396,
+      25.0,
+      0.04452800990405448,
+      1.0316317081451416,
+      1,
+      1719484235.1411564,
+      1719484236.174113,
+      {}
+    ],
+    [
+      7,
+      null,
+      209652396,
+      8.333333333333332,
+      0.04563447848963165,
+      5.59811544418335,
+      1,
+      1719484236.1777954,
+      1719484241.7772648,
+      {}
+    ],
+    [
+      8,
+      null,
+      209652396,
+      8.333333333333332,
+      0.07234138037759208,
+      0.48647642135620117,
+      1,
+      1719484241.7797887,
+      1719484242.267633,
+      {}
+    ],
+    [
+      9,
+      null,
+      209652396,
+      8.333333333333332,
+      0.5314175177963479,
+      0.17958688735961914,
+      1,
+      1719484242.2809927,
+      1719484242.462005,
+      {}
+    ],
+    [
+      7,
+      null,
+      209652396,
+      25.0,
+      0.02560352831940571,
+      13.733954429626465,
+      1,
+      1719484242.4649177,
+      1719484256.2002068,
+      {}
+    ],
+    [
+      10,
+      null,
+      209652396,
+      8.333333333333332,
+      0.15746672856700705,
+      0.18953514099121094,
+      1,
+      1719484256.2057917,
+      1719484256.3967862,
+      {}
+    ],
+    [
+      11,
+      null,
+      209652396,
+      8.333333333333332,
+      0.23316155988857934,
+      0.15529656410217285,
+      1,
+      1719484256.3998995,
+      1719484256.5566294,
+      {}
+    ],
+    [
+      12,
+      null,
+      209652396,
+      8.333333333333332,
+      0.8252986691426802,
+      0.14536428451538086,
+      1,
+      1719484256.5586016,
+      1719484256.7047422,
+      {}
+    ],
+    [
+      10,
+      null,
+      209652396,
+      25.0,
+      0.056199319096254974,
+      0.30466604232788086,
+      1,
+      1719484256.707032,
+      1719484257.0124803,
+      {}
+    ],
+    [
+      13,
+      null,
+      209652396,
+      8.333333333333332,
+      0.40343392138656764,
+      0.12463116645812988,
+      1,
+      1719484257.3300052,
+      1719484257.4556196,
+      {}
+    ],
+    [
+      14,
+      null,
+      209652396,
+      8.333333333333332,
+      2147483647.0,
+      0.0,
+      0,
+      0.0,
+      0.0,
+      {}
+    ]
+  ],
+  "configs": {
+    "1": {
+      "activation": "tanh",
+      "n_layer": 4,
+      "n_neurons": 123,
+      "solver": "lbfgs"
+    },
+    "2": {
+      "activation": "relu",
+      "n_layer": 3,
+      "n_neurons": 49,
+      "solver": "lbfgs"
+    },
+    "3": {
+      "activation": "tanh",
+      "n_layer": 5,
+      "n_neurons": 56,
+      "solver": "adam",
+      "batch_size": 155,
+      "learning_rate_init": 0.006677306766018313
+    },
+    "4": {
+      "activation": "tanh",
+      "n_layer": 5,
+      "n_neurons": 197,
+      "solver": "adam",
+      "batch_size": 241,
+      "learning_rate_init": 0.018781738757161916
+    },
+    "5": {
+      "activation": "tanh",
+      "n_layer": 2,
+      "n_neurons": 10,
+      "solver": "adam",
+      "batch_size": 62,
+      "learning_rate_init": 0.00011889379831773019
+    },
+    "6": {
+      "activation": "relu",
+      "n_layer": 3,
+      "n_neurons": 39,
+      "solver": "adam",
+      "batch_size": 230,
+      "learning_rate_init": 0.0018805107040212943
+    },
+    "7": {
+      "activation": "tanh",
+      "n_layer": 4,
+      "n_neurons": 246,
+      "solver": "lbfgs"
+    },
+    "8": {
+      "activation": "tanh",
+      "n_layer": 2,
+      "n_neurons": 75,
+      "solver": "lbfgs"
+    },
+    "9": {
+      "activation": "tanh",
+      "n_layer": 4,
+      "n_neurons": 11,
+      "solver": "lbfgs"
+    },
+    "10": {
+      "activation": "tanh",
+      "n_layer": 1,
+      "n_neurons": 35,
+      "solver": "lbfgs"
+    },
+    "11": {
+      "activation": "relu",
+      "n_layer": 2,
+      "n_neurons": 16,
+      "solver": "sgd",
+      "batch_size": 294,
+      "learning_rate": "constant",
+      "learning_rate_init": 0.012387743772940753
+    },
+    "12": {
+      "activation": "tanh",
+      "n_layer": 2,
+      "n_neurons": 18,
+      "solver": "sgd",
+      "batch_size": 193,
+      "learning_rate": "invscaling",
+      "learning_rate_init": 0.5214165242447223
+    },
+    "13": {
+      "activation": "relu",
+      "n_layer": 1,
+      "n_neurons": 13,
+      "solver": "lbfgs"
+    },
+    "14": {
+      "activation": "relu",
+      "n_layer": 4,
+      "n_neurons": 225,
+      "solver": "lbfgs"
+    }
+  },
+  "config_origins": {
+    "1": "Initial Design: Random",
+    "2": "Initial Design: Random",
+    "3": "Initial Design: Random",
+    "4": "Initial Design: Random",
+    "5": "Initial Design: Random",
+    "6": "Acquisition Function Maximizer: Random Search (sorted)",
+    "7": "Acquisition Function Maximizer: Random Search (sorted)",
+    "8": "Acquisition Function Maximizer: Random Search (sorted)",
+    "9": "Acquisition Function Maximizer: Random Search (sorted)",
+    "10": "Acquisition Function Maximizer: Random Search (sorted)",
+    "11": "Acquisition Function Maximizer: Random Search (sorted)",
+    "12": "Acquisition Function Maximizer: Random Search (sorted)",
+    "13": "Acquisition Function Maximizer: Random Search (sorted)",
+    "14": "Acquisition Function Maximizer: Local Search"
+  }
+}

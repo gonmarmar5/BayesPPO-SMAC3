@@ -58,6 +58,7 @@ class MLP:
         cs = ConfigurationSpace()
 
         n_layer = Integer("n_layer", (1, 5), default=1)
+        
         n_neurons = Integer("n_neurons", (8, 256), log=True, default=10)
         activation = Categorical("activation", ["logistic", "tanh", "relu"], default="tanh")
         solver = Categorical("solver", ["lbfgs", "sgd", "adam"], default="adam")
@@ -78,7 +79,7 @@ class MLP:
 
         # We can also add multiple conditions on hyperparameters at once:
         cs.add_conditions([use_lr, use_batch_size, use_lr_init])
-
+    
         return cs
 
     def train(self, config: Configuration, seed: int = 0, budget: int = 25) -> float:
@@ -143,13 +144,14 @@ if __name__ == "__main__":
     facades: List[AbstractFacade] = []
     for intensifier_object in [SuccessiveHalving, Hyperband]:
         # Define our environment variables
+
         scenario = Scenario(
             mlp.configspace,
             walltime_limit=60,  # After 60 seconds, we stop the hyperparameter optimization
             n_trials=500,  # Evaluate max 500 different trials
             min_budget=1,  # Train the MLP using a hyperparameter configuration for at least 5 epochs
             max_budget=25,  # Train the MLP using a hyperparameter configuration for at most 25 epochs
-            n_workers=8,
+            #n_workers=8,
         )
 
         # We want to run five random configurations before starting the optimization.

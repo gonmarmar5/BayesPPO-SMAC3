@@ -1,0 +1,433 @@
+{
+  "stats": {
+    "submitted": 20,
+    "finished": 20,
+    "running": 0
+  },
+  "data": [
+    [
+      1,
+      null,
+      1571549651,
+      15.0,
+      Infinity,
+      0.0,
+      2,
+      1719478613.9494624,
+      1719478614.2741098,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 160, in train\n    GenericSolver.plot_rewards(rewards)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 80, in plot_rewards\n    mean_rewards = rewards['mean_reward']\nKeyError: 'mean_reward'\n",
+        "error": "KeyError('mean_reward')"
+      }
+    ],
+    [
+      2,
+      null,
+      1571549651,
+      15.0,
+      Infinity,
+      0.0,
+      2,
+      1719478614.2753963,
+      1719478614.2788148,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 160, in train\n    GenericSolver.plot_rewards(rewards)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 80, in plot_rewards\n    mean_rewards = rewards['mean_reward']\nKeyError: 'mean_reward'\n",
+        "error": "KeyError('mean_reward')"
+      }
+    ],
+    [
+      3,
+      null,
+      1571549651,
+      15.0,
+      Infinity,
+      0.0,
+      2,
+      1719478614.2864552,
+      1719478614.2897975,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 160, in train\n    GenericSolver.plot_rewards(rewards)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 80, in plot_rewards\n    mean_rewards = rewards['mean_reward']\nKeyError: 'mean_reward'\n",
+        "error": "KeyError('mean_reward')"
+      }
+    ],
+    [
+      4,
+      null,
+      1571549651,
+      15.0,
+      Infinity,
+      0.0,
+      2,
+      1719478614.2914662,
+      1719478614.294563,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 160, in train\n    GenericSolver.plot_rewards(rewards)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 80, in plot_rewards\n    mean_rewards = rewards['mean_reward']\nKeyError: 'mean_reward'\n",
+        "error": "KeyError('mean_reward')"
+      }
+    ],
+    [
+      5,
+      null,
+      1571549651,
+      15.0,
+      Infinity,
+      0.0,
+      2,
+      1719478614.2969072,
+      1719478614.301481,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 160, in train\n    GenericSolver.plot_rewards(rewards)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 80, in plot_rewards\n    mean_rewards = rewards['mean_reward']\nKeyError: 'mean_reward'\n",
+        "error": "KeyError('mean_reward')"
+      }
+    ],
+    [
+      6,
+      null,
+      1571549651,
+      15.0,
+      Infinity,
+      0.0,
+      2,
+      1719478614.52104,
+      1719478614.5241818,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 160, in train\n    GenericSolver.plot_rewards(rewards)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 80, in plot_rewards\n    mean_rewards = rewards['mean_reward']\nKeyError: 'mean_reward'\n",
+        "error": "KeyError('mean_reward')"
+      }
+    ],
+    [
+      7,
+      null,
+      1571549651,
+      15.0,
+      Infinity,
+      0.0,
+      2,
+      1719478614.5266528,
+      1719478614.5313041,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 160, in train\n    GenericSolver.plot_rewards(rewards)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 80, in plot_rewards\n    mean_rewards = rewards['mean_reward']\nKeyError: 'mean_reward'\n",
+        "error": "KeyError('mean_reward')"
+      }
+    ],
+    [
+      8,
+      null,
+      1571549651,
+      15.0,
+      Infinity,
+      0.0,
+      2,
+      1719478614.5377007,
+      1719478614.5413508,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 160, in train\n    GenericSolver.plot_rewards(rewards)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 80, in plot_rewards\n    mean_rewards = rewards['mean_reward']\nKeyError: 'mean_reward'\n",
+        "error": "KeyError('mean_reward')"
+      }
+    ],
+    [
+      9,
+      null,
+      1571549651,
+      15.0,
+      Infinity,
+      0.0,
+      2,
+      1719478614.5433254,
+      1719478614.547577,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 160, in train\n    GenericSolver.plot_rewards(rewards)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 80, in plot_rewards\n    mean_rewards = rewards['mean_reward']\nKeyError: 'mean_reward'\n",
+        "error": "KeyError('mean_reward')"
+      }
+    ],
+    [
+      10,
+      null,
+      1571549651,
+      15.0,
+      Infinity,
+      0.0,
+      2,
+      1719478614.5500026,
+      1719478614.5536196,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 160, in train\n    GenericSolver.plot_rewards(rewards)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 80, in plot_rewards\n    mean_rewards = rewards['mean_reward']\nKeyError: 'mean_reward'\n",
+        "error": "KeyError('mean_reward')"
+      }
+    ],
+    [
+      11,
+      null,
+      1571549651,
+      15.0,
+      Infinity,
+      0.0,
+      2,
+      1719478614.5556479,
+      1719478614.5589716,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 160, in train\n    GenericSolver.plot_rewards(rewards)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 80, in plot_rewards\n    mean_rewards = rewards['mean_reward']\nKeyError: 'mean_reward'\n",
+        "error": "KeyError('mean_reward')"
+      }
+    ],
+    [
+      12,
+      null,
+      1571549651,
+      15.0,
+      Infinity,
+      0.0,
+      2,
+      1719478614.561338,
+      1719478614.5655818,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 160, in train\n    GenericSolver.plot_rewards(rewards)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 80, in plot_rewards\n    mean_rewards = rewards['mean_reward']\nKeyError: 'mean_reward'\n",
+        "error": "KeyError('mean_reward')"
+      }
+    ],
+    [
+      13,
+      null,
+      1571549651,
+      15.0,
+      Infinity,
+      0.0,
+      2,
+      1719478614.567832,
+      1719478614.5713294,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 160, in train\n    GenericSolver.plot_rewards(rewards)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 80, in plot_rewards\n    mean_rewards = rewards['mean_reward']\nKeyError: 'mean_reward'\n",
+        "error": "KeyError('mean_reward')"
+      }
+    ],
+    [
+      14,
+      null,
+      1571549651,
+      15.0,
+      Infinity,
+      0.0,
+      2,
+      1719478614.8026352,
+      1719478614.8059008,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 160, in train\n    GenericSolver.plot_rewards(rewards)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 80, in plot_rewards\n    mean_rewards = rewards['mean_reward']\nKeyError: 'mean_reward'\n",
+        "error": "KeyError('mean_reward')"
+      }
+    ],
+    [
+      15,
+      null,
+      1571549651,
+      15.0,
+      Infinity,
+      0.0,
+      2,
+      1719478614.8080018,
+      1719478614.8120234,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 160, in train\n    GenericSolver.plot_rewards(rewards)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 80, in plot_rewards\n    mean_rewards = rewards['mean_reward']\nKeyError: 'mean_reward'\n",
+        "error": "KeyError('mean_reward')"
+      }
+    ],
+    [
+      16,
+      null,
+      1571549651,
+      15.0,
+      Infinity,
+      0.0,
+      2,
+      1719478614.8189576,
+      1719478614.821767,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 160, in train\n    GenericSolver.plot_rewards(rewards)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 80, in plot_rewards\n    mean_rewards = rewards['mean_reward']\nKeyError: 'mean_reward'\n",
+        "error": "KeyError('mean_reward')"
+      }
+    ],
+    [
+      17,
+      null,
+      1571549651,
+      15.0,
+      Infinity,
+      0.0,
+      2,
+      1719478614.8233984,
+      1719478614.8261294,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 160, in train\n    GenericSolver.plot_rewards(rewards)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 80, in plot_rewards\n    mean_rewards = rewards['mean_reward']\nKeyError: 'mean_reward'\n",
+        "error": "KeyError('mean_reward')"
+      }
+    ],
+    [
+      18,
+      null,
+      1571549651,
+      15.0,
+      Infinity,
+      0.0,
+      2,
+      1719478614.8286927,
+      1719478614.8327303,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 160, in train\n    GenericSolver.plot_rewards(rewards)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 80, in plot_rewards\n    mean_rewards = rewards['mean_reward']\nKeyError: 'mean_reward'\n",
+        "error": "KeyError('mean_reward')"
+      }
+    ],
+    [
+      19,
+      null,
+      1571549651,
+      15.0,
+      Infinity,
+      0.0,
+      2,
+      1719478614.8348699,
+      1719478614.8376915,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 160, in train\n    GenericSolver.plot_rewards(rewards)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 80, in plot_rewards\n    mean_rewards = rewards['mean_reward']\nKeyError: 'mean_reward'\n",
+        "error": "KeyError('mean_reward')"
+      }
+    ],
+    [
+      20,
+      null,
+      1571549651,
+      15.0,
+      Infinity,
+      0.0,
+      2,
+      1719478614.8397489,
+      1719478614.8426569,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 160, in train\n    GenericSolver.plot_rewards(rewards)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 80, in plot_rewards\n    mean_rewards = rewards['mean_reward']\nKeyError: 'mean_reward'\n",
+        "error": "KeyError('mean_reward')"
+      }
+    ]
+  ],
+  "configs": {
+    "1": {
+      "discount_factor": 0.9857245870379268,
+      "gae_lambda": 0.8081532263969706,
+      "learning_rate": 8.033995510515521e-05
+    },
+    "2": {
+      "discount_factor": 0.9916468566526659,
+      "gae_lambda": 0.8890699032564895,
+      "learning_rate": 1.3695326218594652e-05
+    },
+    "3": {
+      "discount_factor": 0.9373672841419198,
+      "gae_lambda": 0.8040090629920194,
+      "learning_rate": 1.661721249625929e-05
+    },
+    "4": {
+      "discount_factor": 0.9934192476639965,
+      "gae_lambda": 0.8433725670710857,
+      "learning_rate": 0.00024577572793808844
+    },
+    "5": {
+      "discount_factor": 0.9879267798449458,
+      "gae_lambda": 0.9905854608722771,
+      "learning_rate": 0.00017692752061223898
+    },
+    "6": {
+      "discount_factor": 0.959113753499257,
+      "gae_lambda": 0.9949549590983328,
+      "learning_rate": 0.00022418390629640327
+    },
+    "7": {
+      "discount_factor": 0.9407838935693227,
+      "gae_lambda": 0.9445247412572213,
+      "learning_rate": 0.0035968696374558593
+    },
+    "8": {
+      "discount_factor": 0.9477132391650193,
+      "gae_lambda": 0.9476647201436403,
+      "learning_rate": 0.0019112860413348402
+    },
+    "9": {
+      "discount_factor": 0.9509580195963959,
+      "gae_lambda": 0.9586253536371313,
+      "learning_rate": 0.0005798437645003486
+    },
+    "10": {
+      "discount_factor": 0.9577839481822328,
+      "gae_lambda": 0.9914817132651637,
+      "learning_rate": 0.008834920079037
+    },
+    "11": {
+      "discount_factor": 0.994021133504905,
+      "gae_lambda": 0.9767584598179355,
+      "learning_rate": 5.9254674984670816e-05
+    },
+    "12": {
+      "discount_factor": 0.9724721869365965,
+      "gae_lambda": 0.8637012863508194,
+      "learning_rate": 0.0006884567651364411
+    },
+    "13": {
+      "discount_factor": 0.9203150210454243,
+      "gae_lambda": 0.8907794630114123,
+      "learning_rate": 0.00017900002331882716
+    },
+    "14": {
+      "discount_factor": 0.936315209741286,
+      "gae_lambda": 0.9317951854781474,
+      "learning_rate": 0.004661595912980678
+    },
+    "15": {
+      "discount_factor": 0.9491534310853181,
+      "gae_lambda": 0.840998093485564,
+      "learning_rate": 0.0048757978400126405
+    },
+    "16": {
+      "discount_factor": 0.9004582987999636,
+      "gae_lambda": 0.8120366459858503,
+      "learning_rate": 4.6987905317363436e-05
+    },
+    "17": {
+      "discount_factor": 0.9096396000265322,
+      "gae_lambda": 0.9348533147663703,
+      "learning_rate": 1.028588101843003e-05
+    },
+    "18": {
+      "discount_factor": 0.9976911490800198,
+      "gae_lambda": 0.8414624589633425,
+      "learning_rate": 3.556097496454444e-05
+    },
+    "19": {
+      "discount_factor": 0.902595930704412,
+      "gae_lambda": 0.9836799924648612,
+      "learning_rate": 3.9348813831782655e-05
+    },
+    "20": {
+      "discount_factor": 0.9901529898741463,
+      "gae_lambda": 0.8533038058278974,
+      "learning_rate": 0.0004582274463185421
+    }
+  },
+  "config_origins": {
+    "1": "Initial Design: Random",
+    "2": "Initial Design: Random",
+    "3": "Initial Design: Random",
+    "4": "Initial Design: Random",
+    "5": "Initial Design: Random",
+    "6": "Acquisition Function Maximizer: Random Search (sorted)",
+    "7": "Acquisition Function Maximizer: Random Search (sorted)",
+    "8": "Acquisition Function Maximizer: Random Search (sorted)",
+    "9": "Acquisition Function Maximizer: Random Search (sorted)",
+    "10": "Acquisition Function Maximizer: Random Search (sorted)",
+    "11": "Acquisition Function Maximizer: Random Search (sorted)",
+    "12": "Acquisition Function Maximizer: Random Search (sorted)",
+    "13": "Acquisition Function Maximizer: Random Search (sorted)",
+    "14": "Acquisition Function Maximizer: Random Search (sorted)",
+    "15": "Acquisition Function Maximizer: Random Search (sorted)",
+    "16": "Acquisition Function Maximizer: Random Search (sorted)",
+    "17": "Acquisition Function Maximizer: Random Search (sorted)",
+    "18": "Acquisition Function Maximizer: Random Search (sorted)",
+    "19": "Acquisition Function Maximizer: Random Search (sorted)",
+    "20": "Random Search"
+  }
+}

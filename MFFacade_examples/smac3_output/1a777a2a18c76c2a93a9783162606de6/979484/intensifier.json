@@ -1,0 +1,33 @@
+{
+  "incumbent_ids": [],
+  "rejected_config_ids": [],
+  "incumbents_changed": 0,
+  "trajectory": [],
+  "state": {
+    "tracker": {
+      "0,0": [
+        [
+          0,
+          [
+            {
+              "discount_factor": 0.9158802591326973,
+              "gae_lambda": 0.9492641243223718,
+              "learning_rate": 0.00015966928451263777
+            },
+            {
+              "discount_factor": 0.9679521588233694,
+              "gae_lambda": 0.9736656879420983,
+              "learning_rate": 0.005826430251365938
+            },
+            {
+              "discount_factor": 0.9000339797662674,
+              "gae_lambda": 0.9515511819400423,
+              "learning_rate": 0.0003387850014331834
+            }
+          ]
+        ]
+      ]
+    },
+    "next_bracket": 1
+  }
+}

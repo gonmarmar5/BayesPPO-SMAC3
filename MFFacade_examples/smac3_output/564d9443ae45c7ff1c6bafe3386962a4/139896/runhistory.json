@@ -1,0 +1,409 @@
+{
+  "stats": {
+    "submitted": 20,
+    "finished": 20,
+    "running": 0
+  },
+  "data": [
+    [
+      1,
+      null,
+      1381665048,
+      9.375,
+      Infinity,
+      0.0,
+      2,
+      1719480733.0966113,
+      1719480733.5117555,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 138, in train\n    for update in range(1, num_updates + 1):\nTypeError: 'float' object cannot be interpreted as an integer\n",
+        "error": "TypeError(\"'float' object cannot be interpreted as an integer\")"
+      }
+    ],
+    [
+      2,
+      null,
+      1381665048,
+      9.375,
+      Infinity,
+      0.0,
+      2,
+      1719480733.5137255,
+      1719480733.5166142,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 138, in train\n    for update in range(1, num_updates + 1):\nTypeError: 'float' object cannot be interpreted as an integer\n",
+        "error": "TypeError(\"'float' object cannot be interpreted as an integer\")"
+      }
+    ],
+    [
+      3,
+      null,
+      1381665048,
+      9.375,
+      Infinity,
+      0.0,
+      2,
+      1719480733.5244718,
+      1719480733.5269787,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 138, in train\n    for update in range(1, num_updates + 1):\nTypeError: 'float' object cannot be interpreted as an integer\n",
+        "error": "TypeError(\"'float' object cannot be interpreted as an integer\")"
+      }
+    ],
+    [
+      4,
+      null,
+      1381665048,
+      9.375,
+      Infinity,
+      0.0,
+      2,
+      1719480733.5283844,
+      1719480733.5325336,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 138, in train\n    for update in range(1, num_updates + 1):\nTypeError: 'float' object cannot be interpreted as an integer\n",
+        "error": "TypeError(\"'float' object cannot be interpreted as an integer\")"
+      }
+    ],
+    [
+      5,
+      null,
+      1381665048,
+      9.375,
+      Infinity,
+      0.0,
+      2,
+      1719480733.5351405,
+      1719480733.5400977,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 138, in train\n    for update in range(1, num_updates + 1):\nTypeError: 'float' object cannot be interpreted as an integer\n",
+        "error": "TypeError(\"'float' object cannot be interpreted as an integer\")"
+      }
+    ],
+    [
+      6,
+      null,
+      1381665048,
+      9.375,
+      Infinity,
+      0.0,
+      2,
+      1719480733.541756,
+      1719480733.5446599,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 138, in train\n    for update in range(1, num_updates + 1):\nTypeError: 'float' object cannot be interpreted as an integer\n",
+        "error": "TypeError(\"'float' object cannot be interpreted as an integer\")"
+      }
+    ],
+    [
+      7,
+      null,
+      1381665048,
+      9.375,
+      Infinity,
+      0.0,
+      2,
+      1719480733.5468953,
+      1719480733.551002,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 138, in train\n    for update in range(1, num_updates + 1):\nTypeError: 'float' object cannot be interpreted as an integer\n",
+        "error": "TypeError(\"'float' object cannot be interpreted as an integer\")"
+      }
+    ],
+    [
+      8,
+      null,
+      1381665048,
+      9.375,
+      Infinity,
+      0.0,
+      2,
+      1719480733.5531058,
+      1719480733.5575964,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 138, in train\n    for update in range(1, num_updates + 1):\nTypeError: 'float' object cannot be interpreted as an integer\n",
+        "error": "TypeError(\"'float' object cannot be interpreted as an integer\")"
+      }
+    ],
+    [
+      9,
+      null,
+      1381665048,
+      9.375,
+      Infinity,
+      0.0,
+      2,
+      1719480733.559382,
+      1719480733.562485,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 138, in train\n    for update in range(1, num_updates + 1):\nTypeError: 'float' object cannot be interpreted as an integer\n",
+        "error": "TypeError(\"'float' object cannot be interpreted as an integer\")"
+      }
+    ],
+    [
+      10,
+      null,
+      1381665048,
+      9.375,
+      Infinity,
+      0.0,
+      2,
+      1719480733.564601,
+      1719480733.5682127,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 138, in train\n    for update in range(1, num_updates + 1):\nTypeError: 'float' object cannot be interpreted as an integer\n",
+        "error": "TypeError(\"'float' object cannot be interpreted as an integer\")"
+      }
+    ],
+    [
+      11,
+      null,
+      1381665048,
+      9.375,
+      Infinity,
+      0.0,
+      2,
+      1719480733.5712972,
+      1719480733.5744596,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 138, in train\n    for update in range(1, num_updates + 1):\nTypeError: 'float' object cannot be interpreted as an integer\n",
+        "error": "TypeError(\"'float' object cannot be interpreted as an integer\")"
+      }
+    ],
+    [
+      12,
+      null,
+      1381665048,
+      9.375,
+      Infinity,
+      0.0,
+      2,
+      1719480733.5762057,
+      1719480733.6733975,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 138, in train\n    for update in range(1, num_updates + 1):\nTypeError: 'float' object cannot be interpreted as an integer\n",
+        "error": "TypeError(\"'float' object cannot be interpreted as an integer\")"
+      }
+    ],
+    [
+      13,
+      null,
+      1381665048,
+      9.375,
+      Infinity,
+      0.0,
+      2,
+      1719480733.6754644,
+      1719480733.678233,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 138, in train\n    for update in range(1, num_updates + 1):\nTypeError: 'float' object cannot be interpreted as an integer\n",
+        "error": "TypeError(\"'float' object cannot be interpreted as an integer\")"
+      }
+    ],
+    [
+      14,
+      null,
+      1381665048,
+      9.375,
+      Infinity,
+      0.0,
+      2,
+      1719480733.6842937,
+      1719480733.6882598,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 138, in train\n    for update in range(1, num_updates + 1):\nTypeError: 'float' object cannot be interpreted as an integer\n",
+        "error": "TypeError(\"'float' object cannot be interpreted as an integer\")"
+      }
+    ],
+    [
+      15,
+      null,
+      1381665048,
+      9.375,
+      Infinity,
+      0.0,
+      2,
+      1719480733.6907408,
+      1719480733.6939998,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 138, in train\n    for update in range(1, num_updates + 1):\nTypeError: 'float' object cannot be interpreted as an integer\n",
+        "error": "TypeError(\"'float' object cannot be interpreted as an integer\")"
+      }
+    ],
+    [
+      16,
+      null,
+      1381665048,
+      9.375,
+      Infinity,
+      0.0,
+      2,
+      1719480733.6966527,
+      1719480733.7008069,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 138, in train\n    for update in range(1, num_updates + 1):\nTypeError: 'float' object cannot be interpreted as an integer\n",
+        "error": "TypeError(\"'float' object cannot be interpreted as an integer\")"
+      }
+    ],
+    [
+      1,
+      null,
+      1381665048,
+      37.5,
+      Infinity,
+      0.0,
+      2,
+      1719480733.7055712,
+      1719480733.7092764,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 138, in train\n    for update in range(1, num_updates + 1):\nTypeError: 'float' object cannot be interpreted as an integer\n",
+        "error": "TypeError(\"'float' object cannot be interpreted as an integer\")"
+      }
+    ],
+    [
+      2,
+      null,
+      1381665048,
+      37.5,
+      Infinity,
+      0.0,
+      2,
+      1719480733.7115445,
+      1719480733.7158067,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 138, in train\n    for update in range(1, num_updates + 1):\nTypeError: 'float' object cannot be interpreted as an integer\n",
+        "error": "TypeError(\"'float' object cannot be interpreted as an integer\")"
+      }
+    ],
+    [
+      3,
+      null,
+      1381665048,
+      37.5,
+      Infinity,
+      0.0,
+      2,
+      1719480733.7187607,
+      1719480733.7228189,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 138, in train\n    for update in range(1, num_updates + 1):\nTypeError: 'float' object cannot be interpreted as an integer\n",
+        "error": "TypeError(\"'float' object cannot be interpreted as an integer\")"
+      }
+    ],
+    [
+      4,
+      null,
+      1381665048,
+      37.5,
+      Infinity,
+      0.0,
+      2,
+      1719480733.7250552,
+      1719480733.728998,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 138, in train\n    for update in range(1, num_updates + 1):\nTypeError: 'float' object cannot be interpreted as an integer\n",
+        "error": "TypeError(\"'float' object cannot be interpreted as an integer\")"
+      }
+    ]
+  ],
+  "configs": {
+    "1": {
+      "discount_factor": 0.9318477024191355,
+      "gae_lambda": 0.976085754984336,
+      "learning_rate": 8.862595827867597e-05
+    },
+    "2": {
+      "discount_factor": 0.9702087478329857,
+      "gae_lambda": 0.9711488592007321,
+      "learning_rate": 0.003979743630273623
+    },
+    "3": {
+      "discount_factor": 0.9008229228226768,
+      "gae_lambda": 0.8446769657935509,
+      "learning_rate": 0.00418053165105806
+    },
+    "4": {
+      "discount_factor": 0.9604549319352835,
+      "gae_lambda": 0.9846107183142652,
+      "learning_rate": 6.679071483228094e-05
+    },
+    "5": {
+      "discount_factor": 0.9470948792579139,
+      "gae_lambda": 0.9886777716069776,
+      "learning_rate": 1.389403343918184e-05
+    },
+    "6": {
+      "discount_factor": 0.9791308288914823,
+      "gae_lambda": 0.9729537682694085,
+      "learning_rate": 0.001460555234605584
+    },
+    "7": {
+      "discount_factor": 0.974986856276894,
+      "gae_lambda": 0.9466936982493683,
+      "learning_rate": 0.0022158211841772674
+    },
+    "8": {
+      "discount_factor": 0.9643632417174687,
+      "gae_lambda": 0.9372472566671117,
+      "learning_rate": 2.601348707645514e-05
+    },
+    "9": {
+      "discount_factor": 0.9136020374678288,
+      "gae_lambda": 0.9381469749377641,
+      "learning_rate": 0.0001979752471853479
+    },
+    "10": {
+      "discount_factor": 0.9581311027098213,
+      "gae_lambda": 0.9145165844698232,
+      "learning_rate": 1.820345387779161e-05
+    },
+    "11": {
+      "discount_factor": 0.9463620706771314,
+      "gae_lambda": 0.9205474919835562,
+      "learning_rate": 0.0011234587778656353
+    },
+    "12": {
+      "discount_factor": 0.9967887483851763,
+      "gae_lambda": 0.9752082100851227,
+      "learning_rate": 0.0016306995337366727
+    },
+    "13": {
+      "discount_factor": 0.9965502139981578,
+      "gae_lambda": 0.8338504143127812,
+      "learning_rate": 0.00022136966288239875
+    },
+    "14": {
+      "discount_factor": 0.9186209026512668,
+      "gae_lambda": 0.8236033995989065,
+      "learning_rate": 0.004802190370183057
+    },
+    "15": {
+      "discount_factor": 0.988215244477487,
+      "gae_lambda": 0.9774396839715017,
+      "learning_rate": 0.00018613267177068334
+    },
+    "16": {
+      "discount_factor": 0.9718881137363096,
+      "gae_lambda": 0.8042270822521355,
+      "learning_rate": 0.004296319819821369
+    }
+  },
+  "config_origins": {
+    "1": "Initial Design: Random",
+    "2": "Initial Design: Random",
+    "3": "Initial Design: Random",
+    "4": "Initial Design: Random",
+    "5": "Initial Design: Random",
+    "6": "Custom",
+    "7": "Custom",
+    "8": "Custom",
+    "9": "Custom",
+    "10": "Custom",
+    "11": "Custom",
+    "12": "Custom",
+    "13": "Custom",
+    "14": "Custom",
+    "15": "Custom",
+    "16": "Custom"
+  }
+}

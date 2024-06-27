@@ -23,7 +23,7 @@ def optimize_and_log():
 
     # n_trials determines the maximum number of different hyperparameter configurations SMAC will evaluate during its search for the optimal setup.
     # If deterministic is set to true, only one seed is passed to the target function. Otherwise, multiple seeds are passed to ensure generalization.
-    scenario = Scenario(model.configspace, deterministic=True, seed=-1,  n_trials=3) 
+    scenario = Scenario(model.configspace, deterministic=True, seed=-1, n_trials=10) 
 
     smac = HPOFacade(scenario=scenario, target_function=model.train, overwrite=True)
 

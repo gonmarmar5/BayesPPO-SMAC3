@@ -1,0 +1,95 @@
+{
+  "incumbent_ids": [
+    6
+  ],
+  "rejected_config_ids": [],
+  "incumbents_changed": 1,
+  "trajectory": [
+    {
+      "config_ids": [
+        6
+      ],
+      "costs": [
+        0.030055710306406747
+      ],
+      "trial": 13,
+      "walltime": 6.126273155212402
+    }
+  ],
+  "state": {
+    "tracker": {
+      "0,0": [
+        [
+          0,
+          [
+            {
+              "activation": "relu",
+              "n_layer": 2,
+              "n_neurons": 48,
+              "solver": "lbfgs"
+            },
+            {
+              "activation": "logistic",
+              "n_layer": 5,
+              "n_neurons": 23,
+              "solver": "sgd",
+              "batch_size": 188,
+              "learning_rate": "constant",
+              "learning_rate_init": 0.06279384856082841
+            },
+            {
+              "activation": "relu",
+              "n_layer": 2,
+              "n_neurons": 55,
+              "solver": "lbfgs"
+            },
+            {
+              "activation": "tanh",
+              "n_layer": 4,
+              "n_neurons": 32,
+              "solver": "adam",
+              "batch_size": 35,
+              "learning_rate_init": 0.001547917475869209
+            },
+            {
+              "activation": "logistic",
+              "n_layer": 3,
+              "n_neurons": 11,
+              "solver": "lbfgs"
+            },
+            {
+              "activation": "relu",
+              "n_layer": 4,
+              "n_neurons": 9,
+              "solver": "lbfgs"
+            },
+            {
+              "activation": "logistic",
+              "n_layer": 1,
+              "n_neurons": 19,
+              "solver": "adam",
+              "batch_size": 103,
+              "learning_rate_init": 0.02113934324402315
+            },
+            {
+              "activation": "logistic",
+              "n_layer": 1,
+              "n_neurons": 87,
+              "solver": "adam",
+              "batch_size": 31,
+              "learning_rate_init": 0.0038549874043245355
+            },
+            {
+              "activation": "relu",
+              "n_layer": 2,
+              "n_neurons": 60,
+              "solver": "adam",
+              "batch_size": 265,
+              "learning_rate_init": 0.002753672312748228
+            }
+          ]
+        ]
+      ]
+    }
+  }
+}

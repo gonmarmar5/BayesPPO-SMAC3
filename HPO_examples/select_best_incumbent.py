@@ -52,22 +52,26 @@ if __name__ == "__main__":
         log_file = "./logs/cartpole_optimizer.log"
     else:
         log_file = "./logs/lunarlander_optimizer.log"
-
+    print("-------------------------------------------------------------------------------------------------------------------")
     print("Starting the evaluation of the best incumbent...")
     incumbents = extract_training_info(log_file)
 
-    original_stdout = sys.stdout
-    sys.stdout = io.StringIO()
+    
 
     incumbent_dict = {}
-    for incumbent in incumbents:
+    total_incumbents = len(incumbents)
+    for i, incumbent in enumerate(incumbents, start=1):
+        original_stdout = sys.stdout
+        sys.stdout = io.StringIO()
         incumbent_cost = GenericSolver.evaluate(incumbent)
+        sys.stdout = original_stdout
+        print(f"Evaluada la configuración {i} de {total_incumbents} configuraciones totales, se obtuvo ", incumbent_cost , f" ({(i/total_incumbents)*100:.2f}%)")
         incumbent_dict[incumbent] = incumbent_cost
     
-    sys.stdout = original_stdout
-
     best_incumbent = max(incumbent_dict, key=incumbent_dict.get)
-
+    print("------------------------------------------------------------------------------------------------------------------")
     print("Mejor incumbent: ", best_incumbent, ". Reward obtenido: ", incumbent_dict[best_incumbent])
-        
+    log_message = f"Mejor incumbent: {best_incumbent}. Reward obtenido: {incumbent_dict[best_incumbent]}\n"
+    with open("all_experiments.log", "a") as log_file:
+        log_file.write(log_message)
         

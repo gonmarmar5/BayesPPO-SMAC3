@@ -1,0 +1,32 @@
+{
+  "stats": {
+    "submitted": 1,
+    "finished": 0,
+    "running": 1
+  },
+  "data": [
+    [
+      1,
+      null,
+      209652396,
+      8333.333333333332,
+      2147483647.0,
+      0.0,
+      0,
+      0.0,
+      0.0,
+      {}
+    ]
+  ],
+  "configs": {
+    "1": {
+      "activation": "tanh",
+      "n_layer": 4,
+      "n_neurons": 123,
+      "solver": "lbfgs"
+    }
+  },
+  "config_origins": {
+    "1": "Initial Design: Random"
+  }
+}

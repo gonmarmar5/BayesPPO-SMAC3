@@ -11,6 +11,8 @@ from ConfigSpace import UniformFloatHyperparameter
 
 ENV = 'CartPole'
 #ENV = 'LunarLander'
+TOTAL_TIMESTEPS = 7500
+BATCH_SIZE = 1024
 
 class GenericSolver:
     @property
@@ -52,7 +54,8 @@ class GenericSolver:
             action = agent.predict(obs)[0]
             obs, reward, terminated, truncated, info = env.step(action)
             total_reward += reward
-
+            if terminated or truncated:
+                break
         return total_reward
     
     def plot_rewards(rewards):
@@ -120,16 +123,14 @@ class GenericSolver:
 
         agent = PPO(**ppo_params)
 
-        total_timesteps = 7500     # High timesteps collapse
-        batch_size = 256
         num_agents = 5
-        num_updates = total_timesteps // batch_size
+        num_updates = TOTAL_TIMESTEPS // BATCH_SIZE
         
         rewards = {}  # Track rewards over training
         
         # Agent training
         for update in range(1, num_updates + 1):  
-            agent.learn(total_timesteps = batch_size)
+            agent.learn(total_timesteps = BATCH_SIZE) # Numero de pasos antes de cada actualización
 
             total_reward = 0
             for agent_index in range(num_agents):
@@ -150,7 +151,7 @@ class GenericSolver:
         env.close()
 
         GenericSolver.plot_rewards(rewards)        
-
+        
         return -np.mean(rewards['mean_reward']) # Calculate negative mean for SMAC's minimization
     
     def evaluate(config: Configuration, seed: int = None) -> float:
@@ -170,7 +171,7 @@ class GenericSolver:
             env = gymnasium.make('LunarLander-v2')
         
         print(f"Training with config: {config}, seed: {seed}")
-
+        
         ppo_params = {
             'policy': 'MlpPolicy', # indicates that the policy will be represented by a feedforward neural network
             'env': env,
@@ -184,21 +185,19 @@ class GenericSolver:
             'ent_coef': 0.0,
             'vf_coef': 0.5,
             'max_grad_norm': 0.5,
-            'verbose': 1
+            'verbose': 0
         }
 
         agent = PPO(**ppo_params)
 
-        total_timesteps = 7500     # High timesteps collapse
-        batch_size = 1024
         num_agents = 5
-        num_updates = total_timesteps // batch_size
+        num_updates = 30    # EPISODIOS DE VALIDACION
         
         rewards = {}  # Track rewards over training
         
         # Agent training
         for update in range(1, num_updates + 1):  
-            agent.learn(total_timesteps = batch_size)
+            agent.learn(total_timesteps = BATCH_SIZE)
 
             total_reward = 0
             for agent_index in range(num_agents):
@@ -217,7 +216,7 @@ class GenericSolver:
                 rewards['mean_reward'] = [mean_reward]
 
         env.close()
-
+        
         GenericSolver.plot_rewards(rewards)        
-
-        return -np.mean(rewards['mean_reward']) # Calculate negative mean for SMAC's minimization
+        
+        return np.mean(rewards['mean_reward']) 

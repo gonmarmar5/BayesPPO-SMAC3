@@ -1,0 +1,50 @@
+{
+  "incumbent_ids": [
+    17
+  ],
+  "rejected_config_ids": [
+    6
+  ],
+  "incumbents_changed": 2,
+  "trajectory": [
+    {
+      "config_ids": [
+        6
+      ],
+      "costs": [
+        0.030055710306406747
+      ],
+      "trial": 13,
+      "walltime": 7.04472017288208
+    },
+    {
+      "config_ids": [
+        17
+      ],
+      "costs": [
+        0.0178087279480037
+      ],
+      "trial": 26,
+      "walltime": 12.699726581573486
+    }
+  ],
+  "state": {
+    "tracker": {
+      "0,2": [
+        [
+          0,
+          [
+            {
+              "activation": "logistic",
+              "n_layer": 1,
+              "n_neurons": 74,
+              "solver": "adam",
+              "batch_size": 31,
+              "learning_rate_init": 0.001047877310102306
+            }
+          ]
+        ]
+      ]
+    }
+  }
+}

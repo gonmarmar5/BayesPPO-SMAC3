@@ -1,0 +1,45 @@
+{
+  "stats": {
+    "submitted": 2,
+    "finished": 2,
+    "running": 0
+  },
+  "data": [
+    [
+      1,
+      null,
+      209652396,
+      8.333333333333332,
+      Infinity,
+      0.0,
+      2,
+      1719484290.0005507,
+      1719484290.0013387,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"2.1_mlp_epochs.py\", line 90, in train\n    lr = config.get(\"learning_rate\", \"constant\")\n  File \"/usr/lib/python3.8/_collections_abc.py\", line 660, in get\n    return self[key]\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/ConfigSpace/configuration.py\", line 179, in __getitem__\n    if key not in self.config_space:\n  File \"/usr/lib/python3.8/_collections_abc.py\", line 666, in __contains__\n    self[key]\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/ConfigSpace/configuration_space.py\", line 1139, in __getitem__\n    raise HyperparameterNotFoundError(key, space=self)\nConfigSpace.exceptions.HyperparameterNotFoundError: Hyperparameter learning_rate not found in space.\nConfiguration space object:\n  Hyperparameters:\n\n",
+        "error": "HyperparameterNotFoundError('learning_rate', Configuration space object:\n  Hyperparameters:\n, None)"
+      }
+    ],
+    [
+      1,
+      null,
+      209652396,
+      25.0,
+      Infinity,
+      0.0,
+      2,
+      1719484290.002258,
+      1719484290.0026276,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"2.1_mlp_epochs.py\", line 90, in train\n    lr = config.get(\"learning_rate\", \"constant\")\n  File \"/usr/lib/python3.8/_collections_abc.py\", line 660, in get\n    return self[key]\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/ConfigSpace/configuration.py\", line 179, in __getitem__\n    if key not in self.config_space:\n  File \"/usr/lib/python3.8/_collections_abc.py\", line 666, in __contains__\n    self[key]\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/ConfigSpace/configuration_space.py\", line 1139, in __getitem__\n    raise HyperparameterNotFoundError(key, space=self)\nConfigSpace.exceptions.HyperparameterNotFoundError: Hyperparameter learning_rate not found in space.\nConfiguration space object:\n  Hyperparameters:\n\n",
+        "error": "HyperparameterNotFoundError('learning_rate', Configuration space object:\n  Hyperparameters:\n, None)"
+      }
+    ]
+  ],
+  "configs": {
+    "1": {}
+  },
+  "config_origins": {
+    "1": "Acquisition Function Maximizer: Local Search"
+  }
+}

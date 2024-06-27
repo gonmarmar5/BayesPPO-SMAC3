@@ -1,0 +1,42 @@
+{
+  "incumbent_ids": [],
+  "rejected_config_ids": [],
+  "incumbents_changed": 0,
+  "trajectory": [],
+  "state": {
+    "tracker": {
+      "0,1": [
+        [
+          0,
+          [
+            {
+              "activation": "tanh",
+              "n_layer": 5,
+              "n_neurons": 56,
+              "solver": "adam",
+              "batch_size": 155,
+              "learning_rate_init": 0.006677306766018313
+            },
+            {
+              "activation": "tanh",
+              "n_layer": 4,
+              "n_neurons": 66,
+              "solver": "adam",
+              "batch_size": 214,
+              "learning_rate_init": 0.005599223654063347
+            },
+            {
+              "activation": "relu",
+              "n_layer": 1,
+              "n_neurons": 79,
+              "solver": "adam",
+              "batch_size": 87,
+              "learning_rate_init": 0.0018268942281532308
+            }
+          ]
+        ]
+      ]
+    },
+    "next_bracket": 1
+  }
+}

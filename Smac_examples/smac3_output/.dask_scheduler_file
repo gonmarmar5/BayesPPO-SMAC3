@@ -1,0 +1,419 @@
+{
+  "type": "Scheduler",
+  "id": "Scheduler-0d30389c-4e2a-47b7-972d-7d017539c8a9",
+  "address": "tcp://127.0.0.1:45567",
+  "services": {
+    "dashboard": 8787
+  },
+  "started": 1719484036.7890935,
+  "workers": {
+    "tcp://127.0.0.1:32783": {
+      "type": "Worker",
+      "id": 4,
+      "host": "127.0.0.1",
+      "resources": {},
+      "local_directory": "/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/Smac_examples/smac3_output/dask-scratch-space/worker-r6an9_34",
+      "name": 4,
+      "nthreads": 1,
+      "memory_limit": 2056808960,
+      "last_seen": 1719484039.8185127,
+      "services": {
+        "dashboard": 43677
+      },
+      "metrics": {
+        "task_counts": {},
+        "bandwidth": {
+          "total": 100000000,
+          "workers": {},
+          "types": {}
+        },
+        "digests_total_since_heartbeat": {},
+        "managed_bytes": 0,
+        "spilled_bytes": {
+          "memory": 0,
+          "disk": 0
+        },
+        "transfer": {
+          "incoming_bytes": 0,
+          "incoming_count": 0,
+          "incoming_count_total": 0,
+          "outgoing_bytes": 0,
+          "outgoing_count": 0,
+          "outgoing_count_total": 0
+        },
+        "event_loop_interval": 0.02,
+        "cpu": 0.0,
+        "memory": 143032320,
+        "time": 1719484039.4854627,
+        "host_net_io": {
+          "read_bps": 0.0,
+          "write_bps": 0.0
+        },
+        "host_disk_io": {
+          "read_bps": 0.0,
+          "write_bps": 0.0
+        },
+        "num_fds": 17
+      },
+      "status": "running",
+      "nanny": "tcp://127.0.0.1:46635"
+    },
+    "tcp://127.0.0.1:40553": {
+      "type": "Worker",
+      "id": 3,
+      "host": "127.0.0.1",
+      "resources": {},
+      "local_directory": "/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/Smac_examples/smac3_output/dask-scratch-space/worker-h7qfp0qh",
+      "name": 3,
+      "nthreads": 1,
+      "memory_limit": 2056808960,
+      "last_seen": 1719484039.7814627,
+      "services": {
+        "dashboard": 41319
+      },
+      "metrics": {
+        "task_counts": {},
+        "bandwidth": {
+          "total": 100000000,
+          "workers": {},
+          "types": {}
+        },
+        "digests_total_since_heartbeat": {},
+        "managed_bytes": 0,
+        "spilled_bytes": {
+          "memory": 0,
+          "disk": 0
+        },
+        "transfer": {
+          "incoming_bytes": 0,
+          "incoming_count": 0,
+          "incoming_count_total": 0,
+          "outgoing_bytes": 0,
+          "outgoing_count": 0,
+          "outgoing_count_total": 0
+        },
+        "event_loop_interval": 0.02,
+        "cpu": 0.0,
+        "memory": 142811136,
+        "time": 1719484039.1123135,
+        "host_net_io": {
+          "read_bps": 0.0,
+          "write_bps": 0.0
+        },
+        "host_disk_io": {
+          "read_bps": 0.0,
+          "write_bps": 0.0
+        },
+        "num_fds": 17
+      },
+      "status": "running",
+      "nanny": "tcp://127.0.0.1:35033"
+    },
+    "tcp://127.0.0.1:40969": {
+      "type": "Worker",
+      "id": 1,
+      "host": "127.0.0.1",
+      "resources": {},
+      "local_directory": "/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/Smac_examples/smac3_output/dask-scratch-space/worker-wu5m4q_n",
+      "name": 1,
+      "nthreads": 1,
+      "memory_limit": 2056808960,
+      "last_seen": 1719484039.85351,
+      "services": {
+        "dashboard": 34313
+      },
+      "metrics": {
+        "task_counts": {},
+        "bandwidth": {
+          "total": 100000000,
+          "workers": {},
+          "types": {}
+        },
+        "digests_total_since_heartbeat": {},
+        "managed_bytes": 0,
+        "spilled_bytes": {
+          "memory": 0,
+          "disk": 0
+        },
+        "transfer": {
+          "incoming_bytes": 0,
+          "incoming_count": 0,
+          "incoming_count_total": 0,
+          "outgoing_bytes": 0,
+          "outgoing_count": 0,
+          "outgoing_count_total": 0
+        },
+        "event_loop_interval": 0.02,
+        "cpu": 0.0,
+        "memory": 142868480,
+        "time": 1719484039.236087,
+        "host_net_io": {
+          "read_bps": 0.0,
+          "write_bps": 0.0
+        },
+        "host_disk_io": {
+          "read_bps": 0.0,
+          "write_bps": 0.0
+        },
+        "num_fds": 17
+      },
+      "status": "running",
+      "nanny": "tcp://127.0.0.1:36809"
+    },
+    "tcp://127.0.0.1:42097": {
+      "type": "Worker",
+      "id": 6,
+      "host": "127.0.0.1",
+      "resources": {},
+      "local_directory": "/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/Smac_examples/smac3_output/dask-scratch-space/worker-fn90vpk8",
+      "name": 6,
+      "nthreads": 1,
+      "memory_limit": 2056808960,
+      "last_seen": 1719484039.8554008,
+      "services": {
+        "dashboard": 46481
+      },
+      "metrics": {
+        "task_counts": {},
+        "bandwidth": {
+          "total": 100000000,
+          "workers": {},
+          "types": {}
+        },
+        "digests_total_since_heartbeat": {},
+        "managed_bytes": 0,
+        "spilled_bytes": {
+          "memory": 0,
+          "disk": 0
+        },
+        "transfer": {
+          "incoming_bytes": 0,
+          "incoming_count": 0,
+          "incoming_count_total": 0,
+          "outgoing_bytes": 0,
+          "outgoing_count": 0,
+          "outgoing_count_total": 0
+        },
+        "event_loop_interval": 0.02,
+        "cpu": 0.0,
+        "memory": 143081472,
+        "time": 1719484039.5354383,
+        "host_net_io": {
+          "read_bps": 363458.8723603985,
+          "write_bps": 363458.8723603985
+        },
+        "host_disk_io": {
+          "read_bps": 0.0,
+          "write_bps": 0.0
+        },
+        "num_fds": 17
+      },
+      "status": "running",
+      "nanny": "tcp://127.0.0.1:36405"
+    },
+    "tcp://127.0.0.1:42511": {
+      "type": "Worker",
+      "id": 5,
+      "host": "127.0.0.1",
+      "resources": {},
+      "local_directory": "/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/Smac_examples/smac3_output/dask-scratch-space/worker-d5q95xkh",
+      "name": 5,
+      "nthreads": 1,
+      "memory_limit": 2056808960,
+      "last_seen": 1719484039.5337121,
+      "services": {
+        "dashboard": 33217
+      },
+      "metrics": {
+        "task_counts": {},
+        "bandwidth": {
+          "total": 100000000,
+          "workers": {},
+          "types": {}
+        },
+        "digests_total_since_heartbeat": {},
+        "managed_bytes": 0,
+        "spilled_bytes": {
+          "memory": 0,
+          "disk": 0
+        },
+        "transfer": {
+          "incoming_bytes": 0,
+          "incoming_count": 0,
+          "incoming_count_total": 0,
+          "outgoing_bytes": 0,
+          "outgoing_count": 0,
+          "outgoing_count_total": 0
+        },
+        "event_loop_interval": 0.02,
+        "cpu": 0.0,
+        "memory": 143515648,
+        "time": 1719484039.0132358,
+        "host_net_io": {
+          "read_bps": 0.0,
+          "write_bps": 0.0
+        },
+        "host_disk_io": {
+          "read_bps": 0.0,
+          "write_bps": 0.0
+        },
+        "num_fds": 17
+      },
+      "status": "running",
+      "nanny": "tcp://127.0.0.1:37021"
+    },
+    "tcp://127.0.0.1:43707": {
+      "type": "Worker",
+      "id": 2,
+      "host": "127.0.0.1",
+      "resources": {},
+      "local_directory": "/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/Smac_examples/smac3_output/dask-scratch-space/worker-4g_x6z9m",
+      "name": 2,
+      "nthreads": 1,
+      "memory_limit": 2056808960,
+      "last_seen": 1719484039.715841,
+      "services": {
+        "dashboard": 38911
+      },
+      "metrics": {
+        "task_counts": {},
+        "bandwidth": {
+          "total": 100000000,
+          "workers": {},
+          "types": {}
+        },
+        "digests_total_since_heartbeat": {},
+        "managed_bytes": 0,
+        "spilled_bytes": {
+          "memory": 0,
+          "disk": 0
+        },
+        "transfer": {
+          "incoming_bytes": 0,
+          "incoming_count": 0,
+          "incoming_count_total": 0,
+          "outgoing_bytes": 0,
+          "outgoing_count": 0,
+          "outgoing_count_total": 0
+        },
+        "event_loop_interval": 0.02,
+        "cpu": 0.0,
+        "memory": 143126528,
+        "time": 1719484039.4124548,
+        "host_net_io": {
+          "read_bps": 0.0,
+          "write_bps": 0.0
+        },
+        "host_disk_io": {
+          "read_bps": 0.0,
+          "write_bps": 0.0
+        },
+        "num_fds": 17
+      },
+      "status": "running",
+      "nanny": "tcp://127.0.0.1:39595"
+    },
+    "tcp://127.0.0.1:43809": {
+      "type": "Worker",
+      "id": 7,
+      "host": "127.0.0.1",
+      "resources": {},
+      "local_directory": "/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/Smac_examples/smac3_output/dask-scratch-space/worker-tke4592p",
+      "name": 7,
+      "nthreads": 1,
+      "memory_limit": 2056808960,
+      "last_seen": 1719484039.129759,
+      "services": {
+        "dashboard": 45069
+      },
+      "metrics": {
+        "task_counts": {},
+        "bandwidth": {
+          "total": 100000000,
+          "workers": {},
+          "types": {}
+        },
+        "digests_total_since_heartbeat": {},
+        "managed_bytes": 0,
+        "spilled_bytes": {
+          "memory": 0,
+          "disk": 0
+        },
+        "transfer": {
+          "incoming_bytes": 0,
+          "incoming_count": 0,
+          "incoming_count_total": 0,
+          "outgoing_bytes": 0,
+          "outgoing_count": 0,
+          "outgoing_count_total": 0
+        },
+        "event_loop_interval": 0.02,
+        "cpu": 0.0,
+        "memory": 142917632,
+        "time": 1719484038.6714149,
+        "host_net_io": {
+          "read_bps": 0.0,
+          "write_bps": 0.0
+        },
+        "host_disk_io": {
+          "read_bps": 0.0,
+          "write_bps": 0.0
+        },
+        "num_fds": 17
+      },
+      "status": "running",
+      "nanny": "tcp://127.0.0.1:33797"
+    },
+    "tcp://127.0.0.1:46697": {
+      "type": "Worker",
+      "id": 0,
+      "host": "127.0.0.1",
+      "resources": {},
+      "local_directory": "/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/Smac_examples/smac3_output/dask-scratch-space/worker-87_2oqc7",
+      "name": 0,
+      "nthreads": 1,
+      "memory_limit": 2056808960,
+      "last_seen": 1719484039.532605,
+      "services": {
+        "dashboard": 34271
+      },
+      "metrics": {
+        "task_counts": {},
+        "bandwidth": {
+          "total": 100000000,
+          "workers": {},
+          "types": {}
+        },
+        "digests_total_since_heartbeat": {},
+        "managed_bytes": 0,
+        "spilled_bytes": {
+          "memory": 0,
+          "disk": 0
+        },
+        "transfer": {
+          "incoming_bytes": 0,
+          "incoming_count": 0,
+          "incoming_count_total": 0,
+          "outgoing_bytes": 0,
+          "outgoing_count": 0,
+          "outgoing_count_total": 0
+        },
+        "event_loop_interval": 0.02,
+        "cpu": 0.0,
+        "memory": 142979072,
+        "time": 1719484039.0321562,
+        "host_net_io": {
+          "read_bps": 0.0,
+          "write_bps": 0.0
+        },
+        "host_disk_io": {
+          "read_bps": 0.0,
+          "write_bps": 0.0
+        },
+        "num_fds": 17
+      },
+      "status": "running",
+      "nanny": "tcp://127.0.0.1:37547"
+    }
+  }
+}

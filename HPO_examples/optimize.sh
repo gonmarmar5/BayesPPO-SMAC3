@@ -7,7 +7,7 @@ python3 ./optimizer.py &
 optimization_pid=$!
 
 # Esperar un tiempo suficiente para que la optimización se lleve a cabo (puedes ajustar este tiempo según tu necesidad)
-sleep 30
+sleep 60
 
 # Matar el hilo de optimización
 kill $optimization_pid

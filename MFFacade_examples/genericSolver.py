@@ -9,8 +9,10 @@ from stable_baselines3 import PPO
 from ConfigSpace import Configuration, ConfigurationSpace
 from ConfigSpace import UniformFloatHyperparameter
 
-ENV = 'CartPole'
-#ENV = 'LunarLander'
+#ENV = 'CartPole'
+ENV = 'LunarLander'
+
+BATCH_SIZE = 1024
 
 class GenericSolver:
     @property
@@ -52,6 +54,8 @@ class GenericSolver:
             action = agent.predict(obs)[0]
             obs, reward, terminated, truncated, info = env.step(action)
             total_reward += reward
+            if terminated or truncated:
+                break
 
         return total_reward
     
@@ -119,20 +123,17 @@ class GenericSolver:
         }
 
         agent = PPO(**ppo_params)
-        print("Budget -> ", budget)
 
-        # This way we can try more configurations but then it collides: total_timesteps = int(budget / (max_budget - min_budget) * (20000 - 10000))
         total_timesteps = int(budget)
-        print("Total timesteps -> ", total_timesteps)
-        batch_size = 1024
+        print("Total TimeSteps: ", total_timesteps)
         num_agents = 5
-        num_updates = total_timesteps // batch_size
+        num_updates = total_timesteps // BATCH_SIZE
         
         rewards = {}  # Track rewards over training
         
         # Agent training
         for update in range(1, num_updates + 1):  
-            agent.learn(total_timesteps = batch_size)
+            agent.learn(total_timesteps = BATCH_SIZE)
 
             total_reward = 0
             for agent_index in range(num_agents):
@@ -187,21 +188,19 @@ class GenericSolver:
             'ent_coef': 0.0,
             'vf_coef': 0.5,
             'max_grad_norm': 0.5,
-            'verbose': 1
+            'verbose': 0
         }
 
         agent = PPO(**ppo_params)
 
-        total_timesteps = 25000     # High timesteps collapse
-        batch_size = 1024
         num_agents = 5
-        num_updates = total_timesteps // batch_size
+        num_updates = 30
         
         rewards = {}  # Track rewards over training
         
         # Agent training
         for update in range(1, num_updates + 1):  
-            agent.learn(total_timesteps = batch_size)
+            agent.learn(total_timesteps = BATCH_SIZE)
 
             total_reward = 0
             for agent_index in range(num_agents):
@@ -223,4 +222,4 @@ class GenericSolver:
 
         GenericSolver.plot_rewards(rewards)        
 
-        return -np.mean(rewards['mean_reward']) # Calculate negative mean for SMAC's minimization
+        return np.mean(rewards['mean_reward']) # Calculate negative mean for SMAC's minimization

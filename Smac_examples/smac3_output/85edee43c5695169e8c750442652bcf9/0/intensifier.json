@@ -1,0 +1,66 @@
+{
+  "incumbent_ids": [
+    17
+  ],
+  "rejected_config_ids": [
+    6
+  ],
+  "incumbents_changed": 2,
+  "trajectory": [
+    {
+      "config_ids": [
+        6
+      ],
+      "costs": [
+        0.030055710306406747
+      ],
+      "trial": 13,
+      "walltime": 7.26559853553772
+    },
+    {
+      "config_ids": [
+        17
+      ],
+      "costs": [
+        0.0178087279480037
+      ],
+      "trial": 22,
+      "walltime": 14.328042268753052
+    }
+  ],
+  "state": {
+    "tracker": {
+      "2,0": [
+        [
+          0,
+          [
+            {
+              "activation": "relu",
+              "n_layer": 1,
+              "n_neurons": 73,
+              "solver": "adam",
+              "batch_size": 201,
+              "learning_rate_init": 0.003574275639991415
+            },
+            {
+              "activation": "relu",
+              "n_layer": 1,
+              "n_neurons": 113,
+              "solver": "sgd",
+              "batch_size": 200,
+              "learning_rate": "constant",
+              "learning_rate_init": 0.004077578767987849
+            },
+            {
+              "activation": "relu",
+              "n_layer": 4,
+              "n_neurons": 183,
+              "solver": "lbfgs"
+            }
+          ]
+        ]
+      ]
+    },
+    "next_bracket": 0
+  }
+}
