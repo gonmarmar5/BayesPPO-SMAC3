@@ -1,0 +1,123 @@
+{
+  "incumbent_ids": [
+    17
+  ],
+  "rejected_config_ids": [
+    4
+  ],
+  "incumbents_changed": 2,
+  "trajectory": [
+    {
+      "config_ids": [
+        4
+      ],
+      "costs": [
+        0.04508356545961001
+      ],
+      "trial": 13,
+      "walltime": 3.356963872909546
+    },
+    {
+      "config_ids": [
+        17
+      ],
+      "costs": [
+        0.018372021046115683
+      ],
+      "trial": 26,
+      "walltime": 7.773028135299683
+    }
+  ],
+  "state": {
+    "tracker": {
+      "0,0": [
+        [
+          0,
+          [
+            {
+              "activation": "tanh",
+              "batch_size": 66,
+              "learning_rate": "adaptive",
+              "learning_rate_init": 0.07193913279071268,
+              "n_layer": 5,
+              "n_neurons": 235,
+              "solver": "lbfgs"
+            },
+            {
+              "activation": "tanh",
+              "batch_size": 108,
+              "learning_rate": "invscaling",
+              "learning_rate_init": 0.06539647417815887,
+              "n_layer": 4,
+              "n_neurons": 37,
+              "solver": "lbfgs"
+            },
+            {
+              "activation": "tanh",
+              "batch_size": 146,
+              "learning_rate": "invscaling",
+              "learning_rate_init": 0.4763547004334512,
+              "n_layer": 5,
+              "n_neurons": 160,
+              "solver": "lbfgs"
+            },
+            {
+              "activation": "relu",
+              "batch_size": 197,
+              "learning_rate": "invscaling",
+              "learning_rate_init": 0.0002517141032510144,
+              "n_layer": 1,
+              "n_neurons": 96,
+              "solver": "sgd"
+            },
+            {
+              "activation": "relu",
+              "batch_size": 208,
+              "learning_rate": "invscaling",
+              "learning_rate_init": 0.16779381801428778,
+              "n_layer": 1,
+              "n_neurons": 88,
+              "solver": "adam"
+            },
+            {
+              "activation": "logistic",
+              "batch_size": 123,
+              "learning_rate": "adaptive",
+              "learning_rate_init": 0.06571395525216138,
+              "n_layer": 1,
+              "n_neurons": 13,
+              "solver": "sgd"
+            },
+            {
+              "activation": "tanh",
+              "batch_size": 94,
+              "learning_rate": "adaptive",
+              "learning_rate_init": 0.028566946659136522,
+              "n_layer": 3,
+              "n_neurons": 60,
+              "solver": "adam"
+            },
+            {
+              "activation": "logistic",
+              "batch_size": 137,
+              "learning_rate": "constant",
+              "learning_rate_init": 0.0005556125201132279,
+              "n_layer": 5,
+              "n_neurons": 102,
+              "solver": "sgd"
+            },
+            {
+              "activation": "logistic",
+              "batch_size": 186,
+              "learning_rate": "adaptive",
+              "learning_rate_init": 0.1063209514293241,
+              "n_layer": 1,
+              "n_neurons": 57,
+              "solver": "adam"
+            }
+          ]
+        ]
+      ]
+    }
+  }
+}

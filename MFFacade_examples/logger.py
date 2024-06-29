@@ -71,9 +71,9 @@ class Logger:
 
         start_training_time = datetime.datetime.now()
         print("Start training time: " + start_training_time.strftime("%Y-%m-%d %H:%M:%S"))
-       
-        incumbent = smac.optimize()
 
+        print(smac)
+        incumbent = smac.optimize()
         end_training_time = datetime.datetime.now()
         training_duration = end_training_time - start_training_time 
         print("End training time: " + end_training_time.strftime("%Y-%m-%d %H:%M:%S"))

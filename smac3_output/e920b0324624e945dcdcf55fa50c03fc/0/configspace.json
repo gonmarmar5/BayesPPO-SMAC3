@@ -1,0 +1,28 @@
+{
+  "hyperparameters": [
+    {
+      "name": "batch_size",
+      "type": "uniform_int",
+      "log": false,
+      "lower": 30,
+      "upper": 300,
+      "default": 200,
+      "q": null
+    },
+    {
+      "name": "learning_rate",
+      "type": "categorical",
+      "choices": [
+        "constant",
+        "invscaling",
+        "adaptive"
+      ],
+      "default": "constant",
+      "weights": null
+    }
+  ],
+  "conditions": [],
+  "forbiddens": [],
+  "python_module_version": "0.6.1",
+  "json_format_version": 0.4
+}

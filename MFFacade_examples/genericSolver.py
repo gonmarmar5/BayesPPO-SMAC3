@@ -1,17 +1,19 @@
 import datetime
+import os
 import gymnasium
 from matplotlib import pyplot as plt
 import matplotlib   
-matplotlib.use('Agg')  # Set the backend to a non-interactive one
+#matplotlib.use('Agg')  # Set the backend to a non-interactive one
 import numpy as np
 from stable_baselines3 import PPO
+from stable_baselines3.common.env_util import make_vec_env
 
 from ConfigSpace import Configuration, ConfigurationSpace
 from ConfigSpace import UniformFloatHyperparameter
 
-#ENV = 'CartPole'
-ENV = 'LunarLander'
 
+ENV = 'CartPole'
+#ENV = 'LunarLander'
 BATCH_SIZE = 1024
 
 class GenericSolver:
@@ -46,7 +48,6 @@ class GenericSolver:
         Returns:
             total_reward (float): The cumulative reward obtained by the agent during the episode.
         """
-
         obs, info = env.reset() # observation is the state of the environment
         terminated = False
         total_reward = 0
@@ -59,35 +60,6 @@ class GenericSolver:
 
         return total_reward
     
-    def plot_rewards(rewards):
-        """
-        Generates a plot visualizing the evolution of rewards for multiple agents, 
-        along with their mean, and saves the plot to the specified file.
-
-        Args:
-            rewards (dict): A dictionary containing reward histories. Keys represent agent identifiers 
-                            and the 'mean_reward' key holds the average across agents.
-            filename (str): The name of the file to save the plot to (default: 'rewards_plot.png').
-        """
-        plt.clf()  # Clear the current figure
-        # Plot individual rewards for each agent
-        for agent_key, agent_rewards in rewards.items():
-            if agent_key != 'mean_reward':  # Exclude the mean_reward key from plotting individual rewards
-                plt.plot(agent_rewards, label=f'Agent {agent_key}', alpha=0.5)  # Use alpha to make individual lines lighter
-
-        # Plot mean rewards
-        mean_rewards = rewards['mean_reward']
-        plt.plot(mean_rewards, label='Mean Reward', linewidth=2, color='black')  # Make the line wider and black
-
-        plt.xlabel('Training Updates')
-        plt.ylabel('Individual Reward')
-        plt.title('PPO Individual Rewards Progress')
-        plt.legend()
-
-        filename = "plots/" + datetime.datetime.now().strftime("%m-%d %H:%M:%S") + "_cartpole_rewards.png"
-        plt.savefig(filename)
-        #plt.show()
-
     def train(self, config: Configuration, seed: int = None, budget: float = None) -> float:
         """
         Trains a Proximal Policy Optimization (PPO) agent in the specified environment, tracks performance, and calculates a metric for SMAC's optimization.
@@ -128,7 +100,7 @@ class GenericSolver:
         print("Total TimeSteps: ", total_timesteps)
         num_agents = 5
         num_updates = total_timesteps // BATCH_SIZE
-        
+
         rewards = {}  # Track rewards over training
         
         # Agent training
@@ -150,76 +122,14 @@ class GenericSolver:
                 rewards['mean_reward'].append(mean_reward)
             else:
                 rewards['mean_reward'] = [mean_reward]
-
+            
         env.close()
 
-        GenericSolver.plot_rewards(rewards)        
-
+        if not os.path.exists("models"):
+            os.makedirs("models")
+        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        model_filename = os.path.join("models", f"ppo_multifidelity_agent_{timestamp}")        
+        agent.save(model_filename)
+        
         return -np.mean(rewards['mean_reward']) # Calculate negative mean for SMAC's minimization
     
-    def evaluate(config: Configuration, seed: int = None) -> float:
-        """
-        Trains a Proximal Policy Optimization (PPO) agent in the specified environment, tracks performance, and calculates a metric for SMAC's optimization.
-
-        Args:
-            config (Configuration): A configuration object containing hyperparameters for PPO.
-            seed (int): Random seed for reproducibility (default: 0).
-
-        Returns:
-            float: The negative average reward achieved over the training process. This is used by SMAC to minimize (i.e., find lower values for better performance).
-        """
-        if ENV == 'CartPole':
-            env = gymnasium.make('CartPole-v1')
-        else:
-            env = gymnasium.make('LunarLander-v2')
-        
-        print(f"Training with config: {config}, seed: {seed}")
-
-        ppo_params = {
-            'policy': 'MlpPolicy', # indicates that the policy will be represented by a feedforward neural network
-            'env': env,
-            'learning_rate': config['learning_rate'],
-            'gamma': config['discount_factor'],
-            'n_steps': 1024,
-            'batch_size': 64,
-            'n_epochs': 10,
-            'gae_lambda': config['gae_lambda'],
-            'clip_range': 0.2,
-            'ent_coef': 0.0,
-            'vf_coef': 0.5,
-            'max_grad_norm': 0.5,
-            'verbose': 0
-        }
-
-        agent = PPO(**ppo_params)
-
-        num_agents = 5
-        num_updates = 30
-        
-        rewards = {}  # Track rewards over training
-        
-        # Agent training
-        for update in range(1, num_updates + 1):  
-            agent.learn(total_timesteps = BATCH_SIZE)
-
-            total_reward = 0
-            for agent_index in range(num_agents):
-                individual_reward = GenericSolver.evaluate_agent(agent, env)
-                agent_key = str(agent_index + 1)
-                if agent_key in rewards:
-                    rewards[agent_key].append(individual_reward)
-                else:
-                    rewards[agent_key] = [individual_reward]
-                total_reward += individual_reward
-            mean_reward = total_reward / num_agents
-           
-            if 'mean_reward' in rewards:
-                rewards['mean_reward'].append(mean_reward)
-            else:
-                rewards['mean_reward'] = [mean_reward]
-
-        env.close()
-
-        GenericSolver.plot_rewards(rewards)        
-
-        return np.mean(rewards['mean_reward']) # Calculate negative mean for SMAC's minimization

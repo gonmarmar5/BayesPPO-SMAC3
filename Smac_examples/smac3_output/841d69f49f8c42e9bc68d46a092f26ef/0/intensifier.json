@@ -1,0 +1,66 @@
+{
+  "incumbent_ids": [
+    6
+  ],
+  "rejected_config_ids": [],
+  "incumbents_changed": 1,
+  "trajectory": [
+    {
+      "config_ids": [
+        6
+      ],
+      "costs": [
+        0.0328334880841844
+      ],
+      "trial": 13,
+      "walltime": 7.023831844329834
+    }
+  ],
+  "state": {
+    "tracker": {
+      "1,0": [
+        [
+          0,
+          [
+            {
+              "activation": "relu",
+              "n_layer": 2,
+              "n_neurons": 48,
+              "solver": "lbfgs"
+            },
+            {
+              "activation": "logistic",
+              "n_layer": 5,
+              "n_neurons": 23,
+              "solver": "sgd",
+              "batch_size": 188,
+              "learning_rate": "constant",
+              "learning_rate_init": 0.06279384856082841
+            },
+            {
+              "activation": "relu",
+              "n_layer": 2,
+              "n_neurons": 55,
+              "solver": "lbfgs"
+            },
+            {
+              "activation": "tanh",
+              "n_layer": 4,
+              "n_neurons": 32,
+              "solver": "adam",
+              "batch_size": 35,
+              "learning_rate_init": 0.001547917475869209
+            },
+            {
+              "activation": "logistic",
+              "n_layer": 3,
+              "n_neurons": 11,
+              "solver": "lbfgs"
+            }
+          ]
+        ]
+      ]
+    },
+    "next_bracket": 2
+  }
+}

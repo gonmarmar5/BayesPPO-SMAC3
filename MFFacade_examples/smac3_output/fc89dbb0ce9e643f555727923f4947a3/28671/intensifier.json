@@ -1,0 +1,23 @@
+{
+  "incumbent_ids": [],
+  "rejected_config_ids": [],
+  "incumbents_changed": 0,
+  "trajectory": [],
+  "state": {
+    "tracker": {
+      "0,0": [
+        [
+          0,
+          [
+            {
+              "discount_factor": 0.9296290171732783,
+              "gae_lambda": 0.9107738218976053,
+              "learning_rate": 1.2473244057664758e-05
+            }
+          ]
+        ]
+      ]
+    },
+    "next_bracket": 0
+  }
+}

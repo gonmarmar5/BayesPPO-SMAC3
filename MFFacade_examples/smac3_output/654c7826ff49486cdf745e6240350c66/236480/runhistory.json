@@ -1,0 +1,94 @@
+{
+  "stats": {
+    "submitted": 4,
+    "finished": 3,
+    "running": 1
+  },
+  "data": [
+    [
+      1,
+      null,
+      1806717862,
+      15000.0,
+      Infinity,
+      0.0,
+      2,
+      1719578869.5436502,
+      1719578870.7041025,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 126, in train\n    if mean_reward > best_mean_reward:\nUnboundLocalError: local variable 'best_mean_reward' referenced before assignment\n",
+        "error": "UnboundLocalError(\"local variable 'best_mean_reward' referenced before assignment\")"
+      }
+    ],
+    [
+      2,
+      null,
+      1806717862,
+      15000.0,
+      Infinity,
+      0.0,
+      2,
+      1719578870.705437,
+      1719578871.4390736,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 126, in train\n    if mean_reward > best_mean_reward:\nUnboundLocalError: local variable 'best_mean_reward' referenced before assignment\n",
+        "error": "UnboundLocalError(\"local variable 'best_mean_reward' referenced before assignment\")"
+      }
+    ],
+    [
+      3,
+      null,
+      1806717862,
+      15000.0,
+      Infinity,
+      0.0,
+      2,
+      1719578871.4405305,
+      1719578872.1724098,
+      {
+        "traceback": "Traceback (most recent call last):\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 184, in run\n    rval = self(config_copy, target_function, kwargs)\n  File \"/home/gonzalopc/.local/lib/python3.8/site-packages/smac/runner/target_function_runner.py\", line 257, in __call__\n    return algorithm(config, **algorithm_kwargs)\n  File \"/home/gonzalopc/Documentos/GitHub/BayesPPO-SMAC3/MFFacade_examples/genericSolver.py\", line 126, in train\n    if mean_reward > best_mean_reward:\nUnboundLocalError: local variable 'best_mean_reward' referenced before assignment\n",
+        "error": "UnboundLocalError(\"local variable 'best_mean_reward' referenced before assignment\")"
+      }
+    ],
+    [
+      4,
+      null,
+      1806717862,
+      15000.0,
+      2147483647.0,
+      0.0,
+      0,
+      0.0,
+      0.0,
+      {}
+    ]
+  ],
+  "configs": {
+    "1": {
+      "discount_factor": 0.9416452689646089,
+      "gae_lambda": 0.8839408921706331,
+      "learning_rate": 0.0007963786417185627
+    },
+    "2": {
+      "discount_factor": 0.9821869202356597,
+      "gae_lambda": 0.920944407793372,
+      "learning_rate": 1.6494394802734025e-05
+    },
+    "3": {
+      "discount_factor": 0.9699106969643517,
+      "gae_lambda": 0.8538754408834709,
+      "learning_rate": 9.390121154139505e-05
+    },
+    "4": {
+      "discount_factor": 0.9804477313785837,
+      "gae_lambda": 0.8791902306952174,
+      "learning_rate": 2.977023853120322e-05
+    }
+  },
+  "config_origins": {
+    "1": "Initial Design: Random",
+    "2": "Initial Design: Random",
+    "3": "Initial Design: Random",
+    "4": "Initial Design: Random"
+  }
+}

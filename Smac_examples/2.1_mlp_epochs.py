@@ -147,7 +147,7 @@ if __name__ == "__main__":
 
         scenario = Scenario(
             mlp.configspace,
-            walltime_limit=60,  # After 60 seconds, we stop the hyperparameter optimization
+            walltime_limit=10,  # After 60 seconds, we stop the hyperparameter optimization
             n_trials=500,  # Evaluate max 500 different trials
             min_budget=1,  # Train the MLP using a hyperparameter configuration for at least 5 epochs
             max_budget=25,  # Train the MLP using a hyperparameter configuration for at most 25 epochs
@@ -171,6 +171,9 @@ if __name__ == "__main__":
 
         # Let's optimize
         incumbent = smac.optimize()
+
+        print("AAAAAAAAAAAAAAAA")
+        print(incumbent)
 
         # Get cost of default configuration
         default_cost = smac.validate(mlp.configspace.get_default_configuration())

@@ -1,0 +1,35 @@
+{
+  "incumbent_ids": [
+    6
+  ],
+  "rejected_config_ids": [],
+  "incumbents_changed": 1,
+  "trajectory": [
+    {
+      "config_ids": [
+        6
+      ],
+      "costs": [
+        44.62998992755782
+      ],
+      "trial": 13,
+      "walltime": 1688.347128868103
+    }
+  ],
+  "state": {
+    "tracker": {
+      "0,2": [
+        [
+          0,
+          [
+            {
+              "discount_factor": 0.9980620546244933,
+              "gae_lambda": 0.9117800862188188,
+              "learning_rate": 0.0004212070718855618
+            }
+          ]
+        ]
+      ]
+    }
+  }
+}
