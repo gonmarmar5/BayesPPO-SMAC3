@@ -10,10 +10,11 @@ from stable_baselines3 import PPO
 from ConfigSpace import Configuration, ConfigurationSpace
 from ConfigSpace import UniformFloatHyperparameter
 
-ENV = 'CartPole'
-#ENV = 'LunarLander'
-TOTAL_TIMESTEPS = 20000
-BATCH_SIZE = 1024
+#ENV = 'CartPole'
+ENV = 'LunarLander'
+TOTAL_TIMESTEPS = 50000
+BATCH_SIZE = 512
+EARLY_STOPPING = 1800
 
 class GenericSolver:
     @property

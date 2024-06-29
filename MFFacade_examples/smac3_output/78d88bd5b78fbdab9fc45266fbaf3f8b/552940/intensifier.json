@@ -1,0 +1,1233 @@
+{
+  "incumbent_ids": [],
+  "rejected_config_ids": [],
+  "incumbents_changed": 0,
+  "trajectory": [],
+  "state": {
+    "tracker": {
+      "0,0": [
+        [
+          0,
+          [
+            {
+              "discount_factor": 0.9317898583486337,
+              "gae_lambda": 0.8368910692074717,
+              "learning_rate": 0.0008669764959484237
+            },
+            {
+              "discount_factor": 0.9824929519894567,
+              "gae_lambda": 0.9866530063150396,
+              "learning_rate": 0.001872200964694712
+            },
+            {
+              "discount_factor": 0.9129685050217081,
+              "gae_lambda": 0.8708458537367398,
+              "learning_rate": 0.004292476431856742
+            },
+            {
+              "discount_factor": 0.9450469353503655,
+              "gae_lambda": 0.8327016810853719,
+              "learning_rate": 0.0003435167378965896
+            },
+            {
+              "discount_factor": 0.9725409239368101,
+              "gae_lambda": 0.8755961266316666,
+              "learning_rate": 0.0004102330941437009
+            },
+            {
+              "discount_factor": 0.9732454611137568,
+              "gae_lambda": 0.8742392947845913,
+              "learning_rate": 1.3154418545781305e-05
+            },
+            {
+              "discount_factor": 0.9660342601753255,
+              "gae_lambda": 0.8910558862220872,
+              "learning_rate": 0.006685016455774663
+            },
+            {
+              "discount_factor": 0.9253784048250171,
+              "gae_lambda": 0.8549168276083392,
+              "learning_rate": 6.411413683741121e-05
+            },
+            {
+              "discount_factor": 0.9049990115890476,
+              "gae_lambda": 0.8043484890670809,
+              "learning_rate": 0.00014342985746067038
+            },
+            {
+              "discount_factor": 0.960212962201708,
+              "gae_lambda": 0.8633905342152199,
+              "learning_rate": 0.00037008235339928107
+            },
+            {
+              "discount_factor": 0.9206601509412409,
+              "gae_lambda": 0.9880130205794151,
+              "learning_rate": 0.00531861457449725
+            },
+            {
+              "discount_factor": 0.9858214336212108,
+              "gae_lambda": 0.9427054774247977,
+              "learning_rate": 0.0003333176553324158
+            },
+            {
+              "discount_factor": 0.9108960696450874,
+              "gae_lambda": 0.9046184738911889,
+              "learning_rate": 3.5676201044808685e-05
+            },
+            {
+              "discount_factor": 0.9419646339039583,
+              "gae_lambda": 0.8753930028510263,
+              "learning_rate": 0.00048301028874700057
+            },
+            {
+              "discount_factor": 0.9817353028579603,
+              "gae_lambda": 0.8448087411350863,
+              "learning_rate": 0.00025422586215267105
+            },
+            {
+              "discount_factor": 0.9565636335384979,
+              "gae_lambda": 0.9649747755131501,
+              "learning_rate": 0.002840614705239544
+            },
+            {
+              "discount_factor": 0.9616321904178963,
+              "gae_lambda": 0.9576476942689259,
+              "learning_rate": 0.0004828475609253422
+            },
+            {
+              "discount_factor": 0.9257238566723578,
+              "gae_lambda": 0.9026822244306083,
+              "learning_rate": 0.00522651706906571
+            },
+            {
+              "discount_factor": 0.9954442813562603,
+              "gae_lambda": 0.9086100679664734,
+              "learning_rate": 0.007140479122132827
+            },
+            {
+              "discount_factor": 0.973611123723182,
+              "gae_lambda": 0.9137717116202309,
+              "learning_rate": 0.0008538616233273116
+            },
+            {
+              "discount_factor": 0.9135481148605322,
+              "gae_lambda": 0.9378745186060821,
+              "learning_rate": 0.008107027543637922
+            },
+            {
+              "discount_factor": 0.9526897995448164,
+              "gae_lambda": 0.9716455646328723,
+              "learning_rate": 0.009112740109599091
+            },
+            {
+              "discount_factor": 0.9533018013001764,
+              "gae_lambda": 0.8595560573441867,
+              "learning_rate": 2.123811164596434e-05
+            },
+            {
+              "discount_factor": 0.9288374439379073,
+              "gae_lambda": 0.9784180859437481,
+              "learning_rate": 0.0005715270031156859
+            },
+            {
+              "discount_factor": 0.961852077049409,
+              "gae_lambda": 0.8246488083217884,
+              "learning_rate": 6.271178634930462e-05
+            },
+            {
+              "discount_factor": 0.9548507438687328,
+              "gae_lambda": 0.8903160613644974,
+              "learning_rate": 1.445728335114497e-05
+            },
+            {
+              "discount_factor": 0.9675394976175883,
+              "gae_lambda": 0.9936507785958568,
+              "learning_rate": 3.499728041046974e-05
+            },
+            {
+              "discount_factor": 0.9228123524228744,
+              "gae_lambda": 0.892310283264806,
+              "learning_rate": 0.0012380801341671467
+            },
+            {
+              "discount_factor": 0.9064370719558132,
+              "gae_lambda": 0.9986327499282706,
+              "learning_rate": 0.0003150411138894937
+            },
+            {
+              "discount_factor": 0.955259389454587,
+              "gae_lambda": 0.806217759414908,
+              "learning_rate": 0.009647409303963492
+            },
+            {
+              "discount_factor": 0.9569021620929952,
+              "gae_lambda": 0.8519887660876287,
+              "learning_rate": 0.0014060499747337559
+            },
+            {
+              "discount_factor": 0.9202730435900456,
+              "gae_lambda": 0.8852645573798984,
+              "learning_rate": 0.0004114775843087582
+            },
+            {
+              "discount_factor": 0.9038350171571181,
+              "gae_lambda": 0.8066220544086681,
+              "learning_rate": 0.0047397044955414715
+            },
+            {
+              "discount_factor": 0.9178673524008685,
+              "gae_lambda": 0.9205239471147656,
+              "learning_rate": 0.00012655027301643825
+            },
+            {
+              "discount_factor": 0.9136875767520122,
+              "gae_lambda": 0.8767864443021118,
+              "learning_rate": 0.00562472766845212
+            },
+            {
+              "discount_factor": 0.9264034673214585,
+              "gae_lambda": 0.9235032085860531,
+              "learning_rate": 0.0018138062233000122
+            },
+            {
+              "discount_factor": 0.9669998835968371,
+              "gae_lambda": 0.8360887541484392,
+              "learning_rate": 2.969091140080636e-05
+            },
+            {
+              "discount_factor": 0.9957710039732172,
+              "gae_lambda": 0.9683494932383083,
+              "learning_rate": 0.004489732755394109
+            },
+            {
+              "discount_factor": 0.9101748650760051,
+              "gae_lambda": 0.8133415758723035,
+              "learning_rate": 0.00040943829821536097
+            },
+            {
+              "discount_factor": 0.9341226261071145,
+              "gae_lambda": 0.9929263718662122,
+              "learning_rate": 3.2261442197042155e-05
+            },
+            {
+              "discount_factor": 0.9712935307222215,
+              "gae_lambda": 0.9636401327152053,
+              "learning_rate": 0.000662683455543763
+            },
+            {
+              "discount_factor": 0.9048365519606042,
+              "gae_lambda": 0.8495563783836177,
+              "learning_rate": 4.880715673888538e-05
+            },
+            {
+              "discount_factor": 0.987540619102556,
+              "gae_lambda": 0.8085398906585302,
+              "learning_rate": 2.2196858180911085e-05
+            },
+            {
+              "discount_factor": 0.9151330598558471,
+              "gae_lambda": 0.91906374784836,
+              "learning_rate": 0.0012826997943315595
+            },
+            {
+              "discount_factor": 0.9896857901128275,
+              "gae_lambda": 0.928143292328757,
+              "learning_rate": 5.6465152247561586e-05
+            },
+            {
+              "discount_factor": 0.9233965357163549,
+              "gae_lambda": 0.8292441586255399,
+              "learning_rate": 4.537693885275783e-05
+            },
+            {
+              "discount_factor": 0.9420035216146408,
+              "gae_lambda": 0.8418110059278071,
+              "learning_rate": 0.004410300370190536
+            },
+            {
+              "discount_factor": 0.9684715411470387,
+              "gae_lambda": 0.8869572085075724,
+              "learning_rate": 0.0004213828736851985
+            },
+            {
+              "discount_factor": 0.9188847533836058,
+              "gae_lambda": 0.8081395416167956,
+              "learning_rate": 0.00028609108794633883
+            },
+            {
+              "discount_factor": 0.9603199149581362,
+              "gae_lambda": 0.9685503942975496,
+              "learning_rate": 0.007410034285882605
+            },
+            {
+              "discount_factor": 0.905159058611182,
+              "gae_lambda": 0.8179103612038462,
+              "learning_rate": 0.00040727989492913923
+            },
+            {
+              "discount_factor": 0.9961855543815294,
+              "gae_lambda": 0.834185600409527,
+              "learning_rate": 0.0007003453855868161
+            },
+            {
+              "discount_factor": 0.9001946221325207,
+              "gae_lambda": 0.8132779058432055,
+              "learning_rate": 0.0005963134260869464
+            },
+            {
+              "discount_factor": 0.9262366818172966,
+              "gae_lambda": 0.8231540234927094,
+              "learning_rate": 9.409348988423249e-05
+            },
+            {
+              "discount_factor": 0.9600518292500163,
+              "gae_lambda": 0.9673697128920777,
+              "learning_rate": 0.0001946763567262841
+            },
+            {
+              "discount_factor": 0.9049208163222887,
+              "gae_lambda": 0.990752040439328,
+              "learning_rate": 3.3746674566693315e-05
+            },
+            {
+              "discount_factor": 0.9499128778935862,
+              "gae_lambda": 0.9010242246655109,
+              "learning_rate": 0.0001568628896663881
+            },
+            {
+              "discount_factor": 0.9064250908917553,
+              "gae_lambda": 0.9158990624549415,
+              "learning_rate": 0.0024907055799931483
+            },
+            {
+              "discount_factor": 0.9245385877786273,
+              "gae_lambda": 0.8472051313222645,
+              "learning_rate": 2.1335172712904892e-05
+            },
+            {
+              "discount_factor": 0.9544945393856888,
+              "gae_lambda": 0.906430258584856,
+              "learning_rate": 0.00021568765654394732
+            },
+            {
+              "discount_factor": 0.9414739496718015,
+              "gae_lambda": 0.9151151496237035,
+              "learning_rate": 0.000641403056068418
+            },
+            {
+              "discount_factor": 0.9052049707740919,
+              "gae_lambda": 0.8299197785328614,
+              "learning_rate": 1.2920534633251524e-05
+            },
+            {
+              "discount_factor": 0.9850514255623637,
+              "gae_lambda": 0.9306991293882994,
+              "learning_rate": 0.0022107100435739594
+            },
+            {
+              "discount_factor": 0.9095961392568407,
+              "gae_lambda": 0.887760114866638,
+              "learning_rate": 6.818840074191236e-05
+            },
+            {
+              "discount_factor": 0.9444030358431408,
+              "gae_lambda": 0.9486822445187377,
+              "learning_rate": 0.003470225350998062
+            },
+            {
+              "discount_factor": 0.9650530007903592,
+              "gae_lambda": 0.8185530490292651,
+              "learning_rate": 3.171481907600316e-05
+            },
+            {
+              "discount_factor": 0.9095772652628479,
+              "gae_lambda": 0.8624407656654057,
+              "learning_rate": 0.002021082051366025
+            },
+            {
+              "discount_factor": 0.9359089553547177,
+              "gae_lambda": 0.8243805536032907,
+              "learning_rate": 2.2952629698322202e-05
+            },
+            {
+              "discount_factor": 0.9551551407114189,
+              "gae_lambda": 0.9119429583121716,
+              "learning_rate": 0.003967626496552723
+            },
+            {
+              "discount_factor": 0.9322484536083888,
+              "gae_lambda": 0.9531203226750523,
+              "learning_rate": 0.00010190288631162789
+            },
+            {
+              "discount_factor": 0.9099879816455966,
+              "gae_lambda": 0.8772712144749111,
+              "learning_rate": 0.00013980962877337217
+            },
+            {
+              "discount_factor": 0.9159317810212678,
+              "gae_lambda": 0.8786540824043425,
+              "learning_rate": 0.009859108331625668
+            },
+            {
+              "discount_factor": 0.9612907149102676,
+              "gae_lambda": 0.809575347344414,
+              "learning_rate": 0.0007285182248761603
+            },
+            {
+              "discount_factor": 0.9026099622416803,
+              "gae_lambda": 0.9823301133303535,
+              "learning_rate": 0.0001846958406222728
+            },
+            {
+              "discount_factor": 0.9051389866584252,
+              "gae_lambda": 0.8473644607258256,
+              "learning_rate": 3.023430665262864e-05
+            },
+            {
+              "discount_factor": 0.9193184528523781,
+              "gae_lambda": 0.8782216266123336,
+              "learning_rate": 0.004355592697257457
+            },
+            {
+              "discount_factor": 0.9515293089463773,
+              "gae_lambda": 0.8529012220348143,
+              "learning_rate": 0.0018857622218522653
+            },
+            {
+              "discount_factor": 0.9162727309335353,
+              "gae_lambda": 0.9225300252487874,
+              "learning_rate": 0.00541195721321388
+            },
+            {
+              "discount_factor": 0.952878600224153,
+              "gae_lambda": 0.8594285136512163,
+              "learning_rate": 2.3833924304218735e-05
+            },
+            {
+              "discount_factor": 0.9272071968882964,
+              "gae_lambda": 0.8549833425303234,
+              "learning_rate": 0.001619837784414919
+            },
+            {
+              "discount_factor": 0.9722963617645797,
+              "gae_lambda": 0.8039995051066906,
+              "learning_rate": 0.00012327248412751125
+            },
+            {
+              "discount_factor": 0.9239341118042037,
+              "gae_lambda": 0.8043649044144413,
+              "learning_rate": 2.232948747887226e-05
+            },
+            {
+              "discount_factor": 0.9915571942831984,
+              "gae_lambda": 0.9570110808311468,
+              "learning_rate": 0.0041842467075555
+            },
+            {
+              "discount_factor": 0.9256007266900746,
+              "gae_lambda": 0.8813063152422882,
+              "learning_rate": 0.0006917872577416133
+            },
+            {
+              "discount_factor": 0.9608251206527588,
+              "gae_lambda": 0.9319948660183359,
+              "learning_rate": 0.00023529834413116415
+            },
+            {
+              "discount_factor": 0.9661585686445902,
+              "gae_lambda": 0.9134459083684912,
+              "learning_rate": 0.0005979265229835479
+            },
+            {
+              "discount_factor": 0.9559980619171249,
+              "gae_lambda": 0.8547004980495125,
+              "learning_rate": 0.000639169344555467
+            },
+            {
+              "discount_factor": 0.9690475089286517,
+              "gae_lambda": 0.8160855423051425,
+              "learning_rate": 0.0021381936652253544
+            },
+            {
+              "discount_factor": 0.9686460953483632,
+              "gae_lambda": 0.9815933659106844,
+              "learning_rate": 0.0017868291270533214
+            },
+            {
+              "discount_factor": 0.9426732106601431,
+              "gae_lambda": 0.8225875465727717,
+              "learning_rate": 0.0001321487554047672
+            },
+            {
+              "discount_factor": 0.9511122490492525,
+              "gae_lambda": 0.9849192391022443,
+              "learning_rate": 0.00624568676055212
+            },
+            {
+              "discount_factor": 0.9064820715515994,
+              "gae_lambda": 0.8477426979622533,
+              "learning_rate": 0.00025676933851446554
+            },
+            {
+              "discount_factor": 0.9113553057039294,
+              "gae_lambda": 0.8729989858635182,
+              "learning_rate": 9.743277179868696e-05
+            },
+            {
+              "discount_factor": 0.9147520457853356,
+              "gae_lambda": 0.8088796703269223,
+              "learning_rate": 0.00033374073451176544
+            },
+            {
+              "discount_factor": 0.9929525344700114,
+              "gae_lambda": 0.8838842493760816,
+              "learning_rate": 0.006012542807088163
+            },
+            {
+              "discount_factor": 0.982552374434736,
+              "gae_lambda": 0.8259930798160533,
+              "learning_rate": 5.9094972790026274e-05
+            },
+            {
+              "discount_factor": 0.9938420415834288,
+              "gae_lambda": 0.8819925411839875,
+              "learning_rate": 0.0006403835017503356
+            },
+            {
+              "discount_factor": 0.9403717572235987,
+              "gae_lambda": 0.9019948421262188,
+              "learning_rate": 0.00011291765965558228
+            },
+            {
+              "discount_factor": 0.9949257285322695,
+              "gae_lambda": 0.9291372175609985,
+              "learning_rate": 0.001048359811461638
+            },
+            {
+              "discount_factor": 0.9736180877976621,
+              "gae_lambda": 0.914088251455523,
+              "learning_rate": 3.076243382458089e-05
+            },
+            {
+              "discount_factor": 0.9829297321417607,
+              "gae_lambda": 0.9159038454679058,
+              "learning_rate": 0.00028174759100425817
+            },
+            {
+              "discount_factor": 0.9960688380562753,
+              "gae_lambda": 0.8803569700106406,
+              "learning_rate": 2.312209142279317e-05
+            },
+            {
+              "discount_factor": 0.9306208904920917,
+              "gae_lambda": 0.8536473116501518,
+              "learning_rate": 3.734875767702582e-05
+            },
+            {
+              "discount_factor": 0.9539497900206271,
+              "gae_lambda": 0.8785990881924614,
+              "learning_rate": 8.089793229071942e-05
+            },
+            {
+              "discount_factor": 0.9522953974405027,
+              "gae_lambda": 0.8637169668630975,
+              "learning_rate": 0.004596547390384384
+            },
+            {
+              "discount_factor": 0.9565945546064762,
+              "gae_lambda": 0.9804390645055069,
+              "learning_rate": 1.881800777523293e-05
+            },
+            {
+              "discount_factor": 0.9758354812975814,
+              "gae_lambda": 0.9268168997466225,
+              "learning_rate": 9.160232568377786e-05
+            },
+            {
+              "discount_factor": 0.9406257046051083,
+              "gae_lambda": 0.8226132800142444,
+              "learning_rate": 0.00020740367684736827
+            },
+            {
+              "discount_factor": 0.9915124813693137,
+              "gae_lambda": 0.9078248300564434,
+              "learning_rate": 0.00013279031194825264
+            },
+            {
+              "discount_factor": 0.9157715205952693,
+              "gae_lambda": 0.8031247532024165,
+              "learning_rate": 0.0015114097507908366
+            },
+            {
+              "discount_factor": 0.9140908832212762,
+              "gae_lambda": 0.866702055638125,
+              "learning_rate": 0.0005133879791796114
+            },
+            {
+              "discount_factor": 0.9919760791984512,
+              "gae_lambda": 0.8462092536900702,
+              "learning_rate": 0.000877602656335436
+            },
+            {
+              "discount_factor": 0.922866899389074,
+              "gae_lambda": 0.9560398785916222,
+              "learning_rate": 0.003154016267901569
+            },
+            {
+              "discount_factor": 0.9373265474238777,
+              "gae_lambda": 0.8123178471405964,
+              "learning_rate": 0.009271810087011749
+            },
+            {
+              "discount_factor": 0.9136519288447331,
+              "gae_lambda": 0.9611555012151318,
+              "learning_rate": 0.0010260708398866342
+            },
+            {
+              "discount_factor": 0.9228314817687496,
+              "gae_lambda": 0.8071290005792942,
+              "learning_rate": 0.004913345244193624
+            },
+            {
+              "discount_factor": 0.9883348811205014,
+              "gae_lambda": 0.8909299067285277,
+              "learning_rate": 0.00037882210883240735
+            },
+            {
+              "discount_factor": 0.9376534659293377,
+              "gae_lambda": 0.9783230483471903,
+              "learning_rate": 1.8039347362427455e-05
+            },
+            {
+              "discount_factor": 0.9409067082964252,
+              "gae_lambda": 0.9443572791167432,
+              "learning_rate": 0.0017633432093783368
+            },
+            {
+              "discount_factor": 0.9601923207415837,
+              "gae_lambda": 0.9759587079622019,
+              "learning_rate": 1.0808356180591669e-05
+            },
+            {
+              "discount_factor": 0.9810937124373185,
+              "gae_lambda": 0.9234801420389526,
+              "learning_rate": 0.0013758025277332002
+            },
+            {
+              "discount_factor": 0.9234322414494713,
+              "gae_lambda": 0.8830934107078412,
+              "learning_rate": 4.380161872821238e-05
+            },
+            {
+              "discount_factor": 0.9552871625882832,
+              "gae_lambda": 0.9546531689493076,
+              "learning_rate": 0.00021290992164717663
+            },
+            {
+              "discount_factor": 0.9702787298841625,
+              "gae_lambda": 0.9803585790557752,
+              "learning_rate": 1.0586719533996192e-05
+            },
+            {
+              "discount_factor": 0.9672371065838743,
+              "gae_lambda": 0.8955286273548949,
+              "learning_rate": 0.0013679501238262526
+            },
+            {
+              "discount_factor": 0.9854113603502364,
+              "gae_lambda": 0.8024267146956741,
+              "learning_rate": 0.00700026942644321
+            },
+            {
+              "discount_factor": 0.9700713017905699,
+              "gae_lambda": 0.9882453102513793,
+              "learning_rate": 0.00532266238710962
+            },
+            {
+              "discount_factor": 0.9174006770258281,
+              "gae_lambda": 0.9801023078060616,
+              "learning_rate": 0.0005447756468073689
+            },
+            {
+              "discount_factor": 0.9432997029431079,
+              "gae_lambda": 0.914412994379677,
+              "learning_rate": 0.00035233229926089787
+            },
+            {
+              "discount_factor": 0.9300418083056325,
+              "gae_lambda": 0.830805645745909,
+              "learning_rate": 0.0001364528262370919
+            },
+            {
+              "discount_factor": 0.9700366113035298,
+              "gae_lambda": 0.9540094448656466,
+              "learning_rate": 0.00014844083392095622
+            },
+            {
+              "discount_factor": 0.9483139919742595,
+              "gae_lambda": 0.9475153310030248,
+              "learning_rate": 0.002184299244600906
+            },
+            {
+              "discount_factor": 0.9455052065084754,
+              "gae_lambda": 0.9496860456978556,
+              "learning_rate": 9.843607089630345e-05
+            },
+            {
+              "discount_factor": 0.9091751866783767,
+              "gae_lambda": 0.9490017345631696,
+              "learning_rate": 3.707769744007304e-05
+            },
+            {
+              "discount_factor": 0.9253197578681857,
+              "gae_lambda": 0.9816492873084579,
+              "learning_rate": 0.0021380272001363695
+            },
+            {
+              "discount_factor": 0.9180569725692905,
+              "gae_lambda": 0.808965943439831,
+              "learning_rate": 0.00269518438294918
+            },
+            {
+              "discount_factor": 0.9536169270306682,
+              "gae_lambda": 0.8786879118252324,
+              "learning_rate": 8.831911078178807e-05
+            },
+            {
+              "discount_factor": 0.906907392633976,
+              "gae_lambda": 0.9423916623450952,
+              "learning_rate": 0.006460211992745217
+            },
+            {
+              "discount_factor": 0.9660539674000219,
+              "gae_lambda": 0.888293459004399,
+              "learning_rate": 0.00752565552901658
+            },
+            {
+              "discount_factor": 0.9837274429312404,
+              "gae_lambda": 0.856891944609179,
+              "learning_rate": 0.003482784104621127
+            },
+            {
+              "discount_factor": 0.9132938653396994,
+              "gae_lambda": 0.9944623621739418,
+              "learning_rate": 0.0009490409878872929
+            },
+            {
+              "discount_factor": 0.9946512010912152,
+              "gae_lambda": 0.827086828602892,
+              "learning_rate": 0.00011336684191892707
+            },
+            {
+              "discount_factor": 0.9324343136412306,
+              "gae_lambda": 0.9959539372052981,
+              "learning_rate": 0.007548482952170053
+            },
+            {
+              "discount_factor": 0.9659541778577027,
+              "gae_lambda": 0.9094499428750995,
+              "learning_rate": 0.00010916077906529595
+            },
+            {
+              "discount_factor": 0.9623948656935492,
+              "gae_lambda": 0.8209213513271459,
+              "learning_rate": 1.140085704469847e-05
+            },
+            {
+              "discount_factor": 0.944988626072398,
+              "gae_lambda": 0.8757463814338474,
+              "learning_rate": 0.0019553807990882474
+            },
+            {
+              "discount_factor": 0.9806406245045561,
+              "gae_lambda": 0.9451563283917087,
+              "learning_rate": 0.0002778575505127514
+            },
+            {
+              "discount_factor": 0.9246835847373573,
+              "gae_lambda": 0.8642178108134341,
+              "learning_rate": 0.004743142642098559
+            },
+            {
+              "discount_factor": 0.9043668154352706,
+              "gae_lambda": 0.9364730122188509,
+              "learning_rate": 1.8555664462564155e-05
+            },
+            {
+              "discount_factor": 0.9416286371321475,
+              "gae_lambda": 0.9977212195032561,
+              "learning_rate": 0.0004222458288182327
+            },
+            {
+              "discount_factor": 0.9556341007412286,
+              "gae_lambda": 0.8771749868537687,
+              "learning_rate": 4.808527482002049e-05
+            },
+            {
+              "discount_factor": 0.9388007862097455,
+              "gae_lambda": 0.8369317532336267,
+              "learning_rate": 0.00014805076358744202
+            },
+            {
+              "discount_factor": 0.9129822692049704,
+              "gae_lambda": 0.9324145183655956,
+              "learning_rate": 0.0001103922508896032
+            },
+            {
+              "discount_factor": 0.9360895803860976,
+              "gae_lambda": 0.9518644139072868,
+              "learning_rate": 0.004398714215188889
+            },
+            {
+              "discount_factor": 0.9830361299935233,
+              "gae_lambda": 0.9446418411851447,
+              "learning_rate": 0.00043158309673491834
+            },
+            {
+              "discount_factor": 0.9103492799237065,
+              "gae_lambda": 0.9886986543766573,
+              "learning_rate": 7.969430838094334e-05
+            },
+            {
+              "discount_factor": 0.982450208072904,
+              "gae_lambda": 0.8023670527778243,
+              "learning_rate": 0.000810913220696409
+            },
+            {
+              "discount_factor": 0.9570539167943224,
+              "gae_lambda": 0.9525476653403762,
+              "learning_rate": 1.7000407089895607e-05
+            },
+            {
+              "discount_factor": 0.9092929034638841,
+              "gae_lambda": 0.805759293186317,
+              "learning_rate": 2.1183983440856044e-05
+            },
+            {
+              "discount_factor": 0.9331191770851679,
+              "gae_lambda": 0.9408362464621974,
+              "learning_rate": 0.0012364139831109982
+            },
+            {
+              "discount_factor": 0.941842109774234,
+              "gae_lambda": 0.9982046678463803,
+              "learning_rate": 0.0007590581963206804
+            },
+            {
+              "discount_factor": 0.9864923016838624,
+              "gae_lambda": 0.8663396269647233,
+              "learning_rate": 0.0015306865570408694
+            },
+            {
+              "discount_factor": 0.9038594888170915,
+              "gae_lambda": 0.9495415572071368,
+              "learning_rate": 0.00037289967101411525
+            },
+            {
+              "discount_factor": 0.9156739474306308,
+              "gae_lambda": 0.8806045752242629,
+              "learning_rate": 2.5191316530386943e-05
+            },
+            {
+              "discount_factor": 0.9963268363940108,
+              "gae_lambda": 0.9291095514070099,
+              "learning_rate": 0.003878134607873462
+            },
+            {
+              "discount_factor": 0.9250486626921817,
+              "gae_lambda": 0.8393711242399505,
+              "learning_rate": 0.002680708121652649
+            },
+            {
+              "discount_factor": 0.9550922933303038,
+              "gae_lambda": 0.910308779912562,
+              "learning_rate": 0.002148126576883166
+            },
+            {
+              "discount_factor": 0.9443333841487107,
+              "gae_lambda": 0.9664250120211505,
+              "learning_rate": 0.0016137654190699425
+            },
+            {
+              "discount_factor": 0.9402168001403339,
+              "gae_lambda": 0.8639905683820976,
+              "learning_rate": 0.00024419308686041483
+            },
+            {
+              "discount_factor": 0.9766527078333143,
+              "gae_lambda": 0.8055872466773129,
+              "learning_rate": 0.00017669630939351775
+            },
+            {
+              "discount_factor": 0.932735697128668,
+              "gae_lambda": 0.9708966089676018,
+              "learning_rate": 4.1902578480163565e-05
+            },
+            {
+              "discount_factor": 0.9087681555881857,
+              "gae_lambda": 0.9350480042911499,
+              "learning_rate": 0.0002542083817111045
+            },
+            {
+              "discount_factor": 0.9714842284528726,
+              "gae_lambda": 0.8742967859520974,
+              "learning_rate": 0.0006488215739656793
+            },
+            {
+              "discount_factor": 0.9547115828886685,
+              "gae_lambda": 0.800935458111176,
+              "learning_rate": 2.3047973890298197e-05
+            },
+            {
+              "discount_factor": 0.9209861760324468,
+              "gae_lambda": 0.8788564544181685,
+              "learning_rate": 0.0068972168124204055
+            },
+            {
+              "discount_factor": 0.9275549388886355,
+              "gae_lambda": 0.9686627513203693,
+              "learning_rate": 0.00018969727552039156
+            },
+            {
+              "discount_factor": 0.9579287452649846,
+              "gae_lambda": 0.8954370444449496,
+              "learning_rate": 0.0022856014970469587
+            },
+            {
+              "discount_factor": 0.9691643032808874,
+              "gae_lambda": 0.896586503736573,
+              "learning_rate": 0.0004439657422527782
+            },
+            {
+              "discount_factor": 0.9515318155253074,
+              "gae_lambda": 0.9774990661986526,
+              "learning_rate": 0.0003624759531618744
+            },
+            {
+              "discount_factor": 0.9263211172435082,
+              "gae_lambda": 0.8114132357153697,
+              "learning_rate": 0.000276239197383686
+            },
+            {
+              "discount_factor": 0.9594667773645151,
+              "gae_lambda": 0.9429612923225555,
+              "learning_rate": 0.0008561197799802271
+            },
+            {
+              "discount_factor": 0.959036577759936,
+              "gae_lambda": 0.8532404685547473,
+              "learning_rate": 7.237165171824719e-05
+            },
+            {
+              "discount_factor": 0.92388159192498,
+              "gae_lambda": 0.8439511912977756,
+              "learning_rate": 1.7293222010781024e-05
+            },
+            {
+              "discount_factor": 0.9609946627224873,
+              "gae_lambda": 0.9510641395696171,
+              "learning_rate": 8.345772546455151e-05
+            },
+            {
+              "discount_factor": 0.9505857295975831,
+              "gae_lambda": 0.8482584723868761,
+              "learning_rate": 0.0001468619942395806
+            },
+            {
+              "discount_factor": 0.9726676264947194,
+              "gae_lambda": 0.893001564519963,
+              "learning_rate": 0.0016569168878176484
+            },
+            {
+              "discount_factor": 0.9315517381978579,
+              "gae_lambda": 0.8778610461322961,
+              "learning_rate": 1.38509757699704e-05
+            },
+            {
+              "discount_factor": 0.9141272235217244,
+              "gae_lambda": 0.9213610723413826,
+              "learning_rate": 4.618875903345652e-05
+            },
+            {
+              "discount_factor": 0.9171166697723584,
+              "gae_lambda": 0.981199513251164,
+              "learning_rate": 0.0025627658244854806
+            },
+            {
+              "discount_factor": 0.9578874561090241,
+              "gae_lambda": 0.903448484110138,
+              "learning_rate": 0.0004104684059089026
+            },
+            {
+              "discount_factor": 0.9078989147015067,
+              "gae_lambda": 0.8738147946367305,
+              "learning_rate": 0.00012028155723270961
+            },
+            {
+              "discount_factor": 0.9631294771068843,
+              "gae_lambda": 0.9278430991748912,
+              "learning_rate": 1.750266563882692e-05
+            },
+            {
+              "discount_factor": 0.9050097549788654,
+              "gae_lambda": 0.9689225668334327,
+              "learning_rate": 6.631420613180294e-05
+            },
+            {
+              "discount_factor": 0.9053004332734871,
+              "gae_lambda": 0.9464896858389652,
+              "learning_rate": 0.0002833628435372305
+            },
+            {
+              "discount_factor": 0.9881146455105901,
+              "gae_lambda": 0.8769011254559196,
+              "learning_rate": 0.0020141406333063208
+            },
+            {
+              "discount_factor": 0.9182103797457494,
+              "gae_lambda": 0.9108724189983494,
+              "learning_rate": 0.000141328235100677
+            },
+            {
+              "discount_factor": 0.9167905044091512,
+              "gae_lambda": 0.9094365413779246,
+              "learning_rate": 2.266037102574895e-05
+            },
+            {
+              "discount_factor": 0.950803296302825,
+              "gae_lambda": 0.8449381932415713,
+              "learning_rate": 0.0035162327269901124
+            },
+            {
+              "discount_factor": 0.9093342954185759,
+              "gae_lambda": 0.8342770923315759,
+              "learning_rate": 0.00020291495829102078
+            },
+            {
+              "discount_factor": 0.906923268086431,
+              "gae_lambda": 0.8041237280587445,
+              "learning_rate": 0.0006867129666982878
+            },
+            {
+              "discount_factor": 0.9219976363095199,
+              "gae_lambda": 0.8909830029011802,
+              "learning_rate": 0.006993577016999047
+            },
+            {
+              "discount_factor": 0.9448448701678462,
+              "gae_lambda": 0.8715438498807613,
+              "learning_rate": 4.7273121701987565e-05
+            },
+            {
+              "discount_factor": 0.9008459662818293,
+              "gae_lambda": 0.8346543592130586,
+              "learning_rate": 0.0003106216478219076
+            },
+            {
+              "discount_factor": 0.9680416341614839,
+              "gae_lambda": 0.8350928874048027,
+              "learning_rate": 0.000299128330912863
+            },
+            {
+              "discount_factor": 0.9377484046098991,
+              "gae_lambda": 0.8031824164035782,
+              "learning_rate": 0.0018075955771924214
+            },
+            {
+              "discount_factor": 0.9141511736111145,
+              "gae_lambda": 0.877042352721429,
+              "learning_rate": 0.0001871299463537793
+            },
+            {
+              "discount_factor": 0.915157248505796,
+              "gae_lambda": 0.9024143251035395,
+              "learning_rate": 7.581184519223956e-05
+            },
+            {
+              "discount_factor": 0.956514336742525,
+              "gae_lambda": 0.9752448958397227,
+              "learning_rate": 0.002706491391837913
+            },
+            {
+              "discount_factor": 0.9940258337585304,
+              "gae_lambda": 0.8563504703504666,
+              "learning_rate": 5.704926888068065e-05
+            },
+            {
+              "discount_factor": 0.9983569279815518,
+              "gae_lambda": 0.9675391053596325,
+              "learning_rate": 0.006741202660745876
+            },
+            {
+              "discount_factor": 0.959184573368521,
+              "gae_lambda": 0.9208704946952605,
+              "learning_rate": 0.00017908853148560503
+            },
+            {
+              "discount_factor": 0.9145547565328845,
+              "gae_lambda": 0.8546842719283512,
+              "learning_rate": 0.004260432943043009
+            },
+            {
+              "discount_factor": 0.924871766400755,
+              "gae_lambda": 0.9914097604656767,
+              "learning_rate": 0.000309814619806908
+            },
+            {
+              "discount_factor": 0.9713782914613887,
+              "gae_lambda": 0.984373339688851,
+              "learning_rate": 0.0038604595106474537
+            },
+            {
+              "discount_factor": 0.9328766079674137,
+              "gae_lambda": 0.8364037390133539,
+              "learning_rate": 0.0010413227667244597
+            },
+            {
+              "discount_factor": 0.9584558153433972,
+              "gae_lambda": 0.9616182417561773,
+              "learning_rate": 0.0008799608754995805
+            },
+            {
+              "discount_factor": 0.9701773065883817,
+              "gae_lambda": 0.8208412464862009,
+              "learning_rate": 0.000736208975669323
+            },
+            {
+              "discount_factor": 0.9327708898979684,
+              "gae_lambda": 0.9143716412786005,
+              "learning_rate": 4.384622548138829e-05
+            },
+            {
+              "discount_factor": 0.9666125134818417,
+              "gae_lambda": 0.9595161565707231,
+              "learning_rate": 0.006300162360317472
+            },
+            {
+              "discount_factor": 0.9829537477619856,
+              "gae_lambda": 0.940328291711162,
+              "learning_rate": 0.0003365995065336935
+            },
+            {
+              "discount_factor": 0.9003829944048025,
+              "gae_lambda": 0.8823794348368876,
+              "learning_rate": 4.1529156211511406e-05
+            },
+            {
+              "discount_factor": 0.934002764829466,
+              "gae_lambda": 0.8403421422652677,
+              "learning_rate": 0.000495783638728024
+            },
+            {
+              "discount_factor": 0.9054723621572628,
+              "gae_lambda": 0.947525955638943,
+              "learning_rate": 0.005903472203780195
+            },
+            {
+              "discount_factor": 0.9843275760852643,
+              "gae_lambda": 0.8339164148107144,
+              "learning_rate": 0.0007067480623220264
+            },
+            {
+              "discount_factor": 0.9725559509269645,
+              "gae_lambda": 0.8555193159467465,
+              "learning_rate": 0.00039802475772563226
+            },
+            {
+              "discount_factor": 0.951257501990964,
+              "gae_lambda": 0.927864816148709,
+              "learning_rate": 0.00021493157744310824
+            },
+            {
+              "discount_factor": 0.9007334955424319,
+              "gae_lambda": 0.8166989706887754,
+              "learning_rate": 2.4981298677980887e-05
+            },
+            {
+              "discount_factor": 0.9919501668640446,
+              "gae_lambda": 0.8623336582107323,
+              "learning_rate": 0.00023771911207435745
+            },
+            {
+              "discount_factor": 0.9851412298992199,
+              "gae_lambda": 0.9606411681609294,
+              "learning_rate": 2.503383769482004e-05
+            },
+            {
+              "discount_factor": 0.9290277131729273,
+              "gae_lambda": 0.8449716378829728,
+              "learning_rate": 0.00010001454323858124
+            },
+            {
+              "discount_factor": 0.9516918623823509,
+              "gae_lambda": 0.9943441169355989,
+              "learning_rate": 0.009285412416245135
+            },
+            {
+              "discount_factor": 0.9362849237650046,
+              "gae_lambda": 0.8476258320219857,
+              "learning_rate": 0.00018210895832518708
+            },
+            {
+              "discount_factor": 0.9517902781809999,
+              "gae_lambda": 0.9241744413555135,
+              "learning_rate": 1.0845710388518855e-05
+            },
+            {
+              "discount_factor": 0.9175257990037953,
+              "gae_lambda": 0.9643159102114262,
+              "learning_rate": 0.0002335041998499559
+            },
+            {
+              "discount_factor": 0.9894726193454645,
+              "gae_lambda": 0.9575213542825757,
+              "learning_rate": 6.131494249459329e-05
+            },
+            {
+              "discount_factor": 0.9441777817119743,
+              "gae_lambda": 0.898457754362523,
+              "learning_rate": 0.0003795179131711195
+            },
+            {
+              "discount_factor": 0.9542520422787667,
+              "gae_lambda": 0.890766274380641,
+              "learning_rate": 2.5358476169192326e-05
+            },
+            {
+              "discount_factor": 0.9464584768924992,
+              "gae_lambda": 0.8595947642243705,
+              "learning_rate": 0.00022226589496348163
+            },
+            {
+              "discount_factor": 0.9799046628964156,
+              "gae_lambda": 0.8309347479675402,
+              "learning_rate": 0.009185944863242403
+            },
+            {
+              "discount_factor": 0.9550997431120948,
+              "gae_lambda": 0.8927851226885967,
+              "learning_rate": 3.4313461548582985e-05
+            },
+            {
+              "discount_factor": 0.9153202679400619,
+              "gae_lambda": 0.8594470850332949,
+              "learning_rate": 0.004550959767810562
+            },
+            {
+              "discount_factor": 0.9871278794358147,
+              "gae_lambda": 0.9969365404842389,
+              "learning_rate": 0.0072073128939614695
+            },
+            {
+              "discount_factor": 0.9558936138626843,
+              "gae_lambda": 0.9862839991400588,
+              "learning_rate": 1.8681234874551136e-05
+            }
+          ]
+        ]
+      ]
+    },
+    "next_bracket": 1
+  }
+}

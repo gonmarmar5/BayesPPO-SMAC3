@@ -15,7 +15,7 @@ from stable_baselines3.common.evaluation import evaluate_policy
 from stable_baselines3.common.monitor import Monitor
 
 ENV = genericSolver.ENV
-EARLY_STOPPING = 180
+EARLY_STOPPING = genericSolver.EARLY_STOPPING
 
 def render_agent(best_model_dir):
     """
@@ -78,6 +78,7 @@ def agents_validation():
     return os.path.join(models_folder, model_file)
 
 if __name__ == "__main__":
+    
     if ENV == 'CartPole':
         filename = "logs/cartpole_optimizer.log"
     else: 

@@ -12,9 +12,14 @@ from ConfigSpace import Configuration, ConfigurationSpace
 from ConfigSpace import UniformFloatHyperparameter
 
 
-ENV = 'CartPole'
-#ENV = 'LunarLander'
-BATCH_SIZE = 1024
+#ENV = 'CartPole'
+ENV = 'LunarLander'
+MIN_BUDGET = 1
+MAX_BUDGET = 500
+MAX_TIMESTEPS = 50000
+MIN_TIMESTEPS = 15000
+BATCH_SIZE = 512
+EARLY_STOPPING = 1800
 
 class GenericSolver:
     @property
@@ -96,7 +101,7 @@ class GenericSolver:
 
         agent = PPO(**ppo_params)
 
-        total_timesteps = int(budget)
+        total_timesteps = int(((budget - MIN_BUDGET) / (MAX_BUDGET - MIN_BUDGET)) * (MAX_TIMESTEPS - MIN_TIMESTEPS) + MIN_TIMESTEPS)
         print("Total TimeSteps: ", total_timesteps)
         num_agents = 5
         num_updates = total_timesteps // BATCH_SIZE

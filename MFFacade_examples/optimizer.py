@@ -16,7 +16,9 @@ from logger import Logger
 import genericSolver 
 
 ENV = genericSolver.ENV
-EARLY_STOPPING = 180
+MIN_BUDGET = genericSolver.MIN_BUDGET
+MAX_BUDGET = genericSolver.MAX_BUDGET
+EARLY_STOPPING = genericSolver.EARLY_STOPPING
 
 def render_agent(best_model_dir):
     """
@@ -48,9 +50,9 @@ def agents_validation():
     
     models_folder = "models"
     if ENV == 'CartPole':
-        env = gymnasium.make('CartPole-v1')
+        env = Monitor(gymnasium.make('CartPole-v1'))
     else:
-        env = gymnasium.make('LunarLander-v2')
+        env = Monitor(gymnasium.make('LunarLander-v2'))
 
     # Obtener la lista de archivos de modelos en la carpeta
     model_files = [f for f in os.listdir(models_folder) if f.startswith('ppo_multifidelity_agent')]
@@ -69,7 +71,7 @@ def agents_validation():
         print(f"Modelo {model_file}: Mean Reward = {mean_reward}")
 
         # Actualizar el mejor modelo si se encuentra uno con mejor rendimiento
-        if mean_reward > best_mean_reward:
+        if mean_reward >= best_mean_reward:
             best_mean_reward = mean_reward
             best_model_file = model_file
 
@@ -91,9 +93,6 @@ if __name__ == "__main__":
 
     logger = Logger(filename)
 
-    max_budget = 20000
-    min_budget = 7500
-
     # n_trials determines the maximum number of different hyperparameter configurations SMAC will evaluate during its search for the optimal setup.
     # If deterministic is set to true, only one seed is passed to the target function. Otherwise, multiple seeds are passed to ensure generalization.
     scenario = Scenario(model.configspace, 
@@ -101,13 +100,13 @@ if __name__ == "__main__":
                         seed=-1,  
                         n_trials=100,
                         walltime_limit=EARLY_STOPPING,
-                        min_budget=min_budget,
-                        max_budget=max_budget, # Establece el número de configuraciones iniciales deseado
+                        min_budget=MIN_BUDGET,
+                        max_budget=MAX_BUDGET, # Establece el número de configuraciones iniciales deseado
                         #n_workers=8, #The number of workers to use for parallelization
                         )  
 
     # We want to run five random configurations before starting the optimization.
-    initial_design = MFFacade.get_initial_design(scenario, n_configs=5)
+    initial_design = MFFacade.get_initial_design(scenario=scenario, n_configs=5)
     
     '''
         Successive Halving is a classic method used in hyperparameter optimization that gradually increases the budget for configurations that perform well.
@@ -119,7 +118,7 @@ if __name__ == "__main__":
         It aims to maximize resource allocation efficiency by quickly discarding underperforming configurations.
     '''
     
-    intensifier = Hyperband(scenario)
+    intensifier = Hyperband(scenario, incumbent_selection="highest_budget", instance_seed_order="shuffle_once")
 
     smac = MFFacade(scenario=scenario,
                     target_function=model.train, 
@@ -139,7 +138,7 @@ if __name__ == "__main__":
     
      # Validation of the trained agent
     best_model_dir = agents_validation()
-    #best_model_dir = "./models/ppo_multifidelity_agent_20240629_140325"
+    #best_model_dir = "./models/ppo_multifidelity_agent_20240629_230530"
 
     # Optionally we can render the agent to check its performance
     render_agent(best_model_dir)
