@@ -1,0 +1,31 @@
+{
+  "stats": {
+    "submitted": 1,
+    "finished": 0,
+    "running": 1
+  },
+  "data": [
+    [
+      1,
+      null,
+      1052588252,
+      null,
+      2147483647.0,
+      0.0,
+      0,
+      0.0,
+      0.0,
+      {}
+    ]
+  ],
+  "configs": {
+    "1": {
+      "discount_factor": 0.9320048330510036,
+      "gae_lambda": 0.8503775867465884,
+      "learning_rate": 6.598606901009317e-05
+    }
+  },
+  "config_origins": {
+    "1": "Initial Design: Sobol"
+  }
+}

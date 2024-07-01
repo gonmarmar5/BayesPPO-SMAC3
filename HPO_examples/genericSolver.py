@@ -12,9 +12,9 @@ from ConfigSpace import UniformFloatHyperparameter
 
 #ENV = 'CartPole'
 ENV = 'LunarLander'
-TOTAL_TIMESTEPS = 50000
-BATCH_SIZE = 512
-EARLY_STOPPING = 1800
+TOTAL_TIMESTEPS = 200000
+BATCH_SIZE = 128
+EARLY_STOPPING = 900
 
 class GenericSolver:
     @property
@@ -92,7 +92,7 @@ class GenericSolver:
             'vf_coef': 0.5,
             'max_grad_norm': 0.5,
             'verbose': 1
-        }
+        }   
 
         agent = PPO(**ppo_params)
 

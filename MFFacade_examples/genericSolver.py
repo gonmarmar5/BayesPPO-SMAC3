@@ -15,11 +15,11 @@ from ConfigSpace import UniformFloatHyperparameter
 #ENV = 'CartPole'
 ENV = 'LunarLander'
 MIN_BUDGET = 1
-MAX_BUDGET = 500
-MAX_TIMESTEPS = 50000
-MIN_TIMESTEPS = 15000
-BATCH_SIZE = 512
-EARLY_STOPPING = 1800
+MAX_BUDGET = 20
+MAX_TIMESTEPS = 10000
+MIN_TIMESTEPS = 5000
+BATCH_SIZE = 2048
+EARLY_STOPPING = 300
 
 class GenericSolver:
     @property

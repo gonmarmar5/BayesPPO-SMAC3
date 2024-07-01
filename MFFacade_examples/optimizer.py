@@ -106,7 +106,7 @@ if __name__ == "__main__":
                         )  
 
     # We want to run five random configurations before starting the optimization.
-    initial_design = MFFacade.get_initial_design(scenario=scenario, n_configs=5)
+    initial_design = MFFacade.get_initial_design(scenario=scenario, n_configs=20)
     
     '''
         Successive Halving is a classic method used in hyperparameter optimization that gradually increases the budget for configurations that perform well.
@@ -138,7 +138,7 @@ if __name__ == "__main__":
     
      # Validation of the trained agent
     best_model_dir = agents_validation()
-    #best_model_dir = "./models/ppo_multifidelity_agent_20240629_230530"
+    #best_model_dir = "./models/ppo_multifidelity_agent_20240630_030407"
 
     # Optionally we can render the agent to check its performance
     render_agent(best_model_dir)
