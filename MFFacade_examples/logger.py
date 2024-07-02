@@ -72,7 +72,6 @@ class Logger:
         start_training_time = datetime.datetime.now()
         print("Start training time: " + start_training_time.strftime("%Y-%m-%d %H:%M:%S"))
 
-        print(smac)
         incumbent = smac.optimize()
         end_training_time = datetime.datetime.now()
         training_duration = end_training_time - start_training_time 
@@ -83,27 +82,3 @@ class Logger:
         self.restore_stdout()
         
         return incumbent
-    
-    def log_results(self, smac, incumbent, incumbent_config):
-        """
-        Calculates the validation cost of the best configuration (incumbent) found by SMAC 
-        and logs the results to the specified log file.
-
-        Args:
-            smac: An instance of the SMAC optimizer.
-            incumbent: The best configuration found during optimization.
-            incumbent_config: The configuration parameters of the incumbent solution.
-        """
-
-        # Temporarily redirect sys.stdout to a file
-        self.redirect_stdout_to_log_file(self.log_file.name)
-
-        # Calculate the incumbent's cost and record the output in the log.
-        print("############# Validation")
-        incumbent_cost = smac.validate(incumbent)
-
-        self.logger.info(f"Incumbent configuration: {incumbent_config}")
-        self.logger.info(f"Incumbent cost: {incumbent_cost}")
-
-        # Restore sys.stdout to its original behavior
-        self.restore_stdout()

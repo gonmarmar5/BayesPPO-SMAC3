@@ -4,6 +4,7 @@ import shutil
 import threading
 
 import gymnasium
+from matplotlib import pyplot as plt
 import numpy as np
 from smac.scenario import Scenario
 from smac import MultiFidelityFacade as MFFacade
@@ -20,13 +21,13 @@ MIN_BUDGET = genericSolver.MIN_BUDGET
 MAX_BUDGET = genericSolver.MAX_BUDGET
 EARLY_STOPPING = genericSolver.EARLY_STOPPING
 
-def render_agent(best_model_dir):
+def render_agent(best_model_dir, num_episodes = 10):
     """
-    Renders the agent's behavior within the specified environment for a single episode.
+    Renders the behavior of the agent in the specified environment for multiple episodes.
 
     Args:
-        agent: The trained agent to be evaluated.
-        env: The CartPole environment instance.
+    - best_model_dir (str): Directory path where the trained agent model is saved.
+    - num_episodes (int): Number of episodes to render (default is 10).
     """
     if ENV == 'CartPole':
         env = gymnasium.make("CartPole-v1", render_mode = "human")
@@ -34,90 +35,98 @@ def render_agent(best_model_dir):
         env = gymnasium.make("LunarLander-v2", render_mode = "human")
 
     agent = PPO.load(best_model_dir, env = env)
-    observation, info = env.reset()
-
-    terminated = False
-    for i in range(100000):
-        env.render()
-        action, _ = agent.predict(observation)
-        observation, reward, terminated, truncated, info = env.step(action)
-        # Reset the sim everytime the lander makes contact with the surface of the moon
-        if terminated or truncated:
-            observation, info = env.reset()
+    
+    vec_env = agent.get_env()
+    observation, info = vec_env.reset()
+    for episode in range(num_episodes):
+        observation, _ = vec_env.reset()
+        terminated = False
+        while not terminated:
+            vec_env.render("human")
+            action, _ = agent.predict(observation, deterministic=True)
+            observation, _, terminated, truncated, info = vec_env.step(action)
+            if terminated or truncated:
+                break
     env.close()
 
-def agents_validation():
-    
-    models_folder = "models"
+def agents_validation(models_folder = "models", n_eval_episodes=50):
+    """
+    Validates multiple PPO agents stored as models in the specified folder.
+
+    Args:
+    - models_folder (str): Directory path where trained PPO agent models are saved (default is "models").
+
+    Returns:
+    - str: Path to the best performing model's file.
+    """
+
     if ENV == 'CartPole':
         env = Monitor(gymnasium.make('CartPole-v1'))
     else:
         env = Monitor(gymnasium.make('LunarLander-v2'))
 
-    # Obtener la lista de archivos de modelos en la carpeta
+    # A list of the models in the folder ./models
     model_files = [f for f in os.listdir(models_folder) if f.startswith('ppo_multifidelity_agent')]
 
     best_mean_reward = -float('inf')
     best_model_file = None
 
     for model_file in model_files:
-        # Cargar el modelo desde el archivo
+        
         trained_agent = PPO.load(os.path.join(models_folder, model_file))
 
-        # Evaluar el modelo en el entorno
-        rewards, _ = evaluate_policy(trained_agent, env, n_eval_episodes=30, deterministic=True)
+        rewards, _ = evaluate_policy(trained_agent, env, n_eval_episodes=n_eval_episodes, return_episode_rewards=True, deterministic=True)
 
         mean_reward = np.mean(rewards)
-        print(f"Modelo {model_file}: Mean Reward = {mean_reward}")
+        print(f"Model {model_file}. Mean Reward = {mean_reward}")
 
-        # Actualizar el mejor modelo si se encuentra uno con mejor rendimiento
         if mean_reward >= best_mean_reward:
             best_mean_reward = mean_reward
             best_model_file = model_file
+            best_model_rewards = rewards
 
     env.close()
 
-    print(best_model_file)
-    print(best_mean_reward)
+    # Plot the best model validation rewards 
+    if best_model_rewards is not None:
+        if not os.path.exists("plots"):
+            os.makedirs("plots")
+
+        plt.figure()
+        plt.plot(best_model_rewards)
+        plt.xlabel('Episode')
+        plt.ylabel('Reward')
+        plt.title('Validation Rewards for Best Model')
+        plot_filename = os.path.join("plots", f"validation_rewards_{best_model_file}.png")
+        plt.savefig(plot_filename)
+        plt.close()
 
     return os.path.join(models_folder, model_file)
 
 if __name__ == "__main__":
     
     if ENV == 'CartPole':
-        filename = "logs/cartpole_optimizer.log"
+        log_filename = "logs/cartpole_optimizer.log"
     else: 
-        filename = "logs/lunarlander_optimizer.log"
+        log_filename = "logs/lunarlander_optimizer.log"
     
     model = genericSolver.GenericSolver()
 
-    logger = Logger(filename)
+    logger = Logger(log_filename)
 
-    # n_trials determines the maximum number of different hyperparameter configurations SMAC will evaluate during its search for the optimal setup.
-    # If deterministic is set to true, only one seed is passed to the target function. Otherwise, multiple seeds are passed to ensure generalization.
     scenario = Scenario(model.configspace, 
-                        deterministic=True, 
+                        deterministic=True,  # If deterministic is set to true, only one seed is passed to the target function. 
                         seed=-1,  
-                        n_trials=100,
+                        n_trials=100,   # Maximum number of different hyperparameter configurations SMAC will evaluate
                         walltime_limit=EARLY_STOPPING,
                         min_budget=MIN_BUDGET,
-                        max_budget=MAX_BUDGET, # Establece el número de configuraciones iniciales deseado
-                        #n_workers=8, #The number of workers to use for parallelization
+                        max_budget=MAX_BUDGET
                         )  
 
-    # We want to run five random configurations before starting the optimization.
-    initial_design = MFFacade.get_initial_design(scenario=scenario, n_configs=20)
+    # important to efficiently start hyperparameter optimization.
+    initial_design = MFFacade.get_initial_design(scenario=scenario, n_configs=5)
     
-    '''
-        Successive Halving is a classic method used in hyperparameter optimization that gradually increases the budget for configurations that perform well.
-        It starts by allocating a smaller budget to all configurations and iteratively promotes configurations that show promise to higher budgets.
-    '''
-
-    '''
-        Hyperband is an adaptive method that explores a large number of configurations early on with smaller budgets and dynamically prunes poorly performing configurations.
-        It aims to maximize resource allocation efficiency by quickly discarding underperforming configurations.
-    '''
-    
+    #Hyperband explores a large number of configurations with small budgets and dynamically prunes poorly performing configurations.
     intensifier = Hyperband(scenario, incumbent_selection="highest_budget", instance_seed_order="shuffle_once")
 
     smac = MFFacade(scenario=scenario,
@@ -129,19 +138,14 @@ if __name__ == "__main__":
 
     incumbent = logger.log_optimization(smac)
     
-    incumbent_config = dict(incumbent)
-
     print("Incumbent configuration: ", incumbent)
     
-    # Calculate the cost of the incumbent and save it in the log file
-    #logger.log_results(smac, incumbent, incumbent_config)
-    
-     # Validation of the trained agent
+    # Validation of the trained agent
     best_model_dir = agents_validation()
-    #best_model_dir = "./models/ppo_multifidelity_agent_20240630_030407"
+    # best_model_dir = "./models/ppo_multifidelity_agent_20240630_030407"
 
     # Optionally we can render the agent to check its performance
     render_agent(best_model_dir)
 
     models_folder = "models"
-    #shutil.rmtree(models_folder)
+    shutil.rmtree(models_folder)

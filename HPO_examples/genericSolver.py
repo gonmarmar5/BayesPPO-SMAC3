@@ -6,16 +6,72 @@ import matplotlib
 matplotlib.use('Agg')  # Set the backend to a non-interactive one
 import numpy as np
 from stable_baselines3 import PPO
-
+import torch.nn as nn
 from ConfigSpace import Configuration, ConfigurationSpace
+from stable_baselines3.common.torch_layers import BaseFeaturesExtractor
+from stable_baselines3.common.policies import ActorCriticPolicy
 from ConfigSpace import UniformFloatHyperparameter
+from stable_baselines3.common.callbacks import EvalCallback, CheckpointCallback
+from stable_baselines3.common.monitor import Monitor
 
 #ENV = 'CartPole'
 ENV = 'LunarLander'
-TOTAL_TIMESTEPS = 200000
-BATCH_SIZE = 128
-EARLY_STOPPING = 900
+TOTAL_TIMESTEPS = int(2e5)
+BATCH_SIZE = 256
+EARLY_STOPPING = 1500
 
+class CustomFeatureExtractor(BaseFeaturesExtractor):
+    def __init__(self, observation_space, features_dim=64, dropout_prob=0.2):
+        """
+        Initializes the feature extractor with a feedforward neural network.
+
+        Args:
+        - observation_space (gym.spaces.Space): The observation space of the environment.
+        - features_dim (int): Dimensionality of the extracted features (default is 64).
+        """
+        super(CustomFeatureExtractor, self).__init__(observation_space, features_dim)
+        self.net = nn.Sequential(
+            nn.Linear(observation_space.shape[0], 128),  # Capa de entrada más pequeña
+            nn.ReLU(),
+            nn.BatchNorm1d(128),  # Batch normalization después de la primera capa lineal
+            nn.Dropout(p=dropout_prob),  # Dropout después de la primera capa lineal
+            nn.Linear(128, 64),  # Segunda capa oculta más pequeña
+            nn.ReLU(),
+            nn.BatchNorm1d(64),  # Batch normalization después de la segunda capa lineal
+            nn.Dropout(p=dropout_prob),  # Dropout después de la segunda capa lineal
+            nn.Linear(64, features_dim),  # Capa de salida
+            nn.Tanh()  # Función de activación para la salida
+        )
+
+    def forward(self, x):
+        """
+        Computes forward pass of the neural network to extract features from input x.
+
+        Args:
+        - x (torch.Tensor): Input tensor containing observations.
+
+        Returns:
+        - torch.Tensor: Extracted features tensor.
+        """
+        return self.net(x)
+        
+class CustomMLPPolicy(ActorCriticPolicy):
+    def __init__(self, observation_space, action_space, lr_schedule, *args, **kwargs):
+        """
+        Initializes the policy with a custom MLP architecture and feature extractor.
+
+        Args:
+        - observation_space (gym.spaces.Space): The observation space of the environment.
+        - action_space (gym.spaces.Space): The action space of the environment.
+        - lr_schedule (callable): Learning rate schedule for the optimizer.
+        - *args: Additional positional arguments for parent classes.
+        - **kwargs: Additional keyword arguments for parent classes.
+        """
+        super(CustomMLPPolicy, self).__init__(observation_space, action_space, lr_schedule,
+                                              features_extractor_class=CustomFeatureExtractor,
+                                              features_extractor_kwargs=dict(features_dim=256),
+                                              *args, **kwargs)
+        
 class GenericSolver:
     @property
     def configspace(self) -> ConfigurationSpace:
@@ -29,9 +85,9 @@ class GenericSolver:
         """
 
         cs = ConfigurationSpace(seed=0)
-        learning_rate = UniformFloatHyperparameter("learning_rate", lower=1e-5, upper=1e-2, default_value=1e-3, log=True)
+        learning_rate = UniformFloatHyperparameter("learning_rate", lower=1e-4, upper=1e-2, default_value=1e-3, log=True)
         discount_factor = UniformFloatHyperparameter("discount_factor", lower=0.9, upper=0.999, default_value=0.99)
-        gae_lambda = UniformFloatHyperparameter("gae_lambda", lower=0.8, upper=0.999, default_value=0.95)  
+        gae_lambda = UniformFloatHyperparameter("gae_lambda", lower=0.9, upper=0.999, default_value=0.95)  
         
         cs.add_hyperparameters([learning_rate, discount_factor, gae_lambda])
 
@@ -60,6 +116,20 @@ class GenericSolver:
                 break
         return total_reward
 
+    def plot_training(mean_rewards, timestamp):
+        if not os.path.exists("plots"):
+            os.makedirs("plots")
+        
+        plt.figure()
+        plt.plot(mean_rewards)
+        plt.xlabel('Update')
+        plt.ylabel('Mean Reward')
+        plt.title('Training Progress')
+        plt.ylim(-300, 300)  # Ajustar los límites del eje y
+        plot_filename = os.path.join("plots", f"ppo_training_plot_{timestamp}.png")
+        plt.savefig(plot_filename)
+        plt.close()
+
     def train(self, config: Configuration, seed: int = None) -> float:
         """
         Trains a Proximal Policy Optimization (PPO) agent in the specified environment, tracks performance, and calculates a metric for SMAC's optimization.
@@ -73,17 +143,20 @@ class GenericSolver:
         """
         if ENV == 'CartPole':
             env = gymnasium.make('CartPole-v1')
+            eval_env = Monitor(gymnasium.make('CartPole-v1'))
         else:
             env = gymnasium.make('LunarLander-v2')
-        
-        print(f"Training with config: {config}, seed: {seed}")
+            eval_env = Monitor(gymnasium.make('LunarLander-v2'))
 
+        print(f"Training with config: {config}, seed: {seed}")
+        
         ppo_params = {
-            'policy': 'MlpPolicy', # indicates that the policy will be represented by a feedforward neural network
+            #'policy': CustomMLPPolicy, # indicates that the policy will be represented by a feedforward neural network
+            'policy': 'MlpPolicy',
             'env': env,
             'learning_rate': config['learning_rate'],
             'gamma': config['discount_factor'],
-            'n_steps': 1024,
+            'n_steps': 2048,
             'batch_size': 64,
             'n_epochs': 10,
             'gae_lambda': config['gae_lambda'],
@@ -93,40 +166,55 @@ class GenericSolver:
             'max_grad_norm': 0.5,
             'verbose': 1
         }   
-
-        agent = PPO(**ppo_params)
-
+        policy_kwargs = dict(
+            net_arch=dict(pi=[256, 256], vf=[256, 256])
+            )
+        agent = PPO(
+            policy_kwargs=policy_kwargs,
+            **ppo_params)
+        
+        eval_callback = EvalCallback(eval_env, best_model_save_path='./logs/',
+                                 log_path='./logs/', eval_freq=10000,
+                                 deterministic=True, render=False)
         num_agents = 5
         num_updates = TOTAL_TIMESTEPS // BATCH_SIZE
         
         rewards = {}  # Track rewards over training
         
         # Agent training
-        for update in range(1, num_updates + 1):  
-            agent.learn(total_timesteps = BATCH_SIZE) # Numero de pasos antes de cada actualización
+        #for update in range(1, num_updates + 1):
 
-            total_reward = 0
-            for agent_index in range(num_agents):
-                individual_reward = GenericSolver.evaluate_agent(agent, env)
-                agent_key = str(agent_index + 1)
-                if agent_key in rewards:
-                    rewards[agent_key].append(individual_reward)
-                else:
-                    rewards[agent_key] = [individual_reward]
-                total_reward += individual_reward
-            mean_reward = total_reward / num_agents
-           
-            if 'mean_reward' in rewards:
-                rewards['mean_reward'].append(mean_reward)
+        agent.learn(total_timesteps = TOTAL_TIMESTEPS, callback=eval_callback, progress_bar=True) # Numero de pasos antes de cada actualización
+        '''
+        total_reward = 0
+        for agent_index in range(num_agents):
+            individual_reward = GenericSolver.evaluate_agent(agent, env)
+            agent_key = str(agent_index + 1)
+            if agent_key in rewards:
+                rewards[agent_key].append(individual_reward)
             else:
-                rewards['mean_reward'] = [mean_reward]
-
+                rewards[agent_key] = [individual_reward]
+            total_reward += individual_reward
+        mean_reward = total_reward / num_agents
+        
+        if 'mean_reward' in rewards:
+            rewards['mean_reward'].append(mean_reward)
+        else:
+            rewards['mean_reward'] = [mean_reward]
+        '''
         env.close()
+        results_path = os.path.join('./logs/', 'evaluations.npz')
+        evaluations = np.load(results_path)
+        mean_rewards = evaluations['results'].mean(axis=1)
 
+        # Save model
         if not os.path.exists("models"):
             os.makedirs("models")
         timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
         model_filename = os.path.join("models", f"ppo_basic_agent_{timestamp}")        
         agent.save(model_filename)
+        
+        # Plot rewards
+        GenericSolver.plot_training(mean_rewards, timestamp)
 
-        return -np.mean(rewards['mean_reward']) # Calculate negative mean for SMAC's minimization
+        return -np.mean(mean_rewards) # Calculate negative mean for SMAC's minimization
