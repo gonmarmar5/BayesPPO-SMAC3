@@ -27,9 +27,9 @@ def render_agent(best_model_dir, num_episodes = 10):
     - num_episodes (int): Number of episodes to render (default is 10).
     """
     if ENV == 'CartPole':
-        env = gymnasium.make("CartPole-v1", render_mode = "human")
+        env = gymnasium.make("CartPole-v1")
     else:
-        env = gymnasium.make("LunarLander-v2", render_mode = "human")
+        env = gymnasium.make("LunarLander-v2", render_mode="rgb_array")
 
     agent = PPO.load(best_model_dir, env = env)
     
@@ -38,9 +38,9 @@ def render_agent(best_model_dir, num_episodes = 10):
         observation = vec_env.reset()
         terminated = False
         while not terminated:
-            vec_env.render("human")
             action, _ = agent.predict(observation, deterministic=True)
             observation, reward, done, info  = vec_env.step(action)
+            vec_env.render("human")
             if done:
                 break
     env.close()
@@ -97,7 +97,7 @@ def agents_validation(models_folder = "models", n_eval_episodes=50):
         plt.savefig(plot_filename)
         plt.close()
 
-    return os.path.join(models_folder, model_file)
+    return os.path.join(models_folder, best_model_file)
 
 if __name__ == "__main__":
     

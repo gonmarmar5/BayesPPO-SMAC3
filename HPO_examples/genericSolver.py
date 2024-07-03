@@ -16,9 +16,9 @@ from stable_baselines3.common.monitor import Monitor
 
 #ENV = 'CartPole'
 ENV = 'LunarLander'
-TOTAL_TIMESTEPS = int(2e5)
+TOTAL_TIMESTEPS = 1000000
 BATCH_SIZE = 256
-EARLY_STOPPING = 1500
+EARLY_STOPPING = 7200
 
 class CustomFeatureExtractor(BaseFeaturesExtractor):
     def __init__(self, observation_space, features_dim=64, dropout_prob=0.2):
@@ -176,32 +176,8 @@ class GenericSolver:
         eval_callback = EvalCallback(eval_env, best_model_save_path='./logs/',
                                  log_path='./logs/', eval_freq=10000,
                                  deterministic=True, render=False)
-        num_agents = 5
-        num_updates = TOTAL_TIMESTEPS // BATCH_SIZE
         
-        rewards = {}  # Track rewards over training
-        
-        # Agent training
-        #for update in range(1, num_updates + 1):
-
         agent.learn(total_timesteps = TOTAL_TIMESTEPS, callback=eval_callback, progress_bar=True) # Numero de pasos antes de cada actualización
-        '''
-        total_reward = 0
-        for agent_index in range(num_agents):
-            individual_reward = GenericSolver.evaluate_agent(agent, env)
-            agent_key = str(agent_index + 1)
-            if agent_key in rewards:
-                rewards[agent_key].append(individual_reward)
-            else:
-                rewards[agent_key] = [individual_reward]
-            total_reward += individual_reward
-        mean_reward = total_reward / num_agents
-        
-        if 'mean_reward' in rewards:
-            rewards['mean_reward'].append(mean_reward)
-        else:
-            rewards['mean_reward'] = [mean_reward]
-        '''
         env.close()
         results_path = os.path.join('./logs/', 'evaluations.npz')
         evaluations = np.load(results_path)
