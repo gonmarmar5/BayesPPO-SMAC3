@@ -30,7 +30,7 @@ def render_agent(best_model_dir, num_episodes = 10):
     - num_episodes (int): Number of episodes to render (default is 10).
     """
     if ENV == 'CartPole':
-        env = gymnasium.make("CartPole-v1", render_mode = "human")
+        env = gymnasium.make("CartPole-v1", render_mode = "rgb_array")
     else:
         env = gymnasium.make("LunarLander-v2", render_mode="rgb_array")
 

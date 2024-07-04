@@ -127,7 +127,10 @@ class GenericSolver:
         plt.xlabel('Update')
         plt.ylabel('Mean Reward')
         plt.title('Training Progress')
-        plt.ylim(-300, 300)  # Ajustar los límites del eje y
+        if ENV == 'CartPole':
+            plt.ylim(-500, 500)  # Ajustar los límites del eje y
+        else:
+            plt.ylim(-300, 300)
         plot_filename = os.path.join("plots", f"ppo_training_plot_{timestamp}.png")
         plt.savefig(plot_filename)
         plt.close()

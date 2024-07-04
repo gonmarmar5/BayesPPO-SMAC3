@@ -14,10 +14,10 @@ from ConfigSpace import UniformFloatHyperparameter
 from stable_baselines3.common.callbacks import EvalCallback, CheckpointCallback
 from stable_baselines3.common.monitor import Monitor
 
-#ENV = 'CartPole'
-ENV = 'LunarLander'
-TOTAL_TIMESTEPS = 1000000
-EARLY_STOPPING = 10800
+ENV = 'CartPole'
+#ENV = 'LunarLander'
+TOTAL_TIMESTEPS = 2500
+EARLY_STOPPING = 60
 
 class CustomFeatureExtractor(BaseFeaturesExtractor):
     def __init__(self, observation_space, features_dim=64, dropout_prob=0.2):
@@ -124,7 +124,10 @@ class GenericSolver:
         plt.xlabel('Update')
         plt.ylabel('Mean Reward')
         plt.title('Training Progress')
-        plt.ylim(-300, 300)  # Ajustar los límites del eje y
+        if ENV == 'CartPole':
+            plt.ylim(-500, 500)  # Ajustar los límites del eje y
+        else:
+            plt.ylim(-300, 300)
         plot_filename = os.path.join("plots", f"ppo_training_plot_{timestamp}.png")
         plt.savefig(plot_filename)
         plt.close()
@@ -173,7 +176,7 @@ class GenericSolver:
             **ppo_params)
         
         eval_callback = EvalCallback(eval_env, best_model_save_path='./logs/',
-                                 log_path='./logs/', eval_freq=10000,
+                                 log_path='./logs/', eval_freq=100,
                                  deterministic=True, render=False)
         
         agent.learn(total_timesteps = TOTAL_TIMESTEPS, callback=eval_callback, progress_bar=True) # Numero de pasos antes de cada actualización
