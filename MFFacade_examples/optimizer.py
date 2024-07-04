@@ -147,4 +147,4 @@ if __name__ == "__main__":
     render_agent(best_model_dir)
 
     models_folder = "models"
-    shutil.rmtree(models_folder)
+    #shutil.rmtree(models_folder)

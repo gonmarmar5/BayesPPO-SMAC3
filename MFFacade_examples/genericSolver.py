@@ -19,9 +19,8 @@ ENV = 'LunarLander'
 MIN_BUDGET = 1
 MAX_BUDGET = 20
 MAX_TIMESTEPS = 1000000
-MIN_TIMESTEPS = 100000
-BATCH_SIZE = 512
-EARLY_STOPPING = 7200
+MIN_TIMESTEPS = 500000
+EARLY_STOPPING = 10800
 
 class CustomFeatureExtractor(BaseFeaturesExtractor):
     def __init__(self, observation_space, features_dim=64, dropout_prob=0.2):
@@ -196,7 +195,7 @@ class GenericSolver:
         if not os.path.exists("models"):
             os.makedirs("models")
         timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-        model_filename = os.path.join("models", f"ppo_basic_agent_{timestamp}")        
+        model_filename = os.path.join("models", f"ppo_multifidelity_agent_{timestamp}")        
         agent.save(model_filename)
         
         # Plot rewards

@@ -17,8 +17,7 @@ from stable_baselines3.common.monitor import Monitor
 #ENV = 'CartPole'
 ENV = 'LunarLander'
 TOTAL_TIMESTEPS = 1000000
-BATCH_SIZE = 256
-EARLY_STOPPING = 7200
+EARLY_STOPPING = 10800
 
 class CustomFeatureExtractor(BaseFeaturesExtractor):
     def __init__(self, observation_space, features_dim=64, dropout_prob=0.2):
