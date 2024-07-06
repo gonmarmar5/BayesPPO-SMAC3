@@ -11,13 +11,17 @@ from ConfigSpace import Configuration, ConfigurationSpace
 from stable_baselines3.common.torch_layers import BaseFeaturesExtractor
 from stable_baselines3.common.policies import ActorCriticPolicy
 from ConfigSpace import UniformFloatHyperparameter
-from stable_baselines3.common.callbacks import EvalCallback, CheckpointCallback
+from stable_baselines3.common.callbacks import EvalCallback, StopTrainingOnRewardThreshold, BaseCallback
 from stable_baselines3.common.monitor import Monitor
+import time
 
-#ENV = 'CartPole'
-ENV = 'LunarLander'
-TOTAL_TIMESTEPS = 1000000
-EARLY_STOPPING = 10800
+ENV = 'CartPole'
+#ENV = 'LunarLander'
+TOTAL_TIMESTEPS = 10000
+EARLY_STOPPING = 180
+REWARD_THRESHOLD = 400
+NUM_REWARD_EVALS = 3  # Number of last evaluations to average over
+COUNTER = 0
 
 class CustomFeatureExtractor(BaseFeaturesExtractor):
     def __init__(self, observation_space, features_dim=64, dropout_prob=0.2):
@@ -71,6 +75,57 @@ class CustomMLPPolicy(ActorCriticPolicy):
                                               features_extractor_kwargs=dict(features_dim=256),
                                               *args, **kwargs)
         
+class EvalCallbackStopOnThreshold(EvalCallback):
+    def __init__(
+        self,
+        eval_env,
+        threshold,
+        consecutive_evals,
+        n_eval_episodes,
+        eval_freq,
+        log_path,
+        best_model_save_path,
+        deterministic,
+        render,
+        verbose
+    ):
+        super().__init__(
+            eval_env,
+            n_eval_episodes=n_eval_episodes,
+            eval_freq=eval_freq,
+            log_path=log_path,
+            best_model_save_path=best_model_save_path,
+            deterministic=deterministic,
+            render=render,
+            verbose=verbose,
+        )
+        self.threshold = threshold
+        self.consecutive_evals = consecutive_evals
+        self.last_mean_reward_recorded = float('-inf')
+        global COUNTER  # Declarar la variable global
+        COUNTER = 0
+
+
+    def _on_step(self) -> bool:
+        global COUNTER
+        result = super()._on_step()
+        if self.last_mean_reward >= self.threshold:
+            if self.last_mean_reward_recorded != self.last_mean_reward:
+                COUNTER += 1
+                self.last_mean_reward_recorded = self.last_mean_reward
+                if self.verbose > 0:
+                    print(f"Evaluation {self.num_timesteps}: mean reward {self.last_mean_reward:.2f} - consecutive {COUNTER}")
+        else:
+            COUNTER = 0
+            self.last_mean_reward_recorded = float('-inf')  # Reset to ensure future increases are counted
+
+        if COUNTER >= self.consecutive_evals:
+            if self.verbose > 0:
+                print(f"Stopping training as the mean reward {self.last_mean_reward:.2f} was above the threshold {self.threshold} for {self.consecutive_evals} consecutive evaluations.")
+            return False
+        
+        return result
+
 class GenericSolver:
     @property
     def configspace(self) -> ConfigurationSpace:
@@ -141,7 +196,7 @@ class GenericSolver:
             seed (int): Random seed for reproducibility (default: 0).
 
         Returns:
-            float: The negative average reward achieved over the training process. This is used by SMAC to minimize (i.e., find lower values for better performance).
+            float: The time taken to achieve the reward threshold.
         """
         if ENV == 'CartPole':
             env = gymnasium.make('CartPole-v1')
@@ -153,7 +208,6 @@ class GenericSolver:
         print(f"Training with config: {config}, seed: {seed}")
         
         ppo_params = {
-            #'policy': CustomMLPPolicy, # indicates that the policy will be represented by a feedforward neural network
             'policy': 'MlpPolicy',
             'env': env,
             'learning_rate': config['learning_rate'],
@@ -175,11 +229,37 @@ class GenericSolver:
             policy_kwargs=policy_kwargs,
             **ppo_params)
         
-        eval_callback = EvalCallback(eval_env, best_model_save_path='./logs/',
-                                 log_path='./logs/', eval_freq=TOTAL_TIMESTEPS//100,
-                                 deterministic=True, render=False)
+        # OPTION 1: STOP WHEN REACHING 1 TIME THE TRESHOLD
+        # Callback to stop training when reward threshold is reached
+        #stop_callback = StopTrainingOnRewardThreshold(reward_threshold=REWARD_THRESHOLD, verbose=1)
+        #eval_callback = EvalCallback(eval_env, best_model_save_path='./logs/',
+        #                            log_path='./logs/', eval_freq=TOTAL_TIMESTEPS//100,
+        #                            deterministic=True, render=False, callback_on_new_best=stop_callback)
         
-        agent.learn(total_timesteps = TOTAL_TIMESTEPS, callback=eval_callback, progress_bar=True) # Numero de pasos antes de cada actualización
+        
+        #OPTION 2: STOP WHEN REACHING N TIMES THE TRESHOLD
+        eval_callback = EvalCallbackStopOnThreshold(
+            eval_env=eval_env,
+            threshold=REWARD_THRESHOLD,
+            consecutive_evals=NUM_REWARD_EVALS,
+            n_eval_episodes=5,
+            eval_freq=TOTAL_TIMESTEPS // 100,
+            log_path='./logs/',
+            best_model_save_path='./logs/',
+            deterministic=True,
+            render=False,
+            verbose=1
+        )
+
+        # Measure start time
+        start_time = time.time()
+        
+        agent.learn(total_timesteps=TOTAL_TIMESTEPS, callback=eval_callback, progress_bar=True)
+        
+        # Measure end time
+        end_time = time.time()
+        training_time = end_time - start_time
+        
         env.close()
         results_path = os.path.join('./logs/', 'evaluations.npz')
         evaluations = np.load(results_path)
@@ -195,4 +275,4 @@ class GenericSolver:
         # Plot rewards
         GenericSolver.plot_training(mean_rewards, timestamp)
 
-        return -np.mean(mean_rewards) # Calculate negative mean for SMAC's minimization
+        return training_time 

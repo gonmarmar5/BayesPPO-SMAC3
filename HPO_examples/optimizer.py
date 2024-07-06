@@ -93,6 +93,10 @@ def agents_validation(models_folder = "models", n_eval_episodes=50):
         plt.xlabel('Episode')
         plt.ylabel('Reward')
         plt.title('Validation Rewards for Best Model')
+        if ENV == 'CartPole':
+            plt.ylim(-550, 550)  
+        else:
+            plt.ylim(-350, 350)
         plot_filename = os.path.join("plots", f"validation_rewards_{best_model_file}.png")
         plt.savefig(plot_filename)
         plt.close()
