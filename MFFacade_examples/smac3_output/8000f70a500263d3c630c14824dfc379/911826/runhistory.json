@@ -1,0 +1,31 @@
+{
+  "stats": {
+    "submitted": 1,
+    "finished": 0,
+    "running": 1
+  },
+  "data": [
+    [
+      1,
+      null,
+      729889663,
+      1.1111111111111112,
+      2147483647.0,
+      0.0,
+      0,
+      0.0,
+      0.0,
+      {}
+    ]
+  ],
+  "configs": {
+    "1": {
+      "discount_factor": 0.9168241268130157,
+      "gae_lambda": 0.9863671425976431,
+      "learning_rate": 0.0005443333687944636
+    }
+  },
+  "config_origins": {
+    "1": "Initial Design: Random"
+  }
+}

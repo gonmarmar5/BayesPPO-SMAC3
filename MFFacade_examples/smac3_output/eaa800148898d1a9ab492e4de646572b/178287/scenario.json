@@ -1,0 +1,139 @@
+{
+    "name": "eaa800148898d1a9ab492e4de646572b",
+    "deterministic": true,
+    "objectives": "cost",
+    "crash_cost": Infinity,
+    "termination_cost_threshold": Infinity,
+    "walltime_limit": 180,
+    "cputime_limit": Infinity,
+    "trial_walltime_limit": null,
+    "trial_memory_limit": null,
+    "n_trials": 100,
+    "use_default_config": false,
+    "instances": null,
+    "instance_features": null,
+    "min_budget": 1,
+    "max_budget": 10,
+    "seed": 178287,
+    "n_workers": 1,
+    "_meta": {
+        "facade": {
+            "name": "MultiFidelityFacade"
+        },
+        "runner": {
+            "name": "TargetFunctionRunner",
+            "code": "b't\\x00d\\x01k\\x02r\"t\\x01\\xa0\\x02d\\x02\\xa1\\x01}\\x04t\\x03t\\x01\\xa0\\x02d\\x02\\xa1\\x01\\x83\\x01}\\x05n\\x18t\\x01\\xa0\\x02d\\x03\\xa1\\x01}\\x04t\\x03t\\x01\\xa0\\x02d\\x03\\xa1\\x01\\x83\\x01}\\x05t\\x04d\\x04|\\x01\\x9b\\x00d\\x05|\\x02\\x9b\\x00\\x9d\\x04\\x83\\x01\\x01\\x00d\\x06|\\x04|\\x01d\\x07\\x19\\x00|\\x01d\\x08\\x19\\x00d\\td\\nd\\x0b|\\x01d\\x0c\\x19\\x00d\\rd\\x0ed\\x0fd\\x0fd\\x10d\\x11\\x9c\\r}\\x06t\\x05t\\x05d\\x12d\\x12g\\x02d\\x12d\\x12g\\x02d\\x13\\x8d\\x02d\\x14\\x8d\\x01}\\x07t\\x06f\\x00d\\x15|\\x07i\\x01|\\x06\\x97\\x02\\x8e\\x01}\\x08t\\x07|\\x03t\\x08\\x18\\x00t\\tt\\x08\\x18\\x00\\x1b\\x00t\\nt\\x0b\\x18\\x00\\x14\\x00t\\x0b\\x17\\x00\\x83\\x01}\\tt\\x04d\\x16|\\t\\x83\\x02\\x01\\x00t\\x0c|\\x05d\\x17d\\x17d\\x18d\\x19d\\x1ad\\x1b\\x8d\\x06}\\nt\\r|\\x05t\\x0et\\x0fd\\x1c|\\td\\x18\\x1a\\x00d\\x17d\\x17d\\x19d\\x1ad\\x10d\\x1d\\x8d\\n}\\nt\\x10\\xa0\\x10\\xa1\\x00}\\x0b|\\x08j\\x11|\\t|\\nd\\x19d\\x1e\\x8d\\x03\\x01\\x00t\\x10\\xa0\\x10\\xa1\\x00}\\x0c|\\x0c|\\x0b\\x18\\x00}\\r|\\x04\\xa0\\x12\\xa1\\x00\\x01\\x00t\\x13j\\x14\\xa0\\x15d\\x17d\\x1f\\xa1\\x02}\\x0et\\x16\\xa0\\x17|\\x0e\\xa1\\x01}\\x0f|\\x0fd \\x19\\x00j\\x18d\\x10d!\\x8d\\x01}\\x10t\\x13j\\x14\\xa0\\x19d\"\\xa1\\x01\\x90\\x01stt\\x13\\xa0\\x1ad\"\\xa1\\x01\\x01\\x00t\\x1bj\\x1b\\xa0\\x1c\\xa1\\x00\\xa0\\x1dd#\\xa1\\x01}\\x11t\\x13j\\x14\\xa0\\x15d\"d$|\\x11\\x9b\\x00\\x9d\\x02\\xa1\\x02}\\x12|\\x08\\xa0\\x1e|\\x12\\xa1\\x01\\x01\\x00t\\x1f\\xa0 |\\x10|\\x11\\xa1\\x02\\x01\\x00|\\rt\\x16\\xa0\\x18|\\x10\\xa1\\x01\\x18\\x00S\\x00'"
+        },
+        "model": {
+            "name": "RandomForest",
+            "types": [
+                0,
+                0,
+                0
+            ],
+            "bounds": [
+                [
+                    0,
+                    1.0
+                ],
+                [
+                    0,
+                    1.0
+                ],
+                [
+                    0,
+                    1.0
+                ]
+            ],
+            "pca_components": 7,
+            "n_trees": 10,
+            "n_points_per_tree": -1,
+            "ratio_features": 1.0,
+            "min_samples_split": 2,
+            "min_samples_leaf": 1,
+            "max_depth": 1048576,
+            "eps_purity": 1e-08,
+            "max_nodes": 1048576,
+            "bootstrapping": true
+        },
+        "acquisition_maximizer": {
+            "name": "LocalAndSortedRandomSearch",
+            "acquisition_function": {
+                "name": "EI",
+                "xi": 0.0,
+                "log": true
+            },
+            "challengers": 10000,
+            "seed": 178287,
+            "random_search": {
+                "name": "RandomSearch",
+                "acquisition_function": {
+                    "name": "EI",
+                    "xi": 0.0,
+                    "log": true
+                },
+                "challengers": 5000,
+                "seed": 178287
+            },
+            "local_search": {
+                "name": "LocalSearch",
+                "acquisition_function": {
+                    "name": "EI",
+                    "xi": 0.0,
+                    "log": true
+                },
+                "challengers": 5000,
+                "seed": 178287,
+                "max_steps": null,
+                "n_steps_plateau_walk": 10,
+                "vectorization_min_obtain": 2,
+                "vectorization_max_obtain": 64
+            }
+        },
+        "acquisition_function": {
+            "name": "EI",
+            "xi": 0.0,
+            "log": true
+        },
+        "intensifier": {
+            "name": "Hyperband",
+            "max_incumbents": 10,
+            "seed": 178287,
+            "eta": 3,
+            "instance_seed_order": "shuffle_once",
+            "incumbent_selection": "highest_budget"
+        },
+        "initial_design": {
+            "name": "RandomInitialDesign",
+            "n_configs": 5,
+            "n_configs_per_hyperparameter": 10,
+            "additional_configs": [],
+            "seed": 178287
+        },
+        "random_design": {
+            "name": "ProbabilityRandomDesign",
+            "seed": 0,
+            "probability": 0.2
+        },
+        "runhistory_encoder": {
+            "name": "RunHistoryLogScaledEncoder",
+            "considered_states": [
+                1,
+                2,
+                4
+            ],
+            "lower_budget_states": [],
+            "scale_percentage": 5,
+            "seed": 178287
+        },
+        "multi_objective_algorithm": null,
+        "config_selector": {
+            "name": "ConfigSelector",
+            "retrain_after": 8,
+            "retries": 16,
+            "min_trials": 1
+        },
+        "version": "2.0.2"
+    },
+    "output_directory": "smac3_output/eaa800148898d1a9ab492e4de646572b/178287"
+}

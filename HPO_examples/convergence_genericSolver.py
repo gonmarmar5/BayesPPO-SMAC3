@@ -15,12 +15,12 @@ from stable_baselines3.common.callbacks import EvalCallback, StopTrainingOnRewar
 from stable_baselines3.common.monitor import Monitor
 import time
 
-ENV = 'CartPole'
-#ENV = 'LunarLander'
-TOTAL_TIMESTEPS = 10000
-EARLY_STOPPING = 180
-REWARD_THRESHOLD = 400
-NUM_REWARD_EVALS = 3  # Number of last evaluations to average over
+#ENV = 'CartPole'
+ENV = 'LunarLander'
+TOTAL_TIMESTEPS = 1000000
+EARLY_STOPPING = 10800
+REWARD_THRESHOLD = 180
+NUM_REWARD_EVALS = 20  # Number of last evaluations to average over
 COUNTER = 0
 
 class CustomFeatureExtractor(BaseFeaturesExtractor):
@@ -176,8 +176,8 @@ class GenericSolver:
         
         plt.figure()
         plt.plot(mean_rewards)
-        plt.xlabel('Update')
-        plt.ylabel('Mean Reward')
+        plt.xlabel('Evaluations')
+        plt.ylabel('Accumulated Reward')
         plt.title('Training Progress')
         if ENV == 'CartPole':
             plt.ylim(-550, 550)  
@@ -275,4 +275,4 @@ class GenericSolver:
         # Plot rewards
         GenericSolver.plot_training(mean_rewards, timestamp)
 
-        return training_time 
+        return training_time - np.mean(mean_rewards)

@@ -14,13 +14,13 @@ from ConfigSpace import UniformFloatHyperparameter
 from stable_baselines3.common.monitor import Monitor
 from stable_baselines3.common.callbacks import EvalCallback, CheckpointCallback
 
-ENV = 'CartPole'
-#ENV = 'LunarLander'
+#ENV = 'CartPole'
+ENV = 'LunarLander'
 MIN_BUDGET = 1
-MAX_BUDGET = 10
-MAX_TIMESTEPS = 2500
-MIN_TIMESTEPS = 1500
-EARLY_STOPPING = 180
+MAX_BUDGET = 20
+MAX_TIMESTEPS = 250000
+MIN_TIMESTEPS = 125000
+EARLY_STOPPING = 10800
 
 class CustomFeatureExtractor(BaseFeaturesExtractor):
     def __init__(self, observation_space, features_dim=64, dropout_prob=0.2):
@@ -185,7 +185,7 @@ class GenericSolver:
         print("Total TimeSteps: ", total_timesteps)
         
         eval_callback = EvalCallback(eval_env, best_model_save_path='./logs/',
-                                 log_path='./logs/', eval_freq=100,
+                                 log_path='./logs/', eval_freq=total_timesteps // 100,
                                  deterministic=True, render=False)
         
         agent.learn(total_timesteps = total_timesteps, callback=eval_callback, progress_bar=True) # Numero de pasos antes de cada actualización

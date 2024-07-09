@@ -7,6 +7,7 @@ import numpy as np
 from stable_baselines3 import PPO
 
 import genericSolver
+import convergence_genericSolver
 
 from smac.scenario import Scenario
 from smac import HyperparameterOptimizationFacade as HPOFacade
@@ -15,8 +16,10 @@ import threading
 from stable_baselines3.common.evaluation import evaluate_policy
 from stable_baselines3.common.monitor import Monitor
 
-ENV = genericSolver.ENV
-EARLY_STOPPING = genericSolver.EARLY_STOPPING
+#ENV = genericSolver.ENV
+#EARLY_STOPPING = genericSolver.EARLY_STOPPING
+ENV = convergence_genericSolver.ENV
+EARLY_STOPPING = convergence_genericSolver.EARLY_STOPPING
 
 def render_agent(best_model_dir, num_episodes = 10):
     """
@@ -112,7 +115,8 @@ if __name__ == "__main__":
 
     logger = Logger(filename)
     
-    model = genericSolver.GenericSolver()
+    #model = genericSolver.GenericSolver()
+    model = convergence_genericSolver.GenericSolver()
     
     scenario = Scenario(model.configspace, 
                         deterministic=True,    

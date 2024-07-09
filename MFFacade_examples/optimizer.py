@@ -15,11 +15,18 @@ from stable_baselines3.common.evaluation import evaluate_policy
 from stable_baselines3.common.monitor import Monitor
 from logger import Logger 
 import genericSolver 
+import convergence_genericSolver
 
 ENV = genericSolver.ENV
 MIN_BUDGET = genericSolver.MIN_BUDGET
 MAX_BUDGET = genericSolver.MAX_BUDGET
 EARLY_STOPPING = genericSolver.EARLY_STOPPING
+
+ENV = convergence_genericSolver.ENV
+MIN_BUDGET = convergence_genericSolver.MIN_BUDGET
+MAX_BUDGET = convergence_genericSolver.MAX_BUDGET
+EARLY_STOPPING = convergence_genericSolver.EARLY_STOPPING
+
 
 def render_agent(best_model_dir, num_episodes = 10):
     """
@@ -114,6 +121,7 @@ if __name__ == "__main__":
         log_filename = "logs/lunarlander_optimizer.log"
     
     model = genericSolver.GenericSolver()
+    model = convergence_genericSolver.GenericSolver()
 
     logger = Logger(log_filename)
 

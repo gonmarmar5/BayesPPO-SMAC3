@@ -1,0 +1,63 @@
+{
+  "incumbent_ids": [],
+  "rejected_config_ids": [],
+  "incumbents_changed": 0,
+  "trajectory": [],
+  "state": {
+    "tracker": {
+      "0,0": [
+        [
+          0,
+          [
+            {
+              "discount_factor": 0.9098488575947357,
+              "gae_lambda": 0.9035519948951356,
+              "learning_rate": 0.0001660670774288533
+            },
+            {
+              "discount_factor": 0.9621410899602801,
+              "gae_lambda": 0.9625046569469087,
+              "learning_rate": 0.005642013315268117
+            },
+            {
+              "discount_factor": 0.9716336275708554,
+              "gae_lambda": 0.9062501076919969,
+              "learning_rate": 0.000184921409054992
+            },
+            {
+              "discount_factor": 0.9443677690936249,
+              "gae_lambda": 0.9314726220621004,
+              "learning_rate": 0.0003623229338763406
+            },
+            {
+              "discount_factor": 0.9794359512109077,
+              "gae_lambda": 0.9468164455781077,
+              "learning_rate": 0.0005295401034862098
+            },
+            {
+              "discount_factor": 0.966092145185918,
+              "gae_lambda": 0.9862158165003974,
+              "learning_rate": 0.005296581294450629
+            },
+            {
+              "discount_factor": 0.926427262815871,
+              "gae_lambda": 0.9069896353394139,
+              "learning_rate": 0.0009107730046548186
+            },
+            {
+              "discount_factor": 0.9898149776049912,
+              "gae_lambda": 0.9359186057109172,
+              "learning_rate": 0.0009098951194166324
+            },
+            {
+              "discount_factor": 0.9743682211254585,
+              "gae_lambda": 0.984839383154108,
+              "learning_rate": 0.002271332308360618
+            }
+          ]
+        ]
+      ]
+    },
+    "next_bracket": 1
+  }
+}
